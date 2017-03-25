@@ -1,3 +1,3 @@
 
-<img src="https://github.com/eddiekaiger/Anchor/blob/master/Images/Anchor.png" alt="Anchor" />
+<img src="https://github.com/Weebly/Anchor/blob/master/Images/Anchor.png" alt="Anchor" />
 
