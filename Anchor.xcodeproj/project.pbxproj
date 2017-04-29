@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C01EC5631E8F002500BEBB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EC5621E8F002500BEBB0F /* AppDelegate.swift */; };
+		C01EC5651E8F002500BEBB0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EC5641E8F002500BEBB0F /* ViewController.swift */; };
+		C01EC5681E8F002500BEBB0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01EC5661E8F002500BEBB0F /* Main.storyboard */; };
+		C01EC56A1E8F002500BEBB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C01EC5691E8F002500BEBB0F /* Assets.xcassets */; };
+		C01EC56D1E8F002500BEBB0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01EC56B1E8F002500BEBB0F /* LaunchScreen.storyboard */; };
+		C01EC5721E8F006900BEBB0F /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* Anchor.framework */; };
 		C072181C1E722070000A0F0B /* Anchor.h in Headers */ = {isa = PBXBuildFile; fileRef = C07218151E722070000A0F0B /* Anchor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C072181D1E722070000A0F0B /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218161E722070000A0F0B /* Anchor.swift */; };
 		C072181E1E722070000A0F0B /* Anchorable+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218171E722070000A0F0B /* Anchorable+Constraints.swift */; };
@@ -31,6 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C01EC5601E8F002500BEBB0F /* Anchor-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anchor-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C01EC5621E8F002500BEBB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C01EC5641E8F002500BEBB0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C01EC5671E8F002500BEBB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C01EC5691E8F002500BEBB0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C01EC56C1E8F002500BEBB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C01EC56E1E8F002500BEBB0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C07218151E722070000A0F0B /* Anchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anchor.h; sourceTree = "<group>"; };
 		C07218161E722070000A0F0B /* Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
 		C07218171E722070000A0F0B /* Anchorable+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Anchorable+Constraints.swift"; sourceTree = "<group>"; };
@@ -48,6 +61,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C01EC55D1E8F002500BEBB0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C01EC5721E8F006900BEBB0F /* Anchor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0E1C9471DD319D50068E85C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +87,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C01EC5611E8F002500BEBB0F /* Anchor-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C01EC5621E8F002500BEBB0F /* AppDelegate.swift */,
+				C01EC5641E8F002500BEBB0F /* ViewController.swift */,
+				C01EC5661E8F002500BEBB0F /* Main.storyboard */,
+				C01EC5691E8F002500BEBB0F /* Assets.xcassets */,
+				C01EC56B1E8F002500BEBB0F /* LaunchScreen.storyboard */,
+				C01EC56E1E8F002500BEBB0F /* Info.plist */,
+			);
+			path = "Anchor-iOS";
+			sourceTree = "<group>";
+		};
 		C07218141E722070000A0F0B /* Anchor */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +131,7 @@
 			children = (
 				C07218141E722070000A0F0B /* Anchor */,
 				C07218231E72207B000A0F0B /* AnchorTests */,
+				C01EC5611E8F002500BEBB0F /* Anchor-iOS */,
 				C0E2114B1D9EC5C000623F02 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +141,7 @@
 			children = (
 				C0E1C94B1DD319D50068E85C /* Anchor.framework */,
 				C0E1C9531DD319D50068E85C /* AnchorTests.xctest */,
+				C01EC5601E8F002500BEBB0F /* Anchor-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +160,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		C01EC55F1E8F002500BEBB0F /* Anchor-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01EC5711E8F002500BEBB0F /* Build configuration list for PBXNativeTarget "Anchor-iOS" */;
+			buildPhases = (
+				C01EC55C1E8F002500BEBB0F /* Sources */,
+				C01EC55D1E8F002500BEBB0F /* Frameworks */,
+				C01EC55E1E8F002500BEBB0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Anchor-iOS";
+			productName = "Anchor-iOS";
+			productReference = C01EC5601E8F002500BEBB0F /* Anchor-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C0E1C94A1DD319D50068E85C /* Anchor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0E1C95C1DD319D50068E85C /* Build configuration list for PBXNativeTarget "Anchor" */;
@@ -166,10 +219,15 @@
 		C0E211411D9EC5C000623F02 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Eddie Kaiger";
 				TargetAttributes = {
+					C01EC55F1E8F002500BEBB0F = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 5M378EFHK7;
+						ProvisioningStyle = Automatic;
+					};
 					C0E1C94A1DD319D50068E85C = {
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 0810;
@@ -198,11 +256,22 @@
 			targets = (
 				C0E1C94A1DD319D50068E85C /* Anchor */,
 				C0E1C9521DD319D50068E85C /* AnchorTests */,
+				C01EC55F1E8F002500BEBB0F /* Anchor-iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C01EC55E1E8F002500BEBB0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C01EC56D1E8F002500BEBB0F /* LaunchScreen.storyboard in Resources */,
+				C01EC56A1E8F002500BEBB0F /* Assets.xcassets in Resources */,
+				C01EC5681E8F002500BEBB0F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0E1C9491DD319D50068E85C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -220,6 +289,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C01EC55C1E8F002500BEBB0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C01EC5651E8F002500BEBB0F /* ViewController.swift in Sources */,
+				C01EC5631E8F002500BEBB0F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0E1C9461DD319D50068E85C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,7 +331,60 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		C01EC5661E8F002500BEBB0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C01EC5671E8F002500BEBB0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C01EC56B1E8F002500BEBB0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C01EC56C1E8F002500BEBB0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		C01EC56F1E8F002500BEBB0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5M378EFHK7;
+				INFOPLIST_FILE = "Anchor-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Weebly.Anchor-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C01EC5701E8F002500BEBB0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5M378EFHK7;
+				INFOPLIST_FILE = "Anchor-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Weebly.Anchor-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C0E1C95D1DD319D50068E85C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -436,6 +567,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C01EC5711E8F002500BEBB0F /* Build configuration list for PBXNativeTarget "Anchor-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01EC56F1E8F002500BEBB0F /* Debug */,
+				C01EC5701E8F002500BEBB0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C0E1C95C1DD319D50068E85C /* Build configuration list for PBXNativeTarget "Anchor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

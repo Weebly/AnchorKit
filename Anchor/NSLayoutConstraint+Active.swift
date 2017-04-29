@@ -16,7 +16,7 @@ extension NSLayoutConstraint {
 
     /**
      Activates the constraint and returns a reference to it.
-    */
+     */
     @discardableResult
     public func activate() -> NSLayoutConstraint {
         isActive = true
@@ -25,7 +25,7 @@ extension NSLayoutConstraint {
 
     /**
      Deactivates the constraint and returns a reference to it.
-    */
+     */
     @discardableResult
     public func deactivate() -> NSLayoutConstraint {
         isActive = false

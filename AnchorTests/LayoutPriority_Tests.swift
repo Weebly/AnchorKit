@@ -18,26 +18,22 @@ import XCTest
 
 class LayoutPriority_Tests: XCTestCase {
     
-    func testLayoutPriorityRawValues() {
+    func testRawValues() {
         XCTAssertEqual(LayoutPriority.low.rawValue, 250)
         XCTAssertEqual(LayoutPriority.medium.rawValue, 500)
         XCTAssertEqual(LayoutPriority.high.rawValue, 750)
         XCTAssertEqual(LayoutPriority.required.rawValue, 1000)
+        XCTAssertEqual(LayoutPriority.custom(32).rawValue, 32)
     }
 
-    func testConstraint_withPriorityEnum() {
-        let constraint = NSLayoutConstraint().withPriority(.low)
-        XCTAssertEqual(constraint.priority, 250)
+    func testInitWithRawValue() {
+        //XCTAssertEqual(LayoutPriority(rawValue: 250), .low)
+        //XCTAssertEqual(LayoutPriority(rawValue: 500), .medium)
     }
 
-    func testConstraint_withPriorityValue() {
-        let constraint = NSLayoutConstraint().withPriority(630)
-        XCTAssertEqual(constraint.priority, 630)
-    }
-
-    func testConstraint_updatePriority() {
-        let constraint = NSLayoutConstraint().withPriority(.low)
-        constraint.updatePriority(.high)
+    func testConstraint_setLayoutPriority() {
+        let constraint = NSLayoutConstraint()
+        constraint.layoutPriority = .high
         XCTAssertEqual(constraint.priority, 750)
     }
 
