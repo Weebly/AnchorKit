@@ -27,14 +27,46 @@ class LayoutPriority_Tests: XCTestCase {
     }
 
     func testInitWithRawValue() {
-        //XCTAssertEqual(LayoutPriority(rawValue: 250), .low)
-        //XCTAssertEqual(LayoutPriority(rawValue: 500), .medium)
+        XCTAssertEqual(LayoutPriority(rawValue: 250), .low)
+        XCTAssertEqual(LayoutPriority(rawValue: 500), .medium)
+        XCTAssertEqual(LayoutPriority(rawValue: 750), .high)
+        XCTAssertEqual(LayoutPriority(rawValue: 1000), .required)
+        XCTAssertEqual(LayoutPriority(rawValue: 42), .custom(42))
     }
 
-    func testConstraint_setLayoutPriority() {
+    func testConstraint_layoutPriority() {
         let constraint = NSLayoutConstraint()
         constraint.layoutPriority = .high
         XCTAssertEqual(constraint.priority, 750)
+        constraint.priority = 56
+        XCTAssertEqual(constraint.layoutPriority, .custom(56))
+    }
+
+    func testComparable() {
+        XCTAssertLessThan(LayoutPriority.low, .high)
+        XCTAssertGreaterThan(LayoutPriority.custom(501), .medium)
+    }
+
+    func testAddition() {
+        XCTAssertEqual((LayoutPriority.high + 1).rawValue, 751)
+    }
+
+    func testSubtraction() {
+        XCTAssertEqual((LayoutPriority.medium - 20).rawValue, 480)
+    }
+
+    func testContentCompressionResistance() {
+        let v = View()
+        v.setContentCompressionResistancePriority(.high, for: .vertical)
+        XCTAssertEqual(v.contentCompressionResistancePriority(for: .vertical), .high)
+        XCTAssertEqual(v.contentCompressionResistancePriority(for: .vertical), 750)
+    }
+
+    func testContentHugging() {
+        let v = View()
+        v.setContentHuggingPriority(.medium, for: .horizontal)
+        XCTAssertEqual(v.contentHuggingPriority(for: .horizontal), .medium)
+        XCTAssertEqual(v.contentHuggingPriority(for: .horizontal), 500)
     }
 
 }

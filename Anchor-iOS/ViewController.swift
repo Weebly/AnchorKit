@@ -26,6 +26,10 @@ class ViewController: UIViewController {
 
         [view1, view2, view3, view4].forEach(view.addSubview)
 
+        setupConstraints()
+    }
+
+    private func setupConstraints() {
         view1.constrain(.centerX, .centerY, to: view)
         view1.constrain(.height, .width, toConstant: 200)
 
@@ -38,9 +42,7 @@ class ViewController: UIViewController {
         let topAndSideConstraints = view3.constrain(.leading, .trailing, .top, to: view)
 
         view4.constrainEdges(to: view3, inset: 10)
-
     }
-
 
 }
 
