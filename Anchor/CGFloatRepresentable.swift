@@ -3,7 +3,7 @@
 //  Anchor
 //
 //  Created by Eddie Kaiger on 5/13/17.
-//  Copyright © 2017 Eddie Kaiger. All rights reserved.
+//  Copyright © 2017 Weebly. All rights reserved.
 //
 
 import CoreGraphics

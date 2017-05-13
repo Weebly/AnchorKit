@@ -3,7 +3,7 @@
 //  Anchor-iOS
 //
 //  Created by Eddie Kaiger on 3/31/17.
-//  Copyright © 2017 Eddie Kaiger. All rights reserved.
+//  Copyright © 2017 Weebly. All rights reserved.
 //
 
 import UIKit
