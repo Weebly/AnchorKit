@@ -31,17 +31,17 @@ class ViewController: UIViewController {
 
     private func setupConstraints() {
         view1.constrain(.centerX, .centerY, to: view)
-        view1.constrain(.height, .width, toConstant: 200)
+        view1.constrain(.height, .width, toConstant: 100)
 
         view2.constrain(.top, to: view1, constant: 20)
-        view2.constrain(.leading, .trailing, to: view1)
-        view2.constrain(.height, relation: .lessThanOrEqual, to: view1, multiplier: 1.6)
+        view2.constrain(.leading, .trailing, to: view1, constant: 30)
+        view2.constrain(.height, relation: .lessThanOrEqual, to: view1, multiplier: 2.5)
         view2.constrain(.bottom, to: view, constant: -15, priority: .high)
 
         let bottomConstraint = view3.constrain(.bottom, to: .top, of: view1.layoutMarginsGuide)
         let topAndSideConstraints = view3.constrain(.leading, .trailing, .top, to: view)
 
-        view4.constrainEdges(to: view3, inset: 10)
+        view4.constrainEdges(to: view3, inset: 20)
     }
 
 }
