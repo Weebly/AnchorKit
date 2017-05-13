@@ -23,6 +23,7 @@
 		C072182A1E72207B000A0F0B /* Anchorable_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218251E72207B000A0F0B /* Anchorable_Tests.swift */; };
 		C072182C1E72207B000A0F0B /* LayoutPriority_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218271E72207B000A0F0B /* LayoutPriority_Tests.swift */; };
 		C072182D1E72207B000A0F0B /* NSLayoutConstraint+Active_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218281E72207B000A0F0B /* NSLayoutConstraint+Active_Tests.swift */; };
+		C0D270721EC78CBE00CDD13F /* CGFloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D270711EC78CBE00CDD13F /* CGFloatRepresentable.swift */; };
 		C0E1C9541DD319D50068E85C /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* Anchor.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		C07218261E72207B000A0F0B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C07218271E72207B000A0F0B /* LayoutPriority_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutPriority_Tests.swift; sourceTree = "<group>"; };
 		C07218281E72207B000A0F0B /* NSLayoutConstraint+Active_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Active_Tests.swift"; sourceTree = "<group>"; };
+		C0D270711EC78CBE00CDD13F /* CGFloatRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatRepresentable.swift; sourceTree = "<group>"; };
 		C0E1C94B1DD319D50068E85C /* Anchor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Anchor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E1C9531DD319D50068E85C /* AnchorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnchorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				C07218161E722070000A0F0B /* Anchor.swift */,
 				C07218171E722070000A0F0B /* Anchorable+Constraints.swift */,
 				C07218181E722070000A0F0B /* Anchorable.swift */,
+				C0D270711EC78CBE00CDD13F /* CGFloatRepresentable.swift */,
 				C072181A1E722070000A0F0B /* LayoutPriority.swift */,
 				C072181B1E722070000A0F0B /* NSLayoutConstraint+Active.swift */,
 				C07218191E722070000A0F0B /* Info.plist */,
@@ -305,6 +308,7 @@
 				C07218221E722070000A0F0B /* NSLayoutConstraint+Active.swift in Sources */,
 				C072181F1E722070000A0F0B /* Anchorable.swift in Sources */,
 				C072181D1E722070000A0F0B /* Anchor.swift in Sources */,
+				C0D270721EC78CBE00CDD13F /* CGFloatRepresentable.swift in Sources */,
 				C072181E1E722070000A0F0B /* Anchorable+Constraints.swift in Sources */,
 				C07218211E722070000A0F0B /* LayoutPriority.swift in Sources */,
 			);
@@ -574,6 +578,7 @@
 				C01EC5701E8F002500BEBB0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0E1C95C1DD319D50068E85C /* Build configuration list for PBXNativeTarget "Anchor" */ = {
 			isa = XCConfigurationList;
