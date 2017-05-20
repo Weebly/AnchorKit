@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C01EC5631E8F002500BEBB0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EC5621E8F002500BEBB0F /* AppDelegate.swift */; };
-		C01EC5651E8F002500BEBB0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01EC5641E8F002500BEBB0F /* ViewController.swift */; };
-		C01EC5681E8F002500BEBB0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01EC5661E8F002500BEBB0F /* Main.storyboard */; };
-		C01EC56A1E8F002500BEBB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C01EC5691E8F002500BEBB0F /* Assets.xcassets */; };
-		C01EC56D1E8F002500BEBB0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C01EC56B1E8F002500BEBB0F /* LaunchScreen.storyboard */; };
-		C01EC5721E8F006900BEBB0F /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* Anchor.framework */; };
-		C072181C1E722070000A0F0B /* Anchor.h in Headers */ = {isa = PBXBuildFile; fileRef = C07218151E722070000A0F0B /* Anchor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C072181D1E722070000A0F0B /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218161E722070000A0F0B /* Anchor.swift */; };
-		C072181E1E722070000A0F0B /* Anchorable+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218171E722070000A0F0B /* Anchorable+Constraints.swift */; };
-		C072181F1E722070000A0F0B /* Anchorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218181E722070000A0F0B /* Anchorable.swift */; };
-		C07218211E722070000A0F0B /* LayoutPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = C072181A1E722070000A0F0B /* LayoutPriority.swift */; };
-		C07218221E722070000A0F0B /* NSLayoutConstraint+Active.swift in Sources */ = {isa = PBXBuildFile; fileRef = C072181B1E722070000A0F0B /* NSLayoutConstraint+Active.swift */; };
-		C07218291E72207B000A0F0B /* Anchor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218241E72207B000A0F0B /* Anchor_Tests.swift */; };
-		C072182A1E72207B000A0F0B /* Anchorable_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218251E72207B000A0F0B /* Anchorable_Tests.swift */; };
-		C072182C1E72207B000A0F0B /* LayoutPriority_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218271E72207B000A0F0B /* LayoutPriority_Tests.swift */; };
-		C072182D1E72207B000A0F0B /* NSLayoutConstraint+Active_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07218281E72207B000A0F0B /* NSLayoutConstraint+Active_Tests.swift */; };
-		C0D270721EC78CBE00CDD13F /* CGFloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D270711EC78CBE00CDD13F /* CGFloatRepresentable.swift */; };
-		C0E1C9541DD319D50068E85C /* Anchor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* Anchor.framework */; };
+		C01EC5721E8F006900BEBB0F /* AnchorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* AnchorKit.framework */; };
+		C04E6FDB1ECFBE5F00749438 /* AnchorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C04E6FD31ECFBE5F00749438 /* AnchorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C04E6FDC1ECFBE5F00749438 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD41ECFBE5F00749438 /* Anchor.swift */; };
+		C04E6FDD1ECFBE5F00749438 /* Anchorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD51ECFBE5F00749438 /* Anchorable.swift */; };
+		C04E6FDE1ECFBE5F00749438 /* Anchorable+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD61ECFBE5F00749438 /* Anchorable+Constraints.swift */; };
+		C04E6FDF1ECFBE5F00749438 /* CGFloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD71ECFBE5F00749438 /* CGFloatRepresentable.swift */; };
+		C04E6FE11ECFBE5F00749438 /* LayoutPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD91ECFBE5F00749438 /* LayoutPriority.swift */; };
+		C04E6FE21ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FDA1ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift */; };
+		C04E6FF21ECFBE7D00749438 /* Anchor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FED1ECFBE7D00749438 /* Anchor_Tests.swift */; };
+		C04E6FF31ECFBE7D00749438 /* Anchorable_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FEE1ECFBE7D00749438 /* Anchorable_Tests.swift */; };
+		C04E6FF51ECFBE7D00749438 /* LayoutPriority_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FF01ECFBE7D00749438 /* LayoutPriority_Tests.swift */; };
+		C04E6FF61ECFBE7D00749438 /* NSLayoutConstraint+AnchorKit_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FF11ECFBE7D00749438 /* NSLayoutConstraint+AnchorKit_Tests.swift */; };
+		C04E70001ECFBF1100749438 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FF71ECFBF1100749438 /* AppDelegate.swift */; };
+		C04E70011ECFBF1100749438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04E6FF81ECFBF1100749438 /* Assets.xcassets */; };
+		C04E70051ECFBF1100749438 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FFF1ECFBF1100749438 /* ViewController.swift */; };
+		C04E700A1ECFBF2200749438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E70061ECFBF2200749438 /* LaunchScreen.storyboard */; };
+		C04E700B1ECFBF2200749438 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E70081ECFBF2200749438 /* Main.storyboard */; };
+		C0E1C9541DD319D50068E85C /* AnchorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* AnchorKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,28 +38,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C01EC5601E8F002500BEBB0F /* Anchor-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anchor-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C01EC5621E8F002500BEBB0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C01EC5641E8F002500BEBB0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C01EC5671E8F002500BEBB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C01EC5691E8F002500BEBB0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C01EC56C1E8F002500BEBB0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C01EC56E1E8F002500BEBB0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C07218151E722070000A0F0B /* Anchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anchor.h; sourceTree = "<group>"; };
-		C07218161E722070000A0F0B /* Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
-		C07218171E722070000A0F0B /* Anchorable+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Anchorable+Constraints.swift"; sourceTree = "<group>"; };
-		C07218181E722070000A0F0B /* Anchorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchorable.swift; sourceTree = "<group>"; };
-		C07218191E722070000A0F0B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C072181A1E722070000A0F0B /* LayoutPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutPriority.swift; sourceTree = "<group>"; };
-		C072181B1E722070000A0F0B /* NSLayoutConstraint+Active.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Active.swift"; sourceTree = "<group>"; };
-		C07218241E72207B000A0F0B /* Anchor_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchor_Tests.swift; sourceTree = "<group>"; };
-		C07218251E72207B000A0F0B /* Anchorable_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchorable_Tests.swift; sourceTree = "<group>"; };
-		C07218261E72207B000A0F0B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C07218271E72207B000A0F0B /* LayoutPriority_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutPriority_Tests.swift; sourceTree = "<group>"; };
-		C07218281E72207B000A0F0B /* NSLayoutConstraint+Active_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Active_Tests.swift"; sourceTree = "<group>"; };
-		C0D270711EC78CBE00CDD13F /* CGFloatRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatRepresentable.swift; sourceTree = "<group>"; };
-		C0E1C94B1DD319D50068E85C /* Anchor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Anchor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0E1C9531DD319D50068E85C /* AnchorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnchorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C01EC5601E8F002500BEBB0F /* AnchorKit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnchorKit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C04E6FD31ECFBE5F00749438 /* AnchorKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnchorKit.h; path = AnchorKit/AnchorKit.h; sourceTree = SOURCE_ROOT; };
+		C04E6FD41ECFBE5F00749438 /* Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Anchor.swift; path = AnchorKit/Anchor.swift; sourceTree = SOURCE_ROOT; };
+		C04E6FD51ECFBE5F00749438 /* Anchorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Anchorable.swift; path = AnchorKit/Anchorable.swift; sourceTree = SOURCE_ROOT; };
+		C04E6FD61ECFBE5F00749438 /* Anchorable+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Anchorable+Constraints.swift"; path = "AnchorKit/Anchorable+Constraints.swift"; sourceTree = SOURCE_ROOT; };
+		C04E6FD71ECFBE5F00749438 /* CGFloatRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloatRepresentable.swift; path = AnchorKit/CGFloatRepresentable.swift; sourceTree = SOURCE_ROOT; };
+		C04E6FD81ECFBE5F00749438 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AnchorKit/Info.plist; sourceTree = SOURCE_ROOT; };
+		C04E6FD91ECFBE5F00749438 /* LayoutPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPriority.swift; path = AnchorKit/LayoutPriority.swift; sourceTree = SOURCE_ROOT; };
+		C04E6FDA1ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+AnchorKit.swift"; path = "AnchorKit/NSLayoutConstraint+AnchorKit.swift"; sourceTree = SOURCE_ROOT; };
+		C04E6FED1ECFBE7D00749438 /* Anchor_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Anchor_Tests.swift; path = AnchorKitTests/Anchor_Tests.swift; sourceTree = SOURCE_ROOT; };
+		C04E6FEE1ECFBE7D00749438 /* Anchorable_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Anchorable_Tests.swift; path = AnchorKitTests/Anchorable_Tests.swift; sourceTree = SOURCE_ROOT; };
+		C04E6FEF1ECFBE7D00749438 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AnchorKitTests/Info.plist; sourceTree = SOURCE_ROOT; };
+		C04E6FF01ECFBE7D00749438 /* LayoutPriority_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPriority_Tests.swift; path = AnchorKitTests/LayoutPriority_Tests.swift; sourceTree = SOURCE_ROOT; };
+		C04E6FF11ECFBE7D00749438 /* NSLayoutConstraint+AnchorKit_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+AnchorKit_Tests.swift"; path = "AnchorKitTests/NSLayoutConstraint+AnchorKit_Tests.swift"; sourceTree = SOURCE_ROOT; };
+		C04E6FF71ECFBF1100749438 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "AnchorKit-iOS/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
+		C04E6FF81ECFBF1100749438 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "AnchorKit-iOS/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		C04E6FFE1ECFBF1100749438 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "AnchorKit-iOS/Info.plist"; sourceTree = SOURCE_ROOT; };
+		C04E6FFF1ECFBF1100749438 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "AnchorKit-iOS/ViewController.swift"; sourceTree = SOURCE_ROOT; };
+		C04E70071ECFBF2200749438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AnchorKit-iOS/Base.lproj/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
+		C04E70091ECFBF2200749438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AnchorKit-iOS/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
+		C0E1C94B1DD319D50068E85C /* AnchorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnchorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0E1C9531DD319D50068E85C /* AnchorKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnchorKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C01EC5721E8F006900BEBB0F /* Anchor.framework in Frameworks */,
+				C01EC5721E8F006900BEBB0F /* AnchorKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,59 +82,62 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0E1C9541DD319D50068E85C /* Anchor.framework in Frameworks */,
+				C0E1C9541DD319D50068E85C /* AnchorKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C01EC5611E8F002500BEBB0F /* Anchor-iOS */ = {
+		C01EC5611E8F002500BEBB0F /* AnchorKit-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				C01EC5621E8F002500BEBB0F /* AppDelegate.swift */,
-				C01EC5641E8F002500BEBB0F /* ViewController.swift */,
-				C01EC5661E8F002500BEBB0F /* Main.storyboard */,
-				C01EC5691E8F002500BEBB0F /* Assets.xcassets */,
-				C01EC56B1E8F002500BEBB0F /* LaunchScreen.storyboard */,
-				C01EC56E1E8F002500BEBB0F /* Info.plist */,
+				C04E6FF71ECFBF1100749438 /* AppDelegate.swift */,
+				C04E6FF81ECFBF1100749438 /* Assets.xcassets */,
+				C04E70061ECFBF2200749438 /* LaunchScreen.storyboard */,
+				C04E70081ECFBF2200749438 /* Main.storyboard */,
+				C04E6FFE1ECFBF1100749438 /* Info.plist */,
+				C04E6FFF1ECFBF1100749438 /* ViewController.swift */,
 			);
+			name = "AnchorKit-iOS";
 			path = "Anchor-iOS";
 			sourceTree = "<group>";
 		};
-		C07218141E722070000A0F0B /* Anchor */ = {
+		C07218141E722070000A0F0B /* AnchorKit */ = {
 			isa = PBXGroup;
 			children = (
-				C07218151E722070000A0F0B /* Anchor.h */,
-				C07218161E722070000A0F0B /* Anchor.swift */,
-				C07218171E722070000A0F0B /* Anchorable+Constraints.swift */,
-				C07218181E722070000A0F0B /* Anchorable.swift */,
-				C0D270711EC78CBE00CDD13F /* CGFloatRepresentable.swift */,
-				C072181A1E722070000A0F0B /* LayoutPriority.swift */,
-				C072181B1E722070000A0F0B /* NSLayoutConstraint+Active.swift */,
-				C07218191E722070000A0F0B /* Info.plist */,
+				C04E6FD31ECFBE5F00749438 /* AnchorKit.h */,
+				C04E6FD41ECFBE5F00749438 /* Anchor.swift */,
+				C04E6FD51ECFBE5F00749438 /* Anchorable.swift */,
+				C04E6FD61ECFBE5F00749438 /* Anchorable+Constraints.swift */,
+				C04E6FD71ECFBE5F00749438 /* CGFloatRepresentable.swift */,
+				C04E6FD91ECFBE5F00749438 /* LayoutPriority.swift */,
+				C04E6FDA1ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift */,
+				C04E6FD81ECFBE5F00749438 /* Info.plist */,
 			);
+			name = AnchorKit;
 			path = Anchor;
 			sourceTree = "<group>";
 		};
-		C07218231E72207B000A0F0B /* AnchorTests */ = {
+		C07218231E72207B000A0F0B /* AnchorKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				C07218241E72207B000A0F0B /* Anchor_Tests.swift */,
-				C07218251E72207B000A0F0B /* Anchorable_Tests.swift */,
-				C07218271E72207B000A0F0B /* LayoutPriority_Tests.swift */,
-				C07218281E72207B000A0F0B /* NSLayoutConstraint+Active_Tests.swift */,
-				C07218261E72207B000A0F0B /* Info.plist */,
+				C04E6FED1ECFBE7D00749438 /* Anchor_Tests.swift */,
+				C04E6FEE1ECFBE7D00749438 /* Anchorable_Tests.swift */,
+				C04E6FF01ECFBE7D00749438 /* LayoutPriority_Tests.swift */,
+				C04E6FF11ECFBE7D00749438 /* NSLayoutConstraint+AnchorKit_Tests.swift */,
+				C04E6FEF1ECFBE7D00749438 /* Info.plist */,
 			);
+			name = AnchorKitTests;
 			path = AnchorTests;
 			sourceTree = "<group>";
 		};
 		C0E211401D9EC5C000623F02 = {
 			isa = PBXGroup;
 			children = (
-				C07218141E722070000A0F0B /* Anchor */,
-				C07218231E72207B000A0F0B /* AnchorTests */,
-				C01EC5611E8F002500BEBB0F /* Anchor-iOS */,
+				C07218141E722070000A0F0B /* AnchorKit */,
+				C07218231E72207B000A0F0B /* AnchorKitTests */,
+				C01EC5611E8F002500BEBB0F /* AnchorKit-iOS */,
 				C0E2114B1D9EC5C000623F02 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -142,9 +145,9 @@
 		C0E2114B1D9EC5C000623F02 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C0E1C94B1DD319D50068E85C /* Anchor.framework */,
-				C0E1C9531DD319D50068E85C /* AnchorTests.xctest */,
-				C01EC5601E8F002500BEBB0F /* Anchor-iOS.app */,
+				C0E1C94B1DD319D50068E85C /* AnchorKit.framework */,
+				C0E1C9531DD319D50068E85C /* AnchorKitTests.xctest */,
+				C01EC5601E8F002500BEBB0F /* AnchorKit-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,16 +159,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C072181C1E722070000A0F0B /* Anchor.h in Headers */,
+				C04E6FDB1ECFBE5F00749438 /* AnchorKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		C01EC55F1E8F002500BEBB0F /* Anchor-iOS */ = {
+		C01EC55F1E8F002500BEBB0F /* AnchorKit-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01EC5711E8F002500BEBB0F /* Build configuration list for PBXNativeTarget "Anchor-iOS" */;
+			buildConfigurationList = C01EC5711E8F002500BEBB0F /* Build configuration list for PBXNativeTarget "AnchorKit-iOS" */;
 			buildPhases = (
 				C01EC55C1E8F002500BEBB0F /* Sources */,
 				C01EC55D1E8F002500BEBB0F /* Frameworks */,
@@ -175,14 +178,14 @@
 			);
 			dependencies = (
 			);
-			name = "Anchor-iOS";
+			name = "AnchorKit-iOS";
 			productName = "Anchor-iOS";
-			productReference = C01EC5601E8F002500BEBB0F /* Anchor-iOS.app */;
+			productReference = C01EC5601E8F002500BEBB0F /* AnchorKit-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C0E1C94A1DD319D50068E85C /* Anchor */ = {
+		C0E1C94A1DD319D50068E85C /* AnchorKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C0E1C95C1DD319D50068E85C /* Build configuration list for PBXNativeTarget "Anchor" */;
+			buildConfigurationList = C0E1C95C1DD319D50068E85C /* Build configuration list for PBXNativeTarget "AnchorKit" */;
 			buildPhases = (
 				C0E1C9461DD319D50068E85C /* Sources */,
 				C0E1C9471DD319D50068E85C /* Frameworks */,
@@ -193,14 +196,14 @@
 			);
 			dependencies = (
 			);
-			name = Anchor;
+			name = AnchorKit;
 			productName = "SwiftyAttributes-macOS";
-			productReference = C0E1C94B1DD319D50068E85C /* Anchor.framework */;
+			productReference = C0E1C94B1DD319D50068E85C /* AnchorKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C0E1C9521DD319D50068E85C /* AnchorTests */ = {
+		C0E1C9521DD319D50068E85C /* AnchorKitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C0E1C95F1DD319D50068E85C /* Build configuration list for PBXNativeTarget "AnchorTests" */;
+			buildConfigurationList = C0E1C95F1DD319D50068E85C /* Build configuration list for PBXNativeTarget "AnchorKitTests" */;
 			buildPhases = (
 				C0E1C94F1DD319D50068E85C /* Sources */,
 				C0E1C9501DD319D50068E85C /* Frameworks */,
@@ -211,9 +214,9 @@
 			dependencies = (
 				C0E1C9561DD319D50068E85C /* PBXTargetDependency */,
 			);
-			name = AnchorTests;
+			name = AnchorKitTests;
 			productName = "SwiftyAttributes-macOSTests";
-			productReference = C0E1C9531DD319D50068E85C /* AnchorTests.xctest */;
+			productReference = C0E1C9531DD319D50068E85C /* AnchorKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -229,6 +232,7 @@
 					C01EC55F1E8F002500BEBB0F = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 5M378EFHK7;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					C0E1C94A1DD319D50068E85C = {
@@ -244,7 +248,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C0E211441D9EC5C000623F02 /* Build configuration list for PBXProject "Anchor" */;
+			buildConfigurationList = C0E211441D9EC5C000623F02 /* Build configuration list for PBXProject "AnchorKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -257,9 +261,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C0E1C94A1DD319D50068E85C /* Anchor */,
-				C0E1C9521DD319D50068E85C /* AnchorTests */,
-				C01EC55F1E8F002500BEBB0F /* Anchor-iOS */,
+				C0E1C94A1DD319D50068E85C /* AnchorKit */,
+				C0E1C9521DD319D50068E85C /* AnchorKitTests */,
+				C01EC55F1E8F002500BEBB0F /* AnchorKit-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -269,9 +273,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C01EC56D1E8F002500BEBB0F /* LaunchScreen.storyboard in Resources */,
-				C01EC56A1E8F002500BEBB0F /* Assets.xcassets in Resources */,
-				C01EC5681E8F002500BEBB0F /* Main.storyboard in Resources */,
+				C04E700A1ECFBF2200749438 /* LaunchScreen.storyboard in Resources */,
+				C04E70011ECFBF1100749438 /* Assets.xcassets in Resources */,
+				C04E700B1ECFBF2200749438 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,8 +300,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C01EC5651E8F002500BEBB0F /* ViewController.swift in Sources */,
-				C01EC5631E8F002500BEBB0F /* AppDelegate.swift in Sources */,
+				C04E70051ECFBF1100749438 /* ViewController.swift in Sources */,
+				C04E70001ECFBF1100749438 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,12 +309,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C07218221E722070000A0F0B /* NSLayoutConstraint+Active.swift in Sources */,
-				C072181F1E722070000A0F0B /* Anchorable.swift in Sources */,
-				C072181D1E722070000A0F0B /* Anchor.swift in Sources */,
-				C0D270721EC78CBE00CDD13F /* CGFloatRepresentable.swift in Sources */,
-				C072181E1E722070000A0F0B /* Anchorable+Constraints.swift in Sources */,
-				C07218211E722070000A0F0B /* LayoutPriority.swift in Sources */,
+				C04E6FE11ECFBE5F00749438 /* LayoutPriority.swift in Sources */,
+				C04E6FDC1ECFBE5F00749438 /* Anchor.swift in Sources */,
+				C04E6FDD1ECFBE5F00749438 /* Anchorable.swift in Sources */,
+				C04E6FDE1ECFBE5F00749438 /* Anchorable+Constraints.swift in Sources */,
+				C04E6FE21ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift in Sources */,
+				C04E6FDF1ECFBE5F00749438 /* CGFloatRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,10 +322,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C072182A1E72207B000A0F0B /* Anchorable_Tests.swift in Sources */,
-				C072182D1E72207B000A0F0B /* NSLayoutConstraint+Active_Tests.swift in Sources */,
-				C07218291E72207B000A0F0B /* Anchor_Tests.swift in Sources */,
-				C072182C1E72207B000A0F0B /* LayoutPriority_Tests.swift in Sources */,
+				C04E6FF21ECFBE7D00749438 /* Anchor_Tests.swift in Sources */,
+				C04E6FF51ECFBE7D00749438 /* LayoutPriority_Tests.swift in Sources */,
+				C04E6FF31ECFBE7D00749438 /* Anchorable_Tests.swift in Sources */,
+				C04E6FF61ECFBE7D00749438 /* NSLayoutConstraint+AnchorKit_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,26 +334,26 @@
 /* Begin PBXTargetDependency section */
 		C0E1C9561DD319D50068E85C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C0E1C94A1DD319D50068E85C /* Anchor */;
+			target = C0E1C94A1DD319D50068E85C /* AnchorKit */;
 			targetProxy = C0E1C9551DD319D50068E85C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C01EC5661E8F002500BEBB0F /* Main.storyboard */ = {
+		C04E70061ECFBF2200749438 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C01EC5671E8F002500BEBB0F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C01EC56B1E8F002500BEBB0F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C01EC56C1E8F002500BEBB0F /* Base */,
+				C04E70071ECFBF2200749438 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C04E70081ECFBF2200749438 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C04E70091ECFBF2200749438 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -359,16 +363,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5M378EFHK7;
-				INFOPLIST_FILE = "Anchor-iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AnchorKit-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Weebly.Anchor-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -376,16 +381,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5M378EFHK7;
-				INFOPLIST_FILE = "Anchor-iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AnchorKit-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Weebly.Anchor-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -399,12 +404,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "$(SRCROOT)/Anchor/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AnchorKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Weebly.Anchor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Weebly.AnchorKit;
 				PRODUCT_BUNDLE_PACKAGE_TYPE = FMWK;
-				PRODUCT_NAME = Anchor;
+				PRODUCT_NAME = AnchorKit;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -420,12 +425,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "$(SRCROOT)/Anchor/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AnchorKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Weebly.Anchor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Weebly.AnchorKit;
 				PRODUCT_BUNDLE_PACKAGE_TYPE = FMWK;
-				PRODUCT_NAME = Anchor;
+				PRODUCT_NAME = AnchorKit;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -436,11 +441,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AnchorTests/Info.plist;
+				INFOPLIST_FILE = AnchorKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks @loader_path/Frameworks @executable_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Weebly.AnchorTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Weebly.AnchorKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
@@ -452,11 +457,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AnchorTests/Info.plist;
+				INFOPLIST_FILE = AnchorKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks @loader_path/Frameworks @executable_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Weebly.AnchorTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Weebly.AnchorKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
@@ -571,7 +576,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01EC5711E8F002500BEBB0F /* Build configuration list for PBXNativeTarget "Anchor-iOS" */ = {
+		C01EC5711E8F002500BEBB0F /* Build configuration list for PBXNativeTarget "AnchorKit-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01EC56F1E8F002500BEBB0F /* Debug */,
@@ -580,7 +585,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0E1C95C1DD319D50068E85C /* Build configuration list for PBXNativeTarget "Anchor" */ = {
+		C0E1C95C1DD319D50068E85C /* Build configuration list for PBXNativeTarget "AnchorKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0E1C95D1DD319D50068E85C /* Debug */,
@@ -589,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0E1C95F1DD319D50068E85C /* Build configuration list for PBXNativeTarget "AnchorTests" */ = {
+		C0E1C95F1DD319D50068E85C /* Build configuration list for PBXNativeTarget "AnchorKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0E1C9601DD319D50068E85C /* Debug */,
@@ -598,7 +603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0E211441D9EC5C000623F02 /* Build configuration list for PBXProject "Anchor" */ = {
+		C0E211441D9EC5C000623F02 /* Build configuration list for PBXProject "AnchorKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0E2115C1D9EC5C000623F02 /* Debug */,

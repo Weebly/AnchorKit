@@ -1,6 +1,6 @@
 //
 //  Anchor.swift
-//  Anchor
+//  AnchorKit
 //
 //  Created by Eddie Kaiger on 2/19/17.
 //  Copyright © 2017 Weebly. All rights reserved.
@@ -53,6 +53,7 @@ public enum Anchor {
     /// A layout anchor representing the baseline for the bottommost line of text in the view. Not available for layout guides.
     case lastBaseline
 
+    // MARK: - Internal Helpers
 
     func layoutAnchor(for item: Anchorable) -> NSLayoutAnchor<AnyObject> {
         switch self {

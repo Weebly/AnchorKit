@@ -1,6 +1,6 @@
 //
-//  NSLayoutConstraint+Active_Tests.swift
-//  Anchor
+//  NSLayoutConstraint+AnchorKit_Tests.swift
+//  AnchorKit
 //
 //  Created by Eddie Kaiger on 2/22/17.
 //  Copyright © 2017 Weebly. All rights reserved.
@@ -13,9 +13,9 @@
 #endif
 
 import XCTest
-@testable import Anchor
+@testable import AnchorKit
 
-class NSLayoutConstraint_Active_Tests: XCTestCase {
+class NSLayoutConstraint_AnchorKit_Tests: XCTestCase {
 
     var view1: View!
     var view2: View!

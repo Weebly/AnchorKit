@@ -1,6 +1,6 @@
 //
 //  LayoutPriority.swift
-//  Anchor
+//  AnchorKit
 //
 //  Created by Eddie Kaiger on 2/19/17.
 //  Copyright © 2017 Weebly. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  CGFloatRepresentable.swift
-//  Anchor
+//  AnchorKit
 //
 //  Created by Eddie Kaiger on 5/13/17.
 //  Copyright © 2017 Weebly. All rights reserved.
@@ -10,12 +10,16 @@ import CoreGraphics
 
 /**
  A protocol that converts different number types to a `CGFloat` equivalent.
+ 
+ TOOD: Improve in Swift 4 once we have better number protocols.
  */
 public protocol CGFloatRepresentable {
 
     var cgFloatValue: CGFloat { get }
 
 }
+
+// MARK: Number Extensions
 
 extension Int8: CGFloatRepresentable {
     public var cgFloatValue: CGFloat { return CGFloat(self) }
@@ -75,4 +79,10 @@ extension NSNumber: CGFloatRepresentable {
 
 extension CGFloat: CGFloatRepresentable {
     public var cgFloatValue: CGFloat { return self }
+}
+
+// MARK: - Internal Operators
+
+func == <LeftType: CGFloatRepresentable & Equatable, RightType: CGFloatRepresentable & Equatable>(lhs: LeftType, rhs: RightType) -> Bool {
+    return lhs.cgFloatValue == rhs.cgFloatValue
 }

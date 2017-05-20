@@ -1,6 +1,6 @@
 //
 //  LayoutPriority_Tests.swift
-//  Anchor
+//  AnchorKit
 //
 //  Created by Eddie Kaiger on 2/22/17.
 //  Copyright © 2017 Weebly. All rights reserved.
@@ -13,7 +13,7 @@
 #endif
 
 import XCTest
-@testable import Anchor
+@testable import AnchorKit
 
 
 class LayoutPriority_Tests: XCTestCase {
