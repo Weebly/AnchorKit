@@ -1,32 +1,48 @@
 
-<img src="https://github.com/Weebly/Anchor/blob/master/Images/Anchor.png" alt="Anchor" />
+<img src="https://github.com/Weebly/Anchor/blob/master/Images/AnchorKit.png" alt="AnchorKit" />
 
 # The Basics
-**Anchor** makes it easy to create constraints using AutoLayout anchors. Here's some example code:
+**AnchorKit** makes it easy to create constraints using AutoLayout anchors. Here's some example code:
 
 ````swift
-view1.constrain(.centerX, .centerY, to: view)
-view1.constrain(.height, .width, toConstant: 200)
+// Multiple constraints on one line
+myView.constrain(.centerX, .centerY, to: anotherView)
 
-view2.constrain(.top, to: view1, constant: 20)
-view2.constrain(.leading, .trailing, to: view1)
-view2.constrain(.height, relation: .lessThanOrEqual, to: view1, multiplier: 1.6)
-view2.constrain(.bottom, to: view, constant: -15, priority: .high)
+// Set height/width equal to a constant
+myView.constrain(.height, .width, toConstant: 200)
 
-let bottomConstraint = view3.constrain(.bottom, to: .top, of: view1.layoutMarginsGuide)
-let topAndSideConstraints = view3.constrain(.leading, .trailing, .top, to: view)
+// Set offset (constant)
+myView.constrain(.leading, to: .trailing, of: anotherView).offset(20)
 
-view4.constrainEdges(to: view3, inset: 10)
+// Set insets
+myView.constrain(.leading, .trailing, to: anotherView).inset(24)
+
+// Set the relation and multiplier
+myView.constrain(.height, relation: .lessThanOrEqual, to: anotherView, multiplier: 1.6)
+
+// Set the priority
+myView.constrain(.bottom, to: view, priority: .high).offset(-15)
+
+// Return value for single constraint is NSLayoutConstraint
+let bottomConstraint = myView.constrain(.bottom, to: .top, of: anotherView.layoutMarginsGuide)
+
+// Return value for multiple constraints is [NSLayoutConstraint]
+let topAndSideConstraints = myView.constrain(.leading, .trailing, .top, to: anotherView)
+
+// One-line edge constraints with insets
+let edgeConstraints = myView.constrainEdges(to: anotherView).inset(10)
 ````
 
 # Features
 
+- Simple, intuitive, Swifty syntax
 - No more `isActive = true` after every line (**constraints are returned pre-activated** 🎉) 
 - Automatically takes care of `translatesAutoresizingMaskIntoConstraints = false`
-- **Constrain to the edges of another view** with `constrainEdges(to:inset:priority)`
 - Works with both **layout guides and views**
 - Works on **all 3 platforms** that support AutoLayout constraints (iOS, macOS, tvOS)
-- **Set multiple constraints on one line**: `view1.constrain(.leading, .trailing, .centerX, to: view2)`
+- No proprietary classes to deal with; return values are `NSLayoutConstraint` or `[NSLayoutConstraint]`
+- Use any number types (`Int`, `Double`, `Float`, etc.), no need to cast to `CGFloat`
+
 
 # Requirements
 
@@ -37,12 +53,12 @@ iOS 9.0+, macOS 10.11+, tvOS 9.0+
 
 ### CocoaPods:
 ````
-pod 'Anchor'
+pod 'AnchorKit'
 ````
 
 ### Carthage:
 ````
-github "Weebly/Anchor"
+github "Weebly/AnchorKit"
 ````
 
 # Usage
@@ -53,7 +69,7 @@ github "Weebly/Anchor"
 For questions, support, and suggestions, please open up an issue.
 
 # License
-**Anchor** is available under the MIT license. See the LICENSE file for more info.
+**AnchorKit** is available under the MIT license. See the LICENSE file for more info.
 
 
 

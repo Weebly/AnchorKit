@@ -95,4 +95,12 @@ extension Sequence where Iterator.Element == NSLayoutConstraint {
         return self
     }
 
+    /**
+     Updates the inset of the constraints. Identical to `inset(_:)`, but has no return value (for proper naming conventions, use this when actually updating constraints, and use `inset(_:)` during constraint creation).
+     - parameter    inset:  For constraints in which the first anchor is the bottom, right, or trailing anchor, this creates a negative offset. Otherwise, acts identical to `offset(_:)`.
+     */
+    public func updateInset(_ inset: CGFloatRepresentable) {
+        self.inset(inset)
+    }
+
 }
