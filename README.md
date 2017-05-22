@@ -1,6 +1,9 @@
 
 <img src="Images/AnchorKit.png" alt="AnchorKit" />
 
+![Swift Version](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 ### ***AnchorKit** provides a simple, intuitive way to create layouts using anchors.*
 
 # The Basics
