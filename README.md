@@ -1,8 +1,10 @@
 
 <img src="Images/AnchorKit.png" alt="AnchorKit" />
 
+### ***AnchorKit** provides a simple, intuitive way to create layouts using anchors.*
+
 # The Basics
-**AnchorKit** makes it easy to create constraints using AutoLayout anchors. Here's some example code:
+Here's some example code:
 
 ````swift
 // Multiple constraints on one line
