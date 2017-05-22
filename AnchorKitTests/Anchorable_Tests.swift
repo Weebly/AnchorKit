@@ -273,7 +273,7 @@ class Anchorable_Tests: XCTestCase {
         XCTAssertEqual(constraint.constant, constant, file: file, line: line)
         XCTAssertEqual(constraint.priority, 1000, file: file, line: line)
         XCTAssertEqual(constraint.relation, .equal, file: file, line: line)
-        XCTAssertEqual(constraint.multiplier, 1)
+        XCTAssertEqual(constraint.multiplier, 1, file: file, line: line)
         XCTAssert(constraint.isActive, file: file, line: line)
     }
 
