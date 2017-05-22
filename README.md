@@ -1,5 +1,5 @@
 
-<img src="https://github.com/Weebly/Anchor/blob/master/Images/AnchorKit.png" alt="AnchorKit" />
+<img src="Images/AnchorKit.png" alt="AnchorKit" />
 
 # The Basics
 **AnchorKit** makes it easy to create constraints using AutoLayout anchors. Here's some example code:
