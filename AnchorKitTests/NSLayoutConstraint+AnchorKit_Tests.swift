@@ -37,18 +37,30 @@ class NSLayoutConstraint_AnchorKit_Tests: XCTestCase {
         super.tearDown()
     }
 
-    func testActivateConstraint() {
+    func testSingleConstraint_activate() {
         let constraint = view1.constrain(.top, to: view2)
         constraint.isActive = false
         XCTAssert(constraint === constraint.activate())
         XCTAssertTrue(constraint.isActive)
     }
 
-    func testDeactivateConstraint() {
+    func testArrayOfConstraints_activate() {
+        let constraints = view1.constrain(.top, .bottom, to: view2)
+        constraints.forEach { $0.isActive = false }
+        XCTAssertEqual(constraints, constraints.activate())
+        XCTAssertTrue(constraints.filter { !$0.isActive }.isEmpty)
+    }
+
+    func testSingleConstraint_deactivate() {
         let constraint = view1.constrain(.top, to: view2)
-        constraint.isActive = true
         XCTAssert(constraint === constraint.deactivate())
         XCTAssertFalse(constraint.isActive)
+    }
+
+    func testArrayOfConstraints_deactivate() {
+        let constraints = view1.constrainEdges(to: view2)
+        XCTAssertEqual(constraints, constraints.deactivate())
+        XCTAssertTrue(constraints.filter { $0.isActive }.isEmpty)
     }
 
     func testSingleConstraint_offset() {
@@ -56,8 +68,20 @@ class NSLayoutConstraint_AnchorKit_Tests: XCTestCase {
         XCTAssertEqual(constraint.constant, 14.2)
     }
 
+    func testSingleConstraint_updateOffset() {
+        let constraint = view1.constrain(.bottom, to: .top, of: view2)
+        constraint.offset(14.2)
+        XCTAssertEqual(constraint.constant, 14.2)
+    }
+
     func testArrayOfConstraints_offset() {
         let constraint = view1.constrainEdges(to: view2).offset(16.1)
+        XCTAssertEqual(Set(constraint.map({ $0.constant })), Set([16.1]))
+    }
+
+    func testArrayOfConstraints_updateOffsets() {
+        let constraint = view1.constrainEdges(to: view2)
+        constraint.updateOffsets(16.1)
         XCTAssertEqual(Set(constraint.map({ $0.constant })), Set([16.1]))
     }
 
@@ -77,9 +101,9 @@ class NSLayoutConstraint_AnchorKit_Tests: XCTestCase {
         XCTAssertEqual(constraints.map({ $0.constant }), [30, -30, 30])
     }
 
-    func testArrayOfConstraints_updateInset() {
+    func testArrayOfConstraints_updateInsets() {
         let constraints = view1.constrain(.leading, .trailing, .width, to: view2)
-        constraints.updateInset(30)
+        constraints.updateInsets(30)
         XCTAssertEqual(constraints.map({ $0.constant }), [30, -30, 30])
     }
 
