@@ -197,7 +197,7 @@ Adopted by the following types:
 
 ## Offsets and Insets
 
-To set constants on constraints, **AnchorKit** uses *offsets* and *insets*. An offset is always just a positive constant. An inset, however, creates a *negative* constant for the `trailing`, `right`, and `bottom` anchors, and a positive constant for all other anchors.
+To set constants on constraints, **AnchorKit** uses *offsets* and *insets*. An offset has equivalent behavior to `constant` on `NSLayoutConstraint`. An inset, however, *negates* the constant for the `trailing`, `right`, and `bottom` anchors and behaves normally for all other anchors.
 
 ````swift
 // Place bottomView 20 points below topView
