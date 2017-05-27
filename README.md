@@ -154,7 +154,7 @@ public func constrain(_ anchor: Anchor, relation: NSLayoutRelation = .equal, toC
 public func constrain(_ anchors: Anchor..., relation: NSLayoutRelation = .equal, toConstant constant: CGFloatRepresentable, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
 ````
 
-Though not recommended, this method can also work on *views* (not layout guides) with anchors other than `width` and `height`. The caveat is that the superview must exist. The resulting behavior is equivalent to constraining the anchor to the corresponding anchor on the view's superview. So `myView.constrain(.leading, toConstant: 10)` translates to `myView.constrain(.leading, to: myView.superview!).offset(10)`.
+This method can also work on *views* (not layout guides) with anchors other than `width` and `height`. The resulting behavior is equivalent to constraining the anchor to the corresponding anchor on the view's superview. So `myView.constrain(.leading, toConstant: 10)` translates to `myView.constrain(.leading, to: myView.superview!).offset(10)`.
 
 
 ### Constrain To Edges
