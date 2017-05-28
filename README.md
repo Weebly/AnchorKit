@@ -90,6 +90,12 @@ public enum Anchor {
     case lastBaseline
 }
 ````
+AutoLayout defines 3 types of anchors, and you can only constrain anchors to other anchors within the same group.
+- **X-axis anchors**: `leading`, `trailing`, `left,` `right`, `centerX`
+- **Y-axis anchors**: `top`, `bottom`, `centerY`, `firstBaseline`, `lastBaseline`
+- **Dimension anchors**: `width`, `height`
+
+
 Under the hood, each of these map to an actual `NSLayoutAnchor` on the view or layout guide you are constraining.
 
 ## Creating Constraints
