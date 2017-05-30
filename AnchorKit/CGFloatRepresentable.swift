@@ -65,9 +65,11 @@ extension Float: CGFloatRepresentable {
     public var cgFloatValue: CGFloat { return CGFloat(self) }
 }
 
+#if os(macOS)
 extension Float80: CGFloatRepresentable {
     public var cgFloatValue: CGFloat { return CGFloat(self) }
 }
+#endif
 
 extension Double: CGFloatRepresentable {
     public var cgFloatValue: CGFloat { return CGFloat(self) }
