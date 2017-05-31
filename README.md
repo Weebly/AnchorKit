@@ -26,16 +26,16 @@ myView.constrain(.leading, .trailing, to: anotherView).inset(24)
 myView.constrain(.height, relation: .lessThanOrEqual, to: anotherView, multiplier: 1.6)
 
 // Set the priority
-myView.constrain(.bottom, to: view, priority: .high).offset(-15)
+myView.constrain(.bottom, to: anotherView, priority: .high).offset(-15)
+
+// One-line edge constraints with insets
+myView.constrainEdges(to: anotherView).inset(10)
 
 // Return value for single constraint is NSLayoutConstraint
 let bottomConstraint = myView.constrain(.bottom, to: .top, of: anotherView.layoutMarginsGuide)
 
 // Return value for multiple constraints is [NSLayoutConstraint]
 let topAndSideConstraints = myView.constrain(.leading, .trailing, .top, to: anotherView)
-
-// One-line edge constraints with insets
-let edgeConstraints = myView.constrainEdges(to: anotherView).inset(10)
 ````
 
 # Features
@@ -51,7 +51,8 @@ let edgeConstraints = myView.constrainEdges(to: anotherView).inset(10)
 
 # Requirements
 
-iOS 9.0+, macOS 10.11+, tvOS 9.0+
+- iOS 9.0+, macOS 10.11+, tvOS 9.0+
+- Swift 3
 
 
 # Installation
@@ -68,6 +69,205 @@ github "Weebly/AnchorKit"
 
 # Usage
 
+## The `Anchor` Enum
+**AnchorKit**'s API is primarily based on an enum representing the different anchor types available on views and layout guides.
+
+````swift
+public enum Anchor {
+    case leading
+    case trailing
+    case left
+    case right
+    case top
+    case bottom
+    case width
+    case height
+    case centerX
+    case centerY
+
+    // These two are only available on views, not layout guides.
+    case firstBaseline
+    case lastBaseline
+}
+````
+AutoLayout defines 3 types of anchors, and you can only constrain anchors to other anchors within the same group.
+- **X-axis anchors**: `leading`, `trailing`, `left,` `right`, `centerX`
+- **Y-axis anchors**: `top`, `bottom`, `centerY`, `firstBaseline`, `lastBaseline`
+- **Dimension anchors**: `width`, `height`
+
+
+Under the hood, each of these map to an actual `NSLayoutAnchor` on the view or layout guide you are constraining.
+
+## Creating Constraints
+
+### The `Anchorable` Protocol
+**AnchorKit** works on both layout guides and views. To consolidate these two, we use a protocol called `Anchorable`. Views conform to another protocol, `ViewAnchorable`, which gives them the ability to use baseline anchors. Mentions of "item" in the docs below refer to views and layout guides.
+
+### Anchor To Item Constraints
+
+Constrain anchors of one item to the corresponding anchors of another item.
+
+````swift
+myView.constrain(.leading, .trailing, .top, to: anotherView)
+````
+
+Calling this method with a single anchor will implicitly return `NSLayoutConstraint`. Otherwise, the return type is `[NSLayoutConstraint]`. The full signatures of these methods are shown below.
+
+````swift
+// Single constraint
+@discardableResult
+public func constrain<AnchorableType: Anchorable>(_ anchor: Anchor, relation: NSLayoutRelation = .equal, to item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint
+
+// Multiple constraints
+@discardableResult
+public func constrain<AnchorableType: Anchorable>(_ anchors: Anchor..., relation: NSLayoutRelation = .equal, to item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
+````
+
+### Anchor To Anchor Constraints
+
+Constrain an anchor of one item to an anchor of another item.
+
+````swift
+myView.constrain(.top, to: .bottom, of: anotherView.readableContentGuide)
+````
+
+This method only supports the creation of a single constraint.
+
+````swift
+@discardableResult
+public func constrain<AnchorableType: Anchorable>(_ anchor: Anchor, relation: NSLayoutRelation = .equal, to otherAnchor: Anchor, of item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint
+````
+
+### Anchor To Constant Constraints
+
+Constrain an anchor of an item to a constant. This is is especially useful (and more readable) for the `width` and `height` anchors.
+
+````swift
+myView.constrain(.height, toConstant: 200)
+myBoxView.constrain(.width, .height, toConstant: 50) // Creates a box
+````
+
+Calling this method with a single anchor will implicitly return `NSLayoutConstraint`. Otherwise, the return type is `[NSLayoutConstraint]`. The full signatures of these methods are shown below.
+
+
+````swift
+// Single constraint
+@discardableResult
+public func constrain(_ anchor: Anchor, relation: NSLayoutRelation = .equal, toConstant constant: CGFloatRepresentable, priority: LayoutPriority = .required) -> NSLayoutConstraint
+
+// Multiple constraints
+@discardableResult
+public func constrain(_ anchors: Anchor..., relation: NSLayoutRelation = .equal, toConstant constant: CGFloatRepresentable, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
+````
+
+This method can also work on *views* (not layout guides) with anchors other than `width` and `height`. The resulting behavior is equivalent to constraining the anchor to the corresponding anchor on the view's superview. So `myView.constrain(.leading, toConstant: 10)` translates to `myView.constrain(.leading, to: myView.superview!).offset(10)`.
+
+
+### Constrain To Edges
+
+Constrains the edges of the current item to another item. 
+
+````swift
+myView.constrainEdges(to: anotherView)
+````
+
+This is just a convenience method for the `leading`, `trailing`, `top`, and `bottom` constraints. For better autocomplete behavior, there is a separate equivalent method if you would like to add a `relation` other than `.equal` to the constraints.
+
+````swift
+@discardableResult
+public func constrainEdges<AnchorableType: Anchorable>(to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
+
+// With a relation other than .equal
+@discardableResult
+public func constrainEdges<AnchorableType: Anchorable>(_ relation: NSLayoutRelation, to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
+````
+
+## The `CGFloatRepresentable` Protocol
+
+This protocol allows you to use any number types for constraint offsets, insets, and multipliers without the need to cast all values to `CGFloat`.
+
+````swift
+public protocol CGFloatRepresentable {
+    var cgFloatValue: CGFloat { get }
+}
+````
+
+Adopted by the following types:
+
+- `Int`, `Int8`, `Int16`, `Int32`, `Int64`
+- `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`
+- `Double`
+- `Float`, `Float80`
+- `CGFloat`
+- `NSNumber`
+
+## Offsets and Insets
+
+To set constants on constraints, **AnchorKit** uses *offsets* and *insets*. An offset has equivalent behavior to `constant` on `NSLayoutConstraint`. An inset, however, *negates* the constant for the `trailing`, `right`, and `bottom` anchors and behaves normally for all other anchors.
+
+````swift
+// Place bottomView 20 points below topView
+bottomView.constrain(.top, to: .bottom, of: topView).offset(20)
+
+// Constrain sides of innerView to outerView with 10 points of padding on each side
+innerView.constrain(.leading, .trailing, to: outerView).inset(10)
+````
+
+As you may have noticed in the second example, `offset(_:)` and `inset(_:)` work on both single constraints and sequences of constraints.
+
+When updating constraints, for the sake of proper Swift naming conventions, **AnchorKit** also provides the methods `updateOffset(_:)` and `updateInset(_:)`.
+
+## Layout Priorities
+
+To set priorities on constraints, **AnchorKit** provides an enum called `LayoutPriority`.
+
+````swift
+public enum LayoutPriority: RawRepresentable {
+    case low        // Priority: 250
+    case medium     // Priority: 500
+    case high       // Priority: 750
+    case required   // Priority: 1000
+    case custom(Float)
+}
+````
+
+All of the constraint creation methods have a default priority of `required`, but you can set your own when needed.
+
+````swift
+myView.constrain(.centerX, to: anotherView, priority: .medium)
+````
+
+For complex layouts, sometimes you want just a *slightly* higher priority for one constraint. Good news: you can use addition and subtraction operators with layout priorities.
+
+````swift
+myView.constrain(.left, to: anotherView, priority: .low + 1) // Priority = 251
+````
+
+You can get/set the layout priority on `NSLayoutConstraint`s with the `layoutPriority` extension method.
+
+````swift
+let topConstraint = myView.constrain(.top, to: anotherView, priority: .medium)
+topConstraint.layoutPriority = .high
+````
+
+And finally, use layout priorites to set your content compression resistance and content hugging:
+
+````swift
+myView.setContentHuggingPriority(.low, for: .vertical)
+````
+
+## Other Goodies
+
+### Activation & Deactivation
+
+**AnchorKit** constraints come *preactivated*. However, you can also deactivate constraints and capture them on the same line:
+
+````swift
+let centerYConstraint = myView.constraint(.centerY, to: anotherView).deactivate()
+// ...
+centerYConstraint.activate()
+````
+These methods also work on sequences of constraints.
 
 
 # Support
