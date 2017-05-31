@@ -50,6 +50,9 @@ public protocol Anchorable {
 
     /// Runs any methods that might be necessary or convenient before adding constraints. Called every time a constraint is added.
     func prepareForConstraints()
+
+    /// The view that owns this item. For layout guides, this returns `owningView`. For views, this returns the `superview`.
+    var owningView: View? { get }
 }
 
 extension LayoutGuide: Anchorable { }
@@ -76,5 +79,9 @@ extension View: ViewAnchorable {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
-}
+    /// The `superview`.
+    public var owningView: View? {
+        return superview
+    }
 
+}

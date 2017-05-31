@@ -37,6 +37,18 @@ class Anchorable_Tests: XCTestCase {
         super.tearDown()
     }
 
+    // MARK: - Owning View
+
+    func testLayoutGuide_owningView() {
+        let layoutGuide = UILayoutGuide()
+        view1.addLayoutGuide(layoutGuide)
+        XCTAssertEqual((layoutGuide as Anchorable).owningView, view1)
+    }
+
+    func testView_owningView() {
+        XCTAssertEqual(view1.owningView, superview)
+    }
+
     // MARK: - Prepare for constraints
 
     func testMakeConstraint_twoAxisAnchors_preparesForConstraints() {
@@ -125,11 +137,21 @@ class Anchorable_Tests: XCTestCase {
         XCTAssertEqual(constraint.relation, .equal)
     }
 
-    func testConstrainLeadingToConstant() {
+    func testConstrainLeadingToConstant_view() {
         let constraint = view1.constrain(.leading, toConstant: 20)
         XCTAssertEqual(constraint.constant, 20)
         XCTAssertEqual(constraint.firstAnchor, view1.leadingAnchor)
         XCTAssertEqual(constraint.secondAnchor, superview.leadingAnchor)
+        XCTAssertEqual(constraint.relation, .equal)
+    }
+
+    func testConstrainLeadingToConstant_layoutGuide() {
+        let layoutGuide = UILayoutGuide()
+        view1.addLayoutGuide(layoutGuide)
+        let constraint = layoutGuide.constrain(.leading, toConstant: 20)
+        XCTAssertEqual(constraint.constant, 20)
+        XCTAssertEqual(constraint.firstAnchor, layoutGuide.leadingAnchor)
+        XCTAssertEqual(constraint.secondAnchor, view1.leadingAnchor)
         XCTAssertEqual(constraint.relation, .equal)
     }
 
