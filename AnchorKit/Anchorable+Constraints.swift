@@ -84,13 +84,12 @@ extension Anchorable {
         default:
             /**
              At this point, we're trying to setup a constraint with a non-dimensional anchor with only a constant.
-             We assume that the constraint should be related to the view's superview. If the item is a layout guide
-             or if the item is a view without a superview, we crash.
+             We assume that the constraint should be related to the item's owning view.
             */
-            guard let superview = (self as? View)?.superview else {
-                fatalError("Attempting to constrain a \(anchor) anchor using only a constant to a view that has no superview. Please ensure that a superview first exists, or use constrain(:relation:to:multiplier:priority).")
+            guard let owningView = owningView else {
+                fatalError("Attempting to constrain a \(anchor) anchor using only a constant to an item that has no owningView or superview. Please ensure that an owningView or superview first exists, or use constrain(:relation:to:multiplier:priority).")
             }
-            return constrain(anchor, relation: relation, to: superview, priority: priority).offset(constant)
+            return constrain(anchor, relation: relation, to: owningView, priority: priority).offset(constant)
         }
     }
 

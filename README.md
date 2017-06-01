@@ -160,7 +160,7 @@ public func constrain(_ anchor: Anchor, relation: NSLayoutRelation = .equal, toC
 public func constrain(_ anchors: Anchor..., relation: NSLayoutRelation = .equal, toConstant constant: CGFloatRepresentable, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
 ````
 
-This method can also work on *views* (not layout guides) with anchors other than `width` and `height`. The resulting behavior is equivalent to constraining the anchor to the corresponding anchor on the view's superview. So `myView.constrain(.leading, toConstant: 10)` translates to `myView.constrain(.leading, to: myView.superview!).offset(10)`.
+This method can also work on items with anchors other than `width` and `height`. The resulting behavior is equivalent to constraining the anchor to the corresponding anchor on the view's `superview` (or layout guide's `owningView`). So `myView.constrain(.leading, toConstant: 10)` translates to `myView.constrain(.leading, to: myView.superview!).offset(10)`.
 
 
 ### Constrain To Edges
@@ -253,7 +253,8 @@ topConstraint.layoutPriority = .high
 And finally, use layout priorites to set your content compression resistance and content hugging:
 
 ````swift
-myView.setContentHuggingPriority(.low, for: .vertical)
+myView.hug(with: .low, for: .vertical)
+myView.resistCompression(with: .high, for: .horizontal)
 ````
 
 ## Other Goodies
