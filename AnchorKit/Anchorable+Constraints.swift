@@ -32,9 +32,9 @@ extension Anchorable {
 
         if let firstDimension = firstAnchor as? NSLayoutAnchor<NSLayoutDimension> as? NSLayoutDimension,
             let secondDimension = secondAnchor as? NSLayoutAnchor<NSLayoutDimension> as? NSLayoutDimension {
-            return makeConstraint(firstDimension, relation: relation, to: secondDimension, of: item, multiplier: multiplier, priority: priority)
+            return makeConstraint(firstDimension, relation: relation, to: secondDimension, multiplier: multiplier, priority: priority)
         } else {
-            return makeConstraint(firstAnchor, relation: relation, to: secondAnchor, of: item, priority: priority)
+            return makeConstraint(firstAnchor, relation: relation, to: secondAnchor, priority: priority)
         }
     }
 
@@ -130,9 +130,8 @@ extension Anchorable {
 
     // MARK: - Helpers
 
-    func makeConstraint<ObjectType: AnyObject>(_ anchor: NSLayoutAnchor<ObjectType>, relation: NSLayoutRelation, to otherAnchor: NSLayoutAnchor<ObjectType>, of otherView: Anchorable, priority: LayoutPriority) -> NSLayoutConstraint {
+    func makeConstraint<ObjectType: AnyObject>(_ anchor: NSLayoutAnchor<ObjectType>, relation: NSLayoutRelation, to otherAnchor: NSLayoutAnchor<ObjectType>, priority: LayoutPriority) -> NSLayoutConstraint {
         prepareForConstraints()
-        otherView.prepareForConstraints()
 
         let constraint: NSLayoutConstraint
         switch relation {
@@ -145,9 +144,8 @@ extension Anchorable {
         return constraint.activate()
     }
 
-    func makeConstraint(_ dimension: NSLayoutDimension, relation: NSLayoutRelation, to otherDimension: NSLayoutDimension, of otherView: Anchorable, multiplier: CGFloatRepresentable, priority: LayoutPriority) -> NSLayoutConstraint {
+    func makeConstraint(_ dimension: NSLayoutDimension, relation: NSLayoutRelation, to otherDimension: NSLayoutDimension, multiplier: CGFloatRepresentable, priority: LayoutPriority) -> NSLayoutConstraint {
         prepareForConstraints()
-        otherView.prepareForConstraints()
 
         let constraint: NSLayoutConstraint
         switch relation {

@@ -52,23 +52,23 @@ class Anchorable_Tests: XCTestCase {
     // MARK: - Prepare for constraints
 
     func testMakeConstraint_twoAxisAnchors_preparesForConstraints() {
-        _ = view1.makeConstraint(view1.leadingAnchor, relation: .equal, to: view2.trailingAnchor, of: view2, priority: .required)
+        _ = view1.makeConstraint(view1.leadingAnchor, relation: .equal, to: view2.trailingAnchor, priority: .required)
         XCTAssertFalse(view1.translatesAutoresizingMaskIntoConstraints)
-        XCTAssertFalse(view2.translatesAutoresizingMaskIntoConstraints)
+        XCTAssertTrue(view2.translatesAutoresizingMaskIntoConstraints)
     }
 
     func testMakeConstraint_twoDimensionAnchors_preparesForConstraints() {
-        _ = view1.makeConstraint(view1.widthAnchor, relation: .equal, to: view2.heightAnchor, of: view2, multiplier: 1, priority: .required)
+        _ = view1.makeConstraint(view1.widthAnchor, relation: .equal, to: view2.heightAnchor, multiplier: 1, priority: .required)
         XCTAssertFalse(view1.translatesAutoresizingMaskIntoConstraints)
-        XCTAssertFalse(view2.translatesAutoresizingMaskIntoConstraints)
+        XCTAssertTrue(view2.translatesAutoresizingMaskIntoConstraints)
     }
 
     // MARK: - Activation
 
     func testMakeConstraint_twoAxisAnchors_isActive() {
-        let equalConstraint = view1.makeConstraint(view1.leadingAnchor, relation: .equal, to: view2.trailingAnchor, of: view2, priority: .required)
-        let greaterConstraint = view1.makeConstraint(view1.leadingAnchor, relation: .greaterThanOrEqual, to: view2.trailingAnchor, of: view2, priority: .required)
-        let lessConstraint = view1.makeConstraint(view1.leadingAnchor, relation: .lessThanOrEqual, to: view2.trailingAnchor, of: view2, priority: .required)
+        let equalConstraint = view1.makeConstraint(view1.leadingAnchor, relation: .equal, to: view2.trailingAnchor, priority: .required)
+        let greaterConstraint = view1.makeConstraint(view1.leadingAnchor, relation: .greaterThanOrEqual, to: view2.trailingAnchor, priority: .required)
+        let lessConstraint = view1.makeConstraint(view1.leadingAnchor, relation: .lessThanOrEqual, to: view2.trailingAnchor, priority: .required)
         XCTAssert(equalConstraint.isActive)
         XCTAssert(greaterConstraint.isActive)
         XCTAssert(lessConstraint.isActive)
@@ -78,9 +78,9 @@ class Anchorable_Tests: XCTestCase {
     }
 
     func testMakeConstraint_twoDimensionAnchors_isActive() {
-        let equalConstraint = view1.makeConstraint(view1.widthAnchor, relation: .equal, to: view2.heightAnchor, of: view2, multiplier: 1, priority: .required)
-        let greaterConstraint = view1.makeConstraint(view1.widthAnchor, relation: .greaterThanOrEqual, to: view2.heightAnchor, of: view2, multiplier: 1, priority: .required)
-        let lessConstraint = view1.makeConstraint(view1.widthAnchor, relation: .lessThanOrEqual, to: view2.heightAnchor, of: view2, multiplier: 1, priority: .required)
+        let equalConstraint = view1.makeConstraint(view1.widthAnchor, relation: .equal, to: view2.heightAnchor, multiplier: 1, priority: .required)
+        let greaterConstraint = view1.makeConstraint(view1.widthAnchor, relation: .greaterThanOrEqual, to: view2.heightAnchor, multiplier: 1, priority: .required)
+        let lessConstraint = view1.makeConstraint(view1.widthAnchor, relation: .lessThanOrEqual, to: view2.heightAnchor, multiplier: 1, priority: .required)
         XCTAssert(equalConstraint.isActive)
         XCTAssert(greaterConstraint.isActive)
         XCTAssert(lessConstraint.isActive)
@@ -104,12 +104,12 @@ class Anchorable_Tests: XCTestCase {
     // MARK: - Priority
 
     func testMakeConstraint_twoAxisAnchors_setsPriority() {
-        let constraint = view1.makeConstraint(view1.leadingAnchor, relation: .equal, to: view2.trailingAnchor, of: view2, priority: .high)
+        let constraint = view1.makeConstraint(view1.leadingAnchor, relation: .equal, to: view2.trailingAnchor, priority: .high)
         XCTAssertEqual(constraint.priority, 750)
     }
 
     func testMakeConstraint_twoDimensionAnchors_setsPriority() {
-        let constraint = view1.makeConstraint(view1.widthAnchor, relation: .equal, to: view2.heightAnchor, of: view2, multiplier: 1, priority: .low)
+        let constraint = view1.makeConstraint(view1.widthAnchor, relation: .equal, to: view2.heightAnchor, multiplier: 1, priority: .low)
         XCTAssertEqual(constraint.priority, 250)
     }
 
