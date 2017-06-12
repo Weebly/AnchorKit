@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
 
   s.name         = "AnchorKit"
-  s.version      = "1.0.0"
+  s.version      = "0.1.0"
   s.summary      = "A Swifty anchor-based API for AutoLayout."
 
   s.description  = <<-DESC
   
-  AnchorKit is a Swifty API for AutoLayout on iOS, macOS, and tvOS. 
-  Create constraints quickly and efficiently with no black box magic underneath the hood. 
+  AnchorKit is a Swifty API for AutoLayout on iOS, macOS, and tvOS.
+  Create constraints quickly and efficiently with no black box magic underneath the hood.
   Also provides several extensions on `NSLayoutConstraint`. Works with both views and layout guides.
 
   DESC
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.11"
   s.tvos.deployment_target = "9.0"
 
-  s.source       = { :git => "https://github.com/Weebly/AnchorKit.git", :tag => "v1.0.0" }
+  s.source       = { :git => "https://github.com/Weebly/AnchorKit.git", :tag => "v0.1.0" }
   s.requires_arc = true
   s.source_files = "AnchorKit/*.swift"
 
