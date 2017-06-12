@@ -114,7 +114,7 @@ extension Anchorable {
 
     /**
      Constrains the edges of the current item to another item by creating and activating the leading, trailing, top, and bottom constraints.
-     - parameter    relation:   The relation for all of the constraints. If you want to just use `.equal`, you can use `constrainEdges(to:priority:)` instead.
+     - parameter    relation:   The relation for all of the constraints. If you want to use `.equal`, you can use `constrainEdges(to:priority:)` instead.
      - parameter    item:       The item to which to constrain.
      - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
      - returns:                 The newly created and activated constraints for the leading, trailing, top, and bottom anchors.
@@ -150,7 +150,7 @@ extension Anchorable {
 
     /**
      Constrains the width and height of the current item to a specific size.
-     - parameter    relation:   The relation for all of the constraints. If you want to use `.equal`, you can use `constrainSize(to:priority:)` instead.
+     - parameter    relation:   The relation for all of the constraints. If you want to use `.equal`, you can use `constrain(to:priority:)` instead.
      - parameter    size:       The size to which to constrain.
      - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
      - returns:                 The newly created and activated constraints for the width and height anchors.
