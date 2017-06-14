@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.11"
   s.tvos.deployment_target = "9.0"
 
-  s.source       = { :git => "https://github.com/Weebly/AnchorKit.git", :tag => "v0.2.0" }
+  s.source       = { :git => "https://github.intern.weebly.net/Weebly-iOS/AnchorKit.git", :tag => "v0.2.0" }
   s.requires_arc = true
   s.source_files = "AnchorKit/*.swift"
 
