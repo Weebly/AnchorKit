@@ -16,6 +16,9 @@ myView.constrain(.centerX, .centerY, to: anotherView)
 // Set height/width equal to a constant
 myView.constrain(.height, .width, toConstant: 200)
 
+// Set the height/width equal to a CGSize
+myView.constrain(to: CGSize(width: 100, height: 200))
+
 // Set offset (constant)
 myView.constrain(.leading, to: .trailing, of: anotherView).offset(20)
 
@@ -180,6 +183,24 @@ public func constrainEdges<AnchorableType: Anchorable>(to item: AnchorableType, 
 // With a relation other than .equal
 @discardableResult
 public func constrainEdges<AnchorableType: Anchorable>(_ relation: NSLayoutRelation, to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
+````
+
+### Constrain to Size
+
+Constrains the width and height of an item to a specific `CGSize`.
+
+````swift
+myView.constrain(to: CGSize(width: 10, height: 20))
+````
+
+This is a convenience method for setting the `width` and `height` anchors to the respective width and height of a `CGSize`. For better autocomplete behavior, there is a separate equivalent method if you would like to add a `relation` other than `.equal` to the constraints.
+
+````swift
+@discardableResult
+public func constrain(to size: CGSize, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
+
+@discardableResult
+public func constrain(_ relation: NSLayoutRelation, to size: CGSize, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
 ````
 
 ## The `CGFloatRepresentable` Protocol

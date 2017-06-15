@@ -23,6 +23,7 @@ extension Anchorable {
      - parameter    otherAnchor:    The second anchor in the constraint. Must be of the same type as the first anchor (e.g. cannot pair up `.leading` and `.bottom` because the first is an x-axis constraint while the second is a y-axis constraint).
      - parameter    item:           The item that to which the second anchor belongs.
      - parameter    multiplier:     The multiplier for the constraint. Only applies to dimensional anchors (width and height). Default is 1.
+     - parameter    priority:       The layout priority to set for the constraint. Default is `.required`.
      - returns:                     The newly created and activated constraint.
      */
     @discardableResult
@@ -46,6 +47,7 @@ extension Anchorable {
      - parameter    relation:   The relation between the two anchors. Default is `equal`.
      - parameter    item:       The item to which to constrain.
      - parameter    multiplier: The multiplier for the constraint. Only applies to dimensional anchors (width and height). Default is 1.
+     - parameter    priority:   The layout priority to set for the constraint. Default is `.required`.
      - returns:                 The newly created and activated constraint.
      */
     @discardableResult
@@ -59,6 +61,7 @@ extension Anchorable {
      - parameter    relation:   The relation between all the pairs of anchors. Default is `equal`.
      - parameter    item:       The item to which to constrain.
      - parameter    multiplier: The multiplier for the constraints. Only applies to dimensional anchors (width and height). Default is 1.
+     - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
      - returns:                 The newly created and activated constraints.
      */
     @discardableResult
@@ -74,6 +77,7 @@ extension Anchorable {
      corresponding anchor, offset by `constant`. For layout guides, only width and height anchors will work.
      - parameter    anchor:     The anchor in the constraint.
      - parameter    relation:   The relation between the anchor and the constant. Default is `equal`.
+     - parameter    priority:   The layout priority to set for the constraint. Default is `.required`.
      - returns:                 The newly created and activated constraint.
      */
     @discardableResult
@@ -98,6 +102,7 @@ extension Anchorable {
      - parameter    anchors:    The anchors in the constraints.
      - parameter    relation:   The relation between the anchors and the constant. Default is `equal`.
      - parameter    constant:   The constant/offset for each constraint. Default is 0.
+     - parameter    priority:       The layout priority to set for the constraints.
      - returns:                 The newly created and activated constraints.
      */
     @discardableResult
@@ -109,8 +114,9 @@ extension Anchorable {
 
     /**
      Constrains the edges of the current item to another item by creating and activating the leading, trailing, top, and bottom constraints.
-     - parameter    relation:   The relation for all of the constraints. If you want to use `.equal`, you can use `constrainEdges(to:inset:)` instead.
+     - parameter    relation:   The relation for all of the constraints. If you want to use `.equal`, you can use `constrainEdges(to:priority:)` instead.
      - parameter    item:       The item to which to constrain.
+     - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
      - returns:                 The newly created and activated constraints for the leading, trailing, top, and bottom anchors.
      */
     @discardableResult
@@ -121,11 +127,40 @@ extension Anchorable {
     /**
      Constrains the edges of the current item to another item by creating and activating the leading, trailing, top, and bottom constraints. If you want to use this with a relation, use `constrainEdges(_:to:inset)`.
      - parameter    item:       The item to which to constrain.
+     - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
      - returns:                 The newly created and activated constraints for the leading, trailing, top, and bottom anchors.
      */
     @discardableResult
     public func constrainEdges<AnchorableType: Anchorable>(to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
         return constrainEdges(.equal, to: item, priority: priority)
+    }
+
+    // MARK: - Size Constraints
+
+    /**
+     Constrains the width and height of the current item to a specific size.
+     - parameter    size:       The size to which to constrain.
+     - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
+     - returns:                 The newly created and activated constraints for the width and height anchors.
+     */
+    @discardableResult
+    public func constrain(to size: CGSize, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+        return constrain(.equal, to: size, priority: priority)
+    }
+
+    /**
+     Constrains the width and height of the current item to a specific size.
+     - parameter    relation:   The relation for all of the constraints. If you want to use `.equal`, you can use `constrain(to:priority:)` instead.
+     - parameter    size:       The size to which to constrain.
+     - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
+     - returns:                 The newly created and activated constraints for the width and height anchors.
+     */
+    @discardableResult
+    public func constrain(_ relation: NSLayoutRelation, to size: CGSize, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+        return [
+            constrain(.width, relation: relation, toConstant: size.width, priority: priority),
+            constrain(.height, relation: relation, toConstant: size.height, priority: priority)
+        ]
     }
 
     // MARK: - Helpers

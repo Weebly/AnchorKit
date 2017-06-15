@@ -289,6 +289,27 @@ class Anchorable_Tests: XCTestCase {
         testDefaults(for: constraint)
     }
 
+    // MARK: - Size
+
+    func testConstrainToSize() {
+        let constraints = view1.constrain(to: CGSize(width: 20, height: 30), priority: .medium)
+        XCTAssertEqual(constraints[0].firstAnchor, view1.widthAnchor)
+        XCTAssertEqual(constraints[0].constant, 20)
+        XCTAssertEqual(constraints[1].firstAnchor, view1.heightAnchor)
+        XCTAssertEqual(constraints[1].constant, 30)
+    }
+
+    func testConstrainToSize_lessThanOrEqual() {
+        let constraints = view1.constrain(.lessThanOrEqual, to: CGSize(width: 20, height: 30), priority: .medium)
+        XCTAssertEqual(constraints[0].relation, .lessThanOrEqual)
+        XCTAssertEqual(constraints[1].relation, .lessThanOrEqual)
+    }
+
+    func testConstrainToSize_defaults() {
+        let constraint = view1.constrain(to: CGSize(width: 30, height: 30))
+        constraint.forEach { testDefaults(for: $0, constant: 30) }
+    }
+
     // MARK: - Helpers
 
     func testDefaults(for constraint: NSLayoutConstraint, constant: CGFloat = 0, file: StaticString = #file, line: UInt = #line) {
