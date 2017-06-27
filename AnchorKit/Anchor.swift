@@ -90,6 +90,7 @@ public enum Anchor {
         }
     }
 
+    #if os(iOS) || os(tvOS)
     func layoutAnchor(for item: UILayoutSupport) -> NSLayoutAnchor<AnyObject> {
         switch self {
         case .top:
@@ -102,5 +103,6 @@ public enum Anchor {
             fatalError("The anchor \(self) is not available on the `UILayoutSupport` item \(item).")
         }
     }
+    #endif
 
 }

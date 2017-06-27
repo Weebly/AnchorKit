@@ -20,11 +20,13 @@ class Anchorable_Tests: XCTestCase {
     var view1: View!
     var view2: View!
     var superview: View!
-    var vc: UIViewController!
 
+    #if os(iOS) || os(tvOS)
+    var vc: UIViewController!
     var topLayoutGuide: UILayoutSupport {
         return vc.topLayoutGuide
     }
+    #endif
 
     override func setUp() {
         super.setUp()
@@ -33,23 +35,28 @@ class Anchorable_Tests: XCTestCase {
         superview = View()
         superview.addSubview(view1)
         superview.addSubview(view2)
+
+        #if os(iOS) || os(tvOS)
         vc = UIViewController()
         vc.loadView()
         vc.view.addSubview(superview)
+        #endif
     }
 
     override func tearDown() {
         view1 = nil
         view2 = nil
         superview = nil
+        #if os(iOS) || os(tvOS)
         vc = nil
+        #endif
         super.tearDown()
     }
 
     // MARK: - Owning View
 
     func testLayoutGuide_owningView() {
-        let layoutGuide = UILayoutGuide()
+        let layoutGuide = LayoutGuide()
         view1.addLayoutGuide(layoutGuide)
         XCTAssertEqual((layoutGuide as Anchorable).owningView, view1)
     }
@@ -155,7 +162,7 @@ class Anchorable_Tests: XCTestCase {
     }
 
     func testConstrainLeadingToConstant_layoutGuide() {
-        let layoutGuide = UILayoutGuide()
+        let layoutGuide = LayoutGuide()
         view1.addLayoutGuide(layoutGuide)
         let constraint = layoutGuide.constrain(.leading, toConstant: 20)
         XCTAssertEqual(constraint.constant, 20)
@@ -319,6 +326,8 @@ class Anchorable_Tests: XCTestCase {
         constraint.forEach { testDefaults(for: $0, constant: 30) }
     }
 
+    #if os(iOS) || os(tvOS)
+
     // MARK: - UILayoutSupport
 
     func testConstrainAnchorToAnchorOfUILayoutSupportItem() {
@@ -362,6 +371,8 @@ class Anchorable_Tests: XCTestCase {
         let constraint = view1.constrain(.bottom, to: topLayoutGuide)
         testDefaults(for: constraint)
     }
+
+    #endif
 
     // MARK: - Helpers
 

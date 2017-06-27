@@ -157,6 +157,8 @@ extension Anchorable {
         ]
     }
 
+    #if os(iOS) || os(tvOS)
+
     // MARK: - UILayoutSupport Constraints
 
     /**
@@ -203,6 +205,8 @@ extension Anchorable {
     public func constrain(_ anchors: Anchor..., relation: NSLayoutRelation = .equal, to item: UILayoutSupport, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
         return anchors.map { constrain($0, relation: relation, to: item, multiplier: multiplier, priority: priority) }
     }
+
+    #endif
 
     // MARK: - Internal Helpers
 

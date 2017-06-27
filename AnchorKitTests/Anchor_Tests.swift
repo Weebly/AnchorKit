@@ -47,6 +47,7 @@ class Anchor_Tests: XCTestCase {
         XCTAssertEqual(Anchor.centerY.layoutAnchor(for: layoutGuide), layoutGuide.centerYAnchor)
     }
 
+    #if os(iOS) || os(tvOS)
     func testLayoutAnchorForUILayoutSupport() {
         let vc = UIViewController()
         vc.loadView()
@@ -55,5 +56,6 @@ class Anchor_Tests: XCTestCase {
         XCTAssertEqual(Anchor.bottom.layoutAnchor(for: layoutGuide), layoutGuide.bottomAnchor)
         XCTAssertEqual(Anchor.height.layoutAnchor(for: layoutGuide), layoutGuide.heightAnchor)
     }
+    #endif
 
 }
