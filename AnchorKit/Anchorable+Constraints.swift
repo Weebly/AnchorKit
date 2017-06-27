@@ -8,8 +8,10 @@
 
 #if os(macOS)
     import AppKit
+    public typealias Relation = NSLayoutConstraint.Relation
 #else
     import UIKit
+    public typealias Relation = NSLayoutRelation
 #endif
 
 extension Anchorable {
@@ -27,7 +29,7 @@ extension Anchorable {
      - returns:                     The newly created and activated constraint.
      */
     @discardableResult
-    public func constrain<AnchorableType: Anchorable>(_ anchor: Anchor, relation: NSLayoutRelation = .equal, to otherAnchor: Anchor, of item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
+    public func constrain<AnchorableType: Anchorable>(_ anchor: Anchor, relation: Relation = .equal, to otherAnchor: Anchor, of item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
         let firstAnchor = anchor.layoutAnchor(for: self)
         let secondAnchor = otherAnchor.layoutAnchor(for: item)
         return makeConstraint(firstAnchor, relation: relation, to: secondAnchor, multiplier: multiplier, priority: priority)
@@ -45,7 +47,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraint.
      */
     @discardableResult
-    public func constrain<AnchorableType: Anchorable>(_ anchor: Anchor, relation: NSLayoutRelation = .equal, to item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
+    public func constrain<AnchorableType: Anchorable>(_ anchor: Anchor, relation: Relation = .equal, to item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
         return constrain(anchor, relation: relation, to: anchor, of: item, multiplier: multiplier, priority: priority)
     }
 
@@ -59,7 +61,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraints.
      */
     @discardableResult
-    public func constrain<AnchorableType: Anchorable>(_ anchors: Anchor..., relation: NSLayoutRelation = .equal, to item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+    public func constrain<AnchorableType: Anchorable>(_ anchors: Anchor..., relation: Relation = .equal, to item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
         return anchors.map { constrain($0, relation: relation, to: item, multiplier: multiplier, priority: priority) }
     }
 
@@ -75,7 +77,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraint.
      */
     @discardableResult
-    public func constrain(_ anchor: Anchor, relation: NSLayoutRelation = .equal, toConstant constant: CGFloatRepresentable, priority: LayoutPriority = .required) -> NSLayoutConstraint {
+    public func constrain(_ anchor: Anchor, relation: Relation = .equal, toConstant constant: CGFloatRepresentable, priority: LayoutPriority = .required) -> NSLayoutConstraint {
         switch anchor {
         case .width: return constrainDimension(widthAnchor, relation: relation, to: constant, priority: priority)
         case .height: return constrainDimension(heightAnchor, relation: relation, to: constant, priority: priority)
@@ -100,7 +102,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraints.
      */
     @discardableResult
-    public func constrain(_ anchors: Anchor..., relation: NSLayoutRelation = .equal, toConstant constant: CGFloatRepresentable, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+    public func constrain(_ anchors: Anchor..., relation: Relation = .equal, toConstant constant: CGFloatRepresentable, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
         return anchors.map { constrain($0, relation: relation, toConstant: constant, priority: priority) }
     }
 
@@ -114,7 +116,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraints for the leading, trailing, top, and bottom anchors.
      */
     @discardableResult
-    public func constrainEdges<AnchorableType: Anchorable>(_ relation: NSLayoutRelation, to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+    public func constrainEdges<AnchorableType: Anchorable>(_ relation: Relation, to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
         return constrain(.leading, .trailing, .top, .bottom, relation: relation, to: item, priority: priority)
     }
 
@@ -150,7 +152,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraints for the width and height anchors.
      */
     @discardableResult
-    public func constrain(_ relation: NSLayoutRelation, to size: CGSize, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+    public func constrain(_ relation: Relation, to size: CGSize, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
         return [
             constrain(.width, relation: relation, toConstant: size.width, priority: priority),
             constrain(.height, relation: relation, toConstant: size.height, priority: priority)
@@ -210,7 +212,7 @@ extension Anchorable {
 
     // MARK: - Internal Helpers
 
-    func constrainAnchor<ObjectType: AnyObject>(_ anchor: NSLayoutAnchor<ObjectType>, relation: NSLayoutRelation, to otherAnchor: NSLayoutAnchor<ObjectType>, priority: LayoutPriority) -> NSLayoutConstraint {
+    func constrainAnchor<ObjectType>(_ anchor: NSLayoutAnchor<ObjectType>, relation: Relation, to otherAnchor: NSLayoutAnchor<ObjectType>, priority: LayoutPriority) -> NSLayoutConstraint {
         prepareForConstraints()
 
         let constraint: NSLayoutConstraint
@@ -224,7 +226,7 @@ extension Anchorable {
         return constraint.activate()
     }
 
-    func constrainDimension(_ dimension: NSLayoutDimension, relation: NSLayoutRelation, to otherDimension: NSLayoutDimension, multiplier: CGFloatRepresentable, priority: LayoutPriority) -> NSLayoutConstraint {
+    func constrainDimension(_ dimension: NSLayoutDimension, relation: Relation, to otherDimension: NSLayoutDimension, multiplier: CGFloatRepresentable, priority: LayoutPriority) -> NSLayoutConstraint {
         prepareForConstraints()
 
         let constraint: NSLayoutConstraint
@@ -238,7 +240,7 @@ extension Anchorable {
         return constraint.activate()
     }
 
-    func constrainDimension(_ dimension: NSLayoutDimension, relation: NSLayoutRelation, to constant: CGFloatRepresentable, priority: LayoutPriority) -> NSLayoutConstraint {
+    func constrainDimension(_ dimension: NSLayoutDimension, relation: Relation, to constant: CGFloatRepresentable, priority: LayoutPriority) -> NSLayoutConstraint {
         prepareForConstraints()
 
         let constraint: NSLayoutConstraint
@@ -252,7 +254,7 @@ extension Anchorable {
         return constraint.activate()
     }
 
-    func makeConstraint(_ anchor: NSLayoutAnchor<AnyObject>, relation: NSLayoutRelation = .equal, to otherAnchor: NSLayoutAnchor<AnyObject>, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
+    func makeConstraint(_ anchor: NSLayoutAnchor<AnyObject>, relation: Relation = .equal, to otherAnchor: NSLayoutAnchor<AnyObject>, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
         if let firstDimension = anchor as? NSLayoutAnchor<NSLayoutDimension> as? NSLayoutDimension,
             let secondDimension = otherAnchor as? NSLayoutAnchor<NSLayoutDimension> as? NSLayoutDimension {
             return constrainDimension(firstDimension, relation: relation, to: secondDimension, multiplier: multiplier, priority: priority)

@@ -55,7 +55,7 @@ let topAndSideConstraints = myView.constrain(.leading, .trailing, .top, to: anot
 # Requirements
 
 - iOS 9.0+, macOS 10.11+, tvOS 9.0+
-- Swift 3
+- Swift 4
 
 
 # Installation

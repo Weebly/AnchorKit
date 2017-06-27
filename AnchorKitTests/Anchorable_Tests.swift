@@ -121,17 +121,17 @@ class Anchorable_Tests: XCTestCase {
 
     func testMakeConstraint_twoAxisAnchors_setsPriority() {
         let constraint = view1.constrainAnchor(view1.leadingAnchor, relation: .equal, to: view2.trailingAnchor, priority: .high)
-        XCTAssertEqual(constraint.priority, 750)
+        XCTAssertEqual(constraint.priority.rawValue, 750)
     }
 
     func testMakeConstraint_twoDimensionAnchors_setsPriority() {
         let constraint = view1.constrainDimension(view1.widthAnchor, relation: .equal, to: view2.heightAnchor, multiplier: 1, priority: .low)
-        XCTAssertEqual(constraint.priority, 250)
+        XCTAssertEqual(constraint.priority.rawValue, 250)
     }
 
     func testMakeConstraint_dimensionAnchorToConstant_setsPriority() {
         let constraint = view1.constrainDimension(view1.widthAnchor, relation: .equal, to: 10, priority: .custom(420))
-        XCTAssertEqual(constraint.priority, 420)
+        XCTAssertEqual(constraint.priority.rawValue, 420)
     }
 
     // MARK: - Anchor to constant
@@ -142,7 +142,7 @@ class Anchorable_Tests: XCTestCase {
         XCTAssertEqual(constraint.firstAnchor, view1.widthAnchor)
         XCTAssertNil(constraint.secondAnchor)
         XCTAssertEqual(constraint.relation, .greaterThanOrEqual)
-        XCTAssertEqual(constraint.priority, 500)
+        XCTAssertEqual(constraint.priority.rawValue, 500)
     }
 
     func testConstrainHeightToConstant() {
@@ -378,7 +378,7 @@ class Anchorable_Tests: XCTestCase {
 
     func testDefaults(for constraint: NSLayoutConstraint, constant: CGFloat = 0, file: StaticString = #file, line: UInt = #line) {
         XCTAssertEqual(constraint.constant, constant, file: file, line: line)
-        XCTAssertEqual(constraint.priority, 1000, file: file, line: line)
+        XCTAssertEqual(constraint.priority.rawValue, 1000, file: file, line: line)
         XCTAssertEqual(constraint.relation, .equal, file: file, line: line)
         XCTAssertEqual(constraint.multiplier, 1, file: file, line: line)
         XCTAssert(constraint.isActive, file: file, line: line)

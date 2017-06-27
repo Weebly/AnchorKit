@@ -37,8 +37,8 @@ class LayoutPriority_Tests: XCTestCase {
     func testConstraint_layoutPriority() {
         let constraint = NSLayoutConstraint()
         constraint.layoutPriority = .high
-        XCTAssertEqual(constraint.priority, 750)
-        constraint.priority = 56
+        XCTAssertEqual(constraint.priority.rawValue, 750)
+        constraint.priority = Priority(rawValue: 56)
         XCTAssertEqual(constraint.layoutPriority, .custom(56))
     }
 
@@ -59,14 +59,14 @@ class LayoutPriority_Tests: XCTestCase {
         let v = View()
         v.resistCompression(with: .high, for: .vertical)
         XCTAssertEqual(v.compressionResistancePriority(for: .vertical), .high)
-        XCTAssertEqual(v.contentCompressionResistancePriority(for: .vertical), 750)
+        XCTAssertEqual(v.contentCompressionResistancePriority(for: .vertical).rawValue, 750)
     }
 
     func testContentHugging() {
         let v = View()
         v.hug(with: .medium, for: .horizontal)
         XCTAssertEqual(v.huggingPriority(for: .horizontal), .medium)
-        XCTAssertEqual(v.contentHuggingPriority(for: .horizontal), 500)
+        XCTAssertEqual(v.contentHuggingPriority(for: .horizontal).rawValue, 500)
     }
 
 }

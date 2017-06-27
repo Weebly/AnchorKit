@@ -8,10 +8,12 @@
 
 #if os(macOS)
     import AppKit
-    public typealias Axis = NSLayoutConstraintOrientation
+    public typealias Axis = NSLayoutConstraint.Orientation
+    typealias Priority = NSLayoutConstraint.Priority
 #else
     import UIKit
     public typealias Axis = UILayoutConstraintAxis
+    typealias Priority = UILayoutPriority
 #endif
 
 /**
@@ -45,6 +47,10 @@ public enum LayoutPriority: RawRepresentable {
         case 1000: self = .required
         default: self = .custom(rawValue)
         }
+    }
+
+    fileprivate init(priority: Priority) {
+        self.init(rawValue: priority.rawValue)
     }
 
     /// The value of the layout priority.
@@ -85,10 +91,10 @@ extension NSLayoutConstraint {
     /// The layout priority of the constraint.
     public var layoutPriority: LayoutPriority {
         set {
-            priority = newValue.rawValue
+            priority = Priority(rawValue: newValue.rawValue)
         }
         get {
-            return LayoutPriority(rawValue: priority)
+            return LayoutPriority(priority: priority)
         }
     }
 
@@ -102,7 +108,7 @@ extension View {
      - parameter    axis:           The axis for which the compression resistance priority should be set.
      */
     public func resistCompression(with priority: LayoutPriority, for axis: Axis) {
-        setContentCompressionResistancePriority(priority.rawValue, for: axis)
+        setContentCompressionResistancePriority(Priority(rawValue: priority.rawValue), for: axis)
     }
 
     /**
@@ -111,7 +117,7 @@ extension View {
      - parameter    axis:           The axis for which the content hugging priority should be set.
      */
     public func hug(with priority: LayoutPriority, for axis: Axis) {
-        setContentHuggingPriority(priority.rawValue, for: axis)
+        setContentHuggingPriority(Priority(rawValue: priority.rawValue), for: axis)
     }
 
     /**
@@ -120,7 +126,7 @@ extension View {
      - returns:             The priority with which the view should resist being compressed from its intrinsic size on the specified axis.
     */
     public func compressionResistancePriority(for axis: Axis) -> LayoutPriority {
-        return LayoutPriority(rawValue: contentCompressionResistancePriority(for: axis))
+        return LayoutPriority(priority: contentCompressionResistancePriority(for: axis))
     }
 
     /**
@@ -129,7 +135,7 @@ extension View {
      - returns:             The priority with which the view should resist being enlarged from its intrinsic size on the specified axis.
      */
     public func huggingPriority(for axis: Axis) -> LayoutPriority {
-        return LayoutPriority(rawValue: contentHuggingPriority(for: axis))
+        return LayoutPriority(priority: contentHuggingPriority(for: axis))
     }
 
 }
