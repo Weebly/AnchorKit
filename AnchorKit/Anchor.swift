@@ -78,16 +78,31 @@ public enum Anchor {
         case .centerY:
             return item.centerYAnchor as NSLayoutAnchor<NSLayoutYAxisAnchor> as! NSLayoutAnchor<AnyObject>
         case .firstBaseline:
-            guard let item = item as? ViewAnchorable else {
-                fatalError("The anchor \(self) is not available on layout guides.")
+            guard let viewItem = item as? ViewAnchorable else {
+                fatalError("The anchor \(self) is not available on the item \(item).")
             }
-            return item.firstBaselineAnchor as NSLayoutAnchor<NSLayoutYAxisAnchor> as! NSLayoutAnchor<AnyObject>
+            return viewItem.firstBaselineAnchor as NSLayoutAnchor<NSLayoutYAxisAnchor> as! NSLayoutAnchor<AnyObject>
         case .lastBaseline:
-            guard let item = item as? ViewAnchorable else {
-                fatalError("The anchor \(self) is not available on layout guides.")
+            guard let viewItem = item as? ViewAnchorable else {
+                fatalError("The anchor \(self) is not available on the item \(item).")
             }
-            return item.lastBaselineAnchor as NSLayoutAnchor<NSLayoutYAxisAnchor> as! NSLayoutAnchor<AnyObject>
+            return viewItem.lastBaselineAnchor as NSLayoutAnchor<NSLayoutYAxisAnchor> as! NSLayoutAnchor<AnyObject>
         }
     }
+
+    #if os(iOS) || os(tvOS)
+    func layoutAnchor(for item: UILayoutSupport) -> NSLayoutAnchor<AnyObject> {
+        switch self {
+        case .top:
+            return item.topAnchor as NSLayoutAnchor<NSLayoutYAxisAnchor> as! NSLayoutAnchor<AnyObject>
+        case .bottom:
+            return item.bottomAnchor as NSLayoutAnchor<NSLayoutYAxisAnchor> as! NSLayoutAnchor<AnyObject>
+        case .height:
+            return item.heightAnchor as NSLayoutAnchor<NSLayoutDimension> as! NSLayoutAnchor<AnyObject>
+        default:
+            fatalError("The anchor \(self) is not available on the `UILayoutSupport` item \(item).")
+        }
+    }
+    #endif
 
 }

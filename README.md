@@ -203,6 +203,18 @@ public func constrain(to size: CGSize, priority: LayoutPriority = .required) -> 
 public func constrain(_ relation: NSLayoutRelation, to size: CGSize, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
 ````
 
+### Constrain to UIViewController `topLayoutGuide` and `bottomLayoutGuide`
+
+The `topLayoutGuide` and `bottomLayoutGuide` properties on `UIViewController` have a type of `UILayoutSupport`, which is a protocol. Constrain to these just as you would to any other item. 
+
+Note that the only anchors available on these are `height`, `top`, and `bottom`.
+
+````swift
+myView.constrain(.top, to: .bottom, of: topLayoutGuide).offset(10)
+otherView.constrain(.height, to: bottomLayoutGuide)
+````
+The signatures for these methods are identical to the anchor-to-anchor and anchor-to-item methods except that the second item has a type of `UILayoutSupport`.
+
 ## The `CGFloatRepresentable` Protocol
 
 This protocol allows you to use any number types for constraint offsets, insets, and multipliers without the need to cast all values to `CGFloat`.
