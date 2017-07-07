@@ -61,7 +61,7 @@ extension NSLayoutConstraint {
     @discardableResult
     public func inset(_ inset: CGFloatRepresentable) -> NSLayoutConstraint {
         switch firstAttribute {
-        case .bottom, .right, .trailing:
+        case .bottom, .bottomMargin, .right, .rightMargin, .trailing, .trailingMargin, .lastBaseline:
             offset(-inset.cgFloatValue)
         default:
             offset(inset)
@@ -132,11 +132,67 @@ extension Sequence where Iterator.Element == NSLayoutConstraint {
     }
 
     /**
+     Updates the inset of all horizontal constraints and returns self.
+     - parameter    inset:  For horizontal constraints in which the first anchor is the right or trailing anchor, this creates a negative offset. Otherwise, acts identical to `offset(_)`.
+     - returns:             A reference to self.
+     */
+    @discardableResult
+    public func insetHorizontal(_ inset: CGFloatRepresentable) -> Self {
+        filter { $0.firstAttribute.isHorizontal }.forEach { $0.inset(inset) }
+        return self
+    }
+
+    /**
+     Updates the inset of all vertical constraints and returns self.
+     - parameter    inset:  For vertical constraints in which the first anchor is the bottom anchor, this creates a negative offset. Otherwise, acts identical to `offset(_)`.
+     - returns:             A reference to self.
+     */
+    @discardableResult
+    public func insetVertical(_ inset: CGFloatRepresentable) -> Self {
+        filter { $0.firstAttribute.isVertical }.forEach { $0.inset(inset) }
+        return self
+    }
+
+    /**
+     Updates the inset of all horizontal constraints. Identical to `insetHorizontal(_:)`, but has no return value (for proper naming conventions, use this when actually updating constraints, and use `insetHorizontal(_:)` during constraint creation).
+     - parameter    inset:  For horizontal constraints in which the first anchor is the right or trailing anchor, this creates a negative offset. Otherwise, acts identical to `updateOffset(_)`.
+     */
+    public func updateHorizontalInsets(_ inset: CGFloatRepresentable) {
+        insetHorizontal(inset)
+    }
+
+    /**
+     Updates the inset of all vertical constraints. Identical to `insetVertical(_:)`, but has no return value (for proper naming conventions, use this when actually updating constraints, and use `insetVertical(_:)` during constraint creation).
+     - parameter    inset:  For vertical constraints in which the first anchor is the bottom anchor, this creates a negative offset. Otherwise, acts identical to `updateOffset(_)`.
+     */
+    public func updateVerticalInsets(_ inset: CGFloatRepresentable) {
+        insetVertical(inset)
+    }
+
+    /**
      Updates the inset of the constraints. Identical to `inset(_:)`, but has no return value (for proper naming conventions, use this when actually updating constraints, and use `inset(_:)` during constraint creation).
      - parameter    inset:  For constraints in which the first anchor is the bottom, right, or trailing anchor, this creates a negative offset. Otherwise, acts identical to `offset(_:)`.
      */
     public func updateInsets(_ inset: CGFloatRepresentable) {
         self.inset(inset)
+    }
+
+}
+
+extension NSLayoutAttribute {
+
+    var isHorizontal: Bool {
+        switch self {
+        case .left, .right, .leading, .trailing, .centerX, .centerXWithinMargins, .leftMargin, .leadingMargin, .rightMargin, .trailingMargin: return true
+        default: return false
+        }
+    }
+
+    var isVertical: Bool {
+        switch self {
+        case .top, .bottom, .topMargin, .bottomMargin, .centerY, .centerYWithinMargins, .firstBaseline, .lastBaseline: return true
+        default: return false
+        }
     }
 
 }
