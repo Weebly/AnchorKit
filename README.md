@@ -236,19 +236,27 @@ Adopted by the following types:
 
 ## Offsets and Insets
 
-To set constants on constraints, **AnchorKit** uses *offsets* and *insets*. An offset has equivalent behavior to `constant` on `NSLayoutConstraint`. An inset, however, *negates* the constant for the `trailing`, `right`, and `bottom` anchors and behaves normally for all other anchors.
+To set constants on constraints, **AnchorKit** uses *offsets* and *insets*. An offset has equivalent behavior to `constant` on `NSLayoutConstraint`. An inset, however, *negates* the constant for the `trailing`, `right`, `bottom`, and `lastBaseline` anchors and behaves normally for all other anchors.
 
 ````swift
-// Place bottomView 20 points below topView
-bottomView.constrain(.top, to: .bottom, of: topView).offset(20)
+// The top of bottomView will be 20 points below the top of topView
+bottomView.constrain(.top, of: topView).offset(20)
 
-// Constrain sides of innerView to outerView with 10 points of padding on each side
+// The innerView will be "inside" the outerView, with 10 points of padding on the sides
 innerView.constrain(.leading, .trailing, to: outerView).inset(10)
 ````
 
 As you may have noticed in the second example, `offset(_:)` and `inset(_:)` work on both single constraints and sequences of constraints.
 
 When updating constraints, for the sake of proper Swift naming conventions, **AnchorKit** also provides the methods `updateOffset(_:)` and `updateInset(_:)`.
+
+For multiple constraints, it's also possible to only set the *horizontal* and *vertical* insets, like so:
+
+````swift
+// The innerView will have an inset of 10 on the top and bottom sides and an inset of 20 on the leading and trailing sides
+innerView.constrainEdges(to: outerView).insetVertical(10).insetHorizontal(20)`
+````
+When updating horizontal/vertical inset, use `updateHorizontalInsets(_:)` and `updateVerticalInsets(_:)`.
 
 ## Layout Priorities
 
