@@ -1,7 +1,11 @@
 Pod::Spec.new do |s|
 
   s.name         = "AnchorKit"
+<<<<<<< HEAD
   s.version      = "0.5.0"
+=======
+  s.version      = "0.4.1"
+>>>>>>> origin/master
   s.summary      = "A Swifty anchor-based API for AutoLayout."
 
   s.description  = <<-DESC
@@ -20,7 +24,11 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.11"
   s.tvos.deployment_target = "9.0"
 
+<<<<<<< HEAD
   s.source       = { :git => "git@github.intern.weebly.net:Weebly-iOS/AnchorKit.git", :tag => "v0.5.0" }
+=======
+  s.source       = { :git => "git@github.intern.weebly.net:Weebly-iOS/AnchorKit.git", :tag => "v0.4.1" }
+>>>>>>> origin/master
   s.requires_arc = true
   s.source_files = "AnchorKit/*.swift"
 
