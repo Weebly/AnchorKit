@@ -61,10 +61,19 @@ extension NSLayoutConstraint {
     @discardableResult
     public func inset(_ inset: CGFloatRepresentable) -> NSLayoutConstraint {
         switch firstAttribute {
-        case .bottom, .bottomMargin, .right, .rightMargin, .trailing, .trailingMargin, .lastBaseline:
+        case .bottom, .right, .trailing, .lastBaseline:
             offset(-inset.cgFloatValue)
         default:
-            offset(inset)
+            #if os(iOS) || os(tvOS)
+                switch firstAttribute {
+                case .bottomMargin, .rightMargin, .trailingMargin:
+                    offset(-inset.cgFloatValue)
+                default:
+                    offset(inset)
+                }
+            #else
+                offset(inset)
+            #endif
         }
         return self
     }
@@ -183,15 +192,31 @@ extension NSLayoutAttribute {
 
     var isHorizontal: Bool {
         switch self {
-        case .left, .right, .leading, .trailing, .centerX, .centerXWithinMargins, .leftMargin, .leadingMargin, .rightMargin, .trailingMargin: return true
-        default: return false
+        case .left, .right, .leading, .trailing, .centerX:
+            return true
+        default:
+            #if os(iOS) || os(tvOS)
+                switch self {
+                case .centerXWithinMargins, .leftMargin, .leadingMargin, .rightMargin, .trailingMargin: return true
+                default: break
+                }
+            #endif
+            return false
         }
     }
 
     var isVertical: Bool {
         switch self {
-        case .top, .bottom, .topMargin, .bottomMargin, .centerY, .centerYWithinMargins, .firstBaseline, .lastBaseline: return true
-        default: return false
+        case .top, .bottom, .centerY, .firstBaseline, .lastBaseline:
+            return true
+        default:
+            #if os(iOS) || os(tvOS)
+                switch self {
+                case .topMargin, .bottomMargin, .centerYWithinMargins: return true
+                default: break
+                }
+            #endif
+            return false
         }
     }
 
