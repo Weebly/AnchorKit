@@ -6,12 +6,12 @@
 
 ### ***AnchorKit** provides a simple, intuitive way to create layouts using anchors.*
 
-# The Basics
+# Quick Start
 Here's some example code:
 
 ````swift
 // Multiple constraints on one line
-myView.constrain(.centerX, .centerY, to: anotherView)
+myView.constrain(.leading, .top, .trailing, to: anotherView)
 
 // Set height/width equal to a constant
 myView.constrain(.height, .width, toConstant: 200)
@@ -29,10 +29,13 @@ myView.constrain(.leading, .trailing, to: anotherView).inset(24)
 myView.constrain(.height, relation: .lessThanOrEqual, to: anotherView, multiplier: 1.6)
 
 // Set the priority
-myView.constrain(.bottom, to: anotherView, priority: .high).offset(-15)
+myView.constrain(.centerY, to: anotherView, priority: .high).offset(-15)
 
 // One-line edge constraints with insets
 myView.constrainEdges(to: anotherView).inset(10)
+
+// Easily center items
+myView.constrainCenter(to: anotherView)
 
 // Return value for single constraint is NSLayoutConstraint
 let bottomConstraint = myView.constrain(.bottom, to: .top, of: anotherView.layoutMarginsGuide)
@@ -93,8 +96,10 @@ public enum Anchor {
     case lastBaseline
 }
 ````
+
 AutoLayout defines 3 types of anchors, and you can only constrain anchors to other anchors within the same group.
-- **X-axis anchors**: `leading`, `trailing`, `left,` `right`, `centerX`
+
+- **X-axis anchors**: `leading`, `trailing`, `left`, `right`, `centerX`
 - **Y-axis anchors**: `top`, `bottom`, `centerY`, `firstBaseline`, `lastBaseline`
 - **Dimension anchors**: `width`, `height`
 
@@ -106,7 +111,7 @@ Under the hood, each of these map to an actual `NSLayoutAnchor` on the view or l
 ### The `Anchorable` Protocol
 **AnchorKit** works on both layout guides and views. To consolidate these two, we use a protocol called `Anchorable`. Views conform to another protocol, `ViewAnchorable`, which gives them the ability to use baseline anchors. Mentions of "item" in the docs below refer to views and layout guides.
 
-### Anchor To Item Constraints
+### Anchor to Item Constraints
 
 Constrain anchors of one item to the corresponding anchors of another item.
 
@@ -126,7 +131,7 @@ public func constrain<AnchorableType: Anchorable>(_ anchor: Anchor, relation: NS
 public func constrain<AnchorableType: Anchorable>(_ anchors: Anchor..., relation: NSLayoutRelation = .equal, to item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
 ````
 
-### Anchor To Anchor Constraints
+### Anchor to Anchor Constraints
 
 Constrain an anchor of one item to an anchor of another item.
 
@@ -141,7 +146,7 @@ This method only supports the creation of a single constraint.
 public func constrain<AnchorableType: Anchorable>(_ anchor: Anchor, relation: NSLayoutRelation = .equal, to otherAnchor: Anchor, of item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint
 ````
 
-### Anchor To Constant Constraints
+### Anchor to Constant Constraints
 
 Constrain an anchor of an item to a constant. This is is especially useful (and more readable) for the `width` and `height` anchors.
 
@@ -166,7 +171,7 @@ public func constrain(_ anchors: Anchor..., relation: NSLayoutRelation = .equal,
 This method can also work on items with anchors other than `width` and `height`. The resulting behavior is equivalent to constraining the anchor to the corresponding anchor on the view's `superview` (or layout guide's `owningView`). So `myView.constrain(.leading, toConstant: 10)` translates to `myView.constrain(.leading, to: myView.superview!).offset(10)`.
 
 
-### Constrain To Edges
+### Constrain to Edges
 
 Constrains the edges of the current item to another item. 
 
@@ -174,7 +179,7 @@ Constrains the edges of the current item to another item.
 myView.constrainEdges(to: anotherView)
 ````
 
-This is just a convenience method for the `leading`, `trailing`, `top`, and `bottom` constraints. For better autocomplete behavior, there is a separate equivalent method if you would like to add a `relation` other than `.equal` to the constraints.
+This is just a convenience method for constraining the `leading`, `trailing`, `top`, and `bottom` anchors. For better autocomplete behavior, there is a separate equivalent method if you would like to add a `relation` other than `.equal` to the constraints.
 
 ````swift
 @discardableResult
@@ -183,6 +188,26 @@ public func constrainEdges<AnchorableType: Anchorable>(to item: AnchorableType, 
 // With a relation other than .equal
 @discardableResult
 public func constrainEdges<AnchorableType: Anchorable>(_ relation: NSLayoutRelation, to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
+````
+
+### Constrain to Center
+
+Constraints the center of the current item to another item.
+
+````swift
+myView.constrainCenter(to: anotherView)
+````
+
+Thiis is just a convenience method for constraining the `centerX` and `centerY` anchors. For better autocomplete behavior, there is a separate equivalent method if you would like to add a `relation` other than `.equal` to the constraints.
+
+
+````swift
+@discardableResult
+public func constrainCenter<AnchorableType: Anchorable>(to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
+
+// With a relation other than .equal
+@discardableResult
+public func constrainCenter<AnchorableType: Anchorable>(_ relation: NSLayoutRelation, to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
 ````
 
 ### Constrain to Size

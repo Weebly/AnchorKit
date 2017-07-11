@@ -119,7 +119,7 @@ extension Anchorable {
     }
 
     /**
-     Constrains the edges of the current item to another item by creating and activating the leading, trailing, top, and bottom constraints. If you want to use this with a relation, use `constrainEdges(_:to:inset)`.
+     Constrains the edges of the current item to another item by creating and activating the leading, trailing, top, and bottom constraints. If you want to use this with a relation, use `constrainEdges(_:to:priority:)`.
      - parameter    item:       The item to which to constrain.
      - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
      - returns:                 The newly created and activated constraints for the leading, trailing, top, and bottom anchors.
@@ -127,6 +127,31 @@ extension Anchorable {
     @discardableResult
     public func constrainEdges<AnchorableType: Anchorable>(to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
         return constrainEdges(.equal, to: item, priority: priority)
+    }
+
+    // MARK: - Center Constraints
+
+    /**
+     Convenience method for centering the current item in another item by creating the centerX and centerY constraints. If you want to use this with a relation, use `constrainCenter(_:to:priority:)`.
+     - parameter    item:       The item in which to center the current item.
+     - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
+     - returns:                 The newly created and activated constraints for the centerX and centerY anchors.
+     */
+    @discardableResult
+    public func constrainCenter<AnchorableType: Anchorable>(to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+        return constrainCenter(.equal, to: item, priority: priority)
+    }
+
+    /**
+     Convenience method for centering the current item in another item by creating the centerX and centerY constraints.
+     - parameter    relation:   The relation for both constraints. If you want to use `.equal`, you can also just use `constrainCenter(to:priority:)` instead.
+     - parameter    item:       The item in which to center the current item.
+     - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
+     - returns:                 The newly created and activated constraints for the centerX and centerY anchors.
+     */
+    @discardableResult
+    public func constrainCenter<AnchorableType: Anchorable>(_ relation: NSLayoutRelation, to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+        return constrain(.centerX, .centerY, relation: relation, to: item, priority: priority)
     }
 
     // MARK: - Size Constraints

@@ -271,6 +271,28 @@ class Anchorable_Tests: XCTestCase {
         constraints.forEach { testDefaults(for: $0) }
     }
 
+    // MARK: - Center
+
+    func testConstrainCenterToItem_defaults() {
+        let constraints = view1.constrainCenter(to: view2)
+        constraints.forEach { testDefaults(for: $0) }
+    }
+
+    func testConstrainCenterToItem() {
+        let constraints = view1.constrainCenter(to: view2, priority: .high).offset(10)
+        XCTAssertEqual(constraints.map { $0.constant }, [10, 10])
+        XCTAssertEqual(constraints.count, 2)
+        XCTAssertEqual(constraints.flatMap { $0.firstAnchor }, [view1.centerXAnchor, view1.centerYAnchor])
+        XCTAssertEqual(constraints.flatMap { $0.secondAnchor }, [view2.centerXAnchor, view2.centerYAnchor])
+        XCTAssertEqual(constraints.map { $0.layoutPriority }, [.high, .high])
+        XCTAssertEqual(Set(constraints.map { $0.relation }), [.equal])
+    }
+
+    func testConstrainCenterToItem_greaterThanOrEqual() {
+        let constraints = view1.constrainCenter(.greaterThanOrEqual, to: view2)
+        XCTAssertEqual(Set(constraints.map { $0.relation }), [.greaterThanOrEqual])
+    }
+
     // MARK: - Anchor to anchor
 
     func testConstrainTwoAxisAnchors() {
