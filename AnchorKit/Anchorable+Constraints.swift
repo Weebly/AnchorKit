@@ -232,8 +232,22 @@ extension Anchorable {
     }
 
     #endif
+}
 
-    // MARK: - Internal Helpers
+extension ViewAnchorable {
+
+    /**
+     Updates the view's width and height constraints to the corresponding width and height of the provided size.
+     - parameter    size:   The size to which to update the width and height constraints.
+     */
+    public func updateSize(_ size: CGSize) {
+        constraints.updateSize(size)
+    }
+
+}
+
+// MARK: - Internal Helpers
+extension Anchorable {
 
     func constrainAnchor<ObjectType: AnyObject>(_ anchor: NSLayoutAnchor<ObjectType>, relation: NSLayoutRelation, to otherAnchor: NSLayoutAnchor<ObjectType>, priority: LayoutPriority) -> NSLayoutConstraint {
         prepareForConstraints()
