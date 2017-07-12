@@ -203,20 +203,20 @@ extension Sequence where Iterator.Element == NSLayoutConstraint {
     }
 
     /**
-     Updates the insets of all constraints that correspond to left, right, top, or bottom sides of an item. Identical to `inset(_:)`, but has no return value (for proper naming conventions, use this when actually updating constraints, and use `inset(_:)` during constraint creation).
-     - parameter    insets:  Creates insets on constraints that have a first anchor that corresponds to one of the insets, i.e. a constraint starting with a `leading` anchor will get an inset of `insets.left`.
-     */
-    public func updateInsets(_ insets: EdgeInsets) {
-        self.inset(insets)
-    }
-
-    /**
+<<<<<<< HEAD
      Updates any width and height constraints to the corresponding width and height of the provided size.
      - parameter    size:   The size to which to update the width and height constraints.
      */
     public func updateSize(_ size: CGSize) {
         filter { $0.firstAttribute == .width && $0.secondAttribute == .notAnAttribute }.updateOffsets(size.width)
         filter { $0.firstAttribute == .height && $0.secondAttribute == .notAnAttribute }.updateOffsets(size.height)
+=======
+     Updates the insets of all constraints that correspond to left, right, top, or bottom sides of an item. Identical to `inset(_:)`, but has no return value (for proper naming conventions, use this when actually updating constraints, and use `inset(_:)` during constraint creation).
+     - parameter    insets:  Creates insets on constraints that have a first anchor that corresponds to one of the insets, i.e. a constraint starting with a `leading` anchor will get an inset of `insets.left`.
+     */
+    public func updateInsets(_ insets: EdgeInsets) {
+        self.inset(insets)
+>>>>>>> origin/master
     }
 
 }
