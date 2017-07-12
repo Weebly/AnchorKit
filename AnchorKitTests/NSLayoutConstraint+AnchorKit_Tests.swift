@@ -155,6 +155,38 @@ class NSLayoutConstraint_AnchorKit_Tests: XCTestCase {
         XCTAssertEqual(constraints.map({ $0.constant }), [0, 0, 20, -20, 20, 0])
     }
 
+    func testArrayOfConstraints_updateSize() {
+        let constraints = view1.constrain(to: CGSize(width: 30, height: 40))
+        XCTAssertEqual(constraints.count, 2)
+        XCTAssertEqual(constraints[0].constant, 30)
+        XCTAssertEqual(constraints[1].constant, 40)
+        constraints.updateSize(CGSize(width: 130, height: 140))
+        XCTAssertEqual(constraints[0].constant, 130)
+        XCTAssertEqual(constraints[1].constant, 140)
+    }
+
+    func testArrayOfConstraints_updateSize_ignoresNonSizeConstraints() {
+        let constraints = view1.constrain(.width, .leading, .height, toConstant: 100)
+        XCTAssertEqual(constraints.count, 3)
+        XCTAssertEqual(constraints[0].constant, 100)
+        XCTAssertEqual(constraints[1].constant, 100)
+        XCTAssertEqual(constraints[2].constant, 100)
+        constraints.updateSize(CGSize(width: 130, height: 140))
+        XCTAssertEqual(constraints[0].constant, 130)
+        XCTAssertEqual(constraints[1].constant, 100)
+        XCTAssertEqual(constraints[2].constant, 140)
+    }
+
+    func testArrayOfConstraints_updatesSize_ignoresNonConstantConstraints() {
+        let widthToViewConstraint = view1.constrain(.width, to: view2)
+        let widthToConstantConstraint = view1.constrain(.width, toConstant: 40)
+        let heightConstraint = view1.constrain(.height, toConstant: 20)
+        [widthToViewConstraint, widthToConstantConstraint, heightConstraint].updateSize(CGSize(width: 130, height: 140))
+        XCTAssertEqual(widthToViewConstraint.constant, 0)
+        XCTAssertEqual(widthToConstantConstraint.constant, 130)
+        XCTAssertEqual(heightConstraint.constant, 140)
+    }
+
     func testLayoutAttribute_isHorizontal() {
         XCTAssertTrue(NSLayoutAttribute.left.isHorizontal)
         XCTAssertTrue(NSLayoutAttribute.right.isHorizontal)

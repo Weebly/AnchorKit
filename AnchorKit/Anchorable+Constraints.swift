@@ -244,6 +244,22 @@ extension ViewAnchorable {
         constraints.updateSize(size)
     }
 
+    /**
+     Updates the view's width constraint to the new provided width.
+     - parameter    width:  The width constant to which to update the width constraint of the view.
+     */
+    public func updateWidth(_ width: CGFloatRepresentable) {
+        constraints.filter { $0.firstAttribute == .width && $0.secondAttribute == .notAnAttribute }.updateOffsets(width)
+    }
+
+    /**
+     Updates the view's height constraint to the new provided height.
+     - parameter    height: The height constant to which to update the height constraint of the view.
+     */
+    public func updateHeight(_ height: CGFloatRepresentable) {
+        constraints.filter { $0.firstAttribute == .height && $0.secondAttribute == .notAnAttribute }.updateOffsets(height)
+    }
+
 }
 
 // MARK: - Internal Helpers

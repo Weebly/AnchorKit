@@ -228,6 +228,14 @@ public func constrain(to size: CGSize, priority: LayoutPriority = .required) -> 
 public func constrain(_ relation: NSLayoutRelation, to size: CGSize, priority: LayoutPriority = .required) -> [NSLayoutConstraint]
 ````
 
+For views, because width and height constraints belong to the view itself, you can update the those constraints directly from the view:
+
+````swift
+myView.updateSize(newSize)
+myView2.updateWidth(100)
+myView3.updateHeight(200)
+````
+
 ### Constrain to UIViewController `topLayoutGuide` and `bottomLayoutGuide`
 
 The `topLayoutGuide` and `bottomLayoutGuide` properties on `UIViewController` have a type of `UILayoutSupport`, which is a protocol. Constrain to these just as you would to any other item. 
