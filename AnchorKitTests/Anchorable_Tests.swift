@@ -348,6 +348,32 @@ class Anchorable_Tests: XCTestCase {
         constraint.forEach { testDefaults(for: $0, constant: 30) }
     }
 
+    func testUpdateSize() {
+        let sizeConstraints = view1.constrain(to: CGSize(width: 40, height: 100))
+        let leadingConstraint = view1.constrain(.leading, to: view2).offset(-17)
+        view1.updateSize(CGSize(width: 200, height: 300))
+        XCTAssertEqual(sizeConstraints, view1.constraints)
+        XCTAssertEqual(sizeConstraints[0].constant, 200)
+        XCTAssertEqual(sizeConstraints[1].constant, 300)
+        XCTAssertEqual(leadingConstraint.constant, -17)
+    }
+
+    // MARK: - Width and Height
+
+    func testUpdateWidth() {
+        let constraints = view1.constrain(.width, .height, toConstant: 100)
+        view1.updateWidth(200)
+        XCTAssertEqual(constraints[0].constant, 200)
+        XCTAssertEqual(constraints[1].constant, 100)
+    }
+
+    func testUpdateHeight() {
+        let constraints = view1.constrain(.width, .height, toConstant: 100)
+        view1.updateHeight(200)
+        XCTAssertEqual(constraints[0].constant, 100)
+        XCTAssertEqual(constraints[1].constant, 200)
+    }
+
     #if os(iOS) || os(tvOS)
 
     // MARK: - UILayoutSupport

@@ -70,6 +70,9 @@ public protocol ViewAnchorable: Anchorable {
 
     /// A layout anchor representing the baseline for the bottommost line of text in the view. Not available for layout guides.
     var lastBaselineAnchor: NSLayoutYAxisAnchor { get }
+
+    /// Returns the constraints held by the view.
+    var constraints: [NSLayoutConstraint] { get }
 }
 
 extension View: ViewAnchorable {

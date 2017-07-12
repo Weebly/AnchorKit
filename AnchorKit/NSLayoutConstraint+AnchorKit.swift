@@ -210,6 +210,15 @@ extension Sequence where Iterator.Element == NSLayoutConstraint {
         self.inset(insets)
     }
 
+    /**
+     Updates any width and height constraints to the corresponding width and height of the provided size.
+     - parameter    size:   The size to which to update the width and height constraints.
+     */
+    public func updateSize(_ size: CGSize) {
+        filter { $0.firstAttribute == .width && $0.secondAttribute == .notAnAttribute }.updateOffsets(size.width)
+        filter { $0.firstAttribute == .height && $0.secondAttribute == .notAnAttribute }.updateOffsets(size.height)
+    }
+
 }
 
 // MARK: - Internal Helpers
