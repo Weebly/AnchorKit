@@ -8,8 +8,10 @@
 
 #if os(macOS)
     import AppKit
+    public typealias EdgeInsets = Foundation.EdgeInsets
 #else
     import UIKit
+    public typealias EdgeInsets = UIEdgeInsets
 #endif
 
 extension NSLayoutConstraint {
@@ -141,6 +143,20 @@ extension Sequence where Iterator.Element == NSLayoutConstraint {
     }
 
     /**
+     Updates the insets of all constraints that correspond to left, right, top, or bottom sides of an item.
+     - parameter    insets:  Creates insets on constraints that have a first anchor that corresponds to one of the insets, i.e. a constraint starting with a `leading` anchor will get an inset of `insets.left`.
+     - returns:             A reference to self.
+     */
+    @discardableResult
+    public func inset(_ insets: EdgeInsets) -> Self {
+        filter { $0.firstAttribute.isLeftAttribute }.inset(insets.left)
+        filter { $0.firstAttribute.isRightAttribute }.inset(insets.right)
+        filter { $0.firstAttribute.isTopAttribute }.inset(insets.top)
+        filter { $0.firstAttribute.isBottomAttribute }.inset(insets.bottom)
+        return self
+    }
+
+    /**
      Updates the inset of all horizontal constraints and returns self.
      - parameter    inset:  For horizontal constraints in which the first anchor is the right or trailing anchor, this creates a negative offset. Otherwise, acts identical to `offset(_)`.
      - returns:             A reference to self.
@@ -186,8 +202,17 @@ extension Sequence where Iterator.Element == NSLayoutConstraint {
         self.inset(inset)
     }
 
+    /**
+     Updates the insets of all constraints that correspond to left, right, top, or bottom sides of an item. Identical to `inset(_:)`, but has no return value (for proper naming conventions, use this when actually updating constraints, and use `inset(_:)` during constraint creation).
+     - parameter    insets:  Creates insets on constraints that have a first anchor that corresponds to one of the insets, i.e. a constraint starting with a `leading` anchor will get an inset of `insets.left`.
+     */
+    public func updateInsets(_ insets: EdgeInsets) {
+        self.inset(insets)
+    }
+
 }
 
+// MARK: - Internal Helpers
 extension NSLayoutAttribute {
 
     var isHorizontal: Bool {
@@ -217,6 +242,58 @@ extension NSLayoutAttribute {
                 }
             #endif
             return false
+        }
+    }
+
+    var isLeftAttribute: Bool {
+        switch self {
+        case .left, .leading: return true
+        default:
+            #if os(iOS) || os(tvOS)
+                switch self {
+                case .leftMargin, .leadingMargin: return true
+                default: break
+                }
+            #endif
+            return false
+        }
+    }
+
+    var isRightAttribute: Bool {
+        switch self {
+        case .right, .trailing: return true
+        default:
+            #if os(iOS) || os(tvOS)
+                switch self {
+                case .rightMargin, .trailingMargin: return true
+                default: break
+                }
+            #endif
+            return false
+        }
+    }
+
+    var isTopAttribute: Bool {
+        switch self {
+        case .top: return true
+        default:
+            #if os(iOS) || os(tvOS)
+                return self == .topMargin
+            #else
+                return false
+            #endif
+        }
+    }
+
+    var isBottomAttribute: Bool {
+        switch self {
+        case .bottom: return true
+        default:
+            #if os(iOS) || os(tvOS)
+                return self == .bottomMargin
+            #else
+                return false
+            #endif
         }
     }
 

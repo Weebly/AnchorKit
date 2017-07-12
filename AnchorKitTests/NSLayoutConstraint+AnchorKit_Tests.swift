@@ -90,7 +90,7 @@ class NSLayoutConstraint_AnchorKit_Tests: XCTestCase {
         XCTAssertEqual(constraint.constant, -30)
     }
 
-    func testAttributes_inset() {
+    func testAttributes_inset_constant() {
         XCTAssertEqual(view1.constrain(.left, to: view2).inset(5).constant, 5)
         XCTAssertEqual(view1.constrain(.right, to: view2).inset(5).constant, -5)
         XCTAssertEqual(view1.constrain(.top, to: view2).inset(5).constant, 5)
@@ -111,15 +111,26 @@ class NSLayoutConstraint_AnchorKit_Tests: XCTestCase {
         XCTAssertEqual(constraint.constant, -42)
     }
 
-    func testArrayOfConstraints_inset() {
+    func testArrayOfConstraints_inset_constant() {
         let constraints = view1.constrain(.leading, .trailing, .width, to: view2).inset(30)
         XCTAssertEqual(constraints.map({ $0.constant }), [30, -30, 30])
     }
 
-    func testArrayOfConstraints_updateInsets() {
+    func testArrayOfConstraints_inset_edgeInsets() {
+        let constraints = view1.constrain(.leading, .trailing, .width, .centerX, .top, .bottom, to: view2).inset(EdgeInsets(top: 1, left: 2, bottom: 3, right: 4))
+        XCTAssertEqual(constraints.map({ $0.constant }), [2, -4, 0, 0, 1, -3])
+    }
+
+    func testArrayOfConstraints_updateInsets_constant() {
         let constraints = view1.constrain(.leading, .trailing, .width, to: view2)
         constraints.updateInsets(30)
         XCTAssertEqual(constraints.map({ $0.constant }), [30, -30, 30])
+    }
+
+    func testArrayOfConstraints_updateInsets_edgeInsets() {
+        let constraints = view1.constrain(.leading, .trailing, .width, .centerX, .top, .bottom, to: view2)
+        constraints.updateInsets(EdgeInsets(top: 1, left: 2, bottom: 3, right: 4))
+        XCTAssertEqual(constraints.map({ $0.constant }), [2, -4, 0, 0, 1, -3])
     }
 
     func testArrayOfConstraints_insetHorizontal() {
@@ -194,6 +205,110 @@ class NSLayoutConstraint_AnchorKit_Tests: XCTestCase {
             XCTAssertTrue(NSLayoutAttribute.centerYWithinMargins.isVertical)
         #endif
         XCTAssertFalse(NSLayoutAttribute.notAnAttribute.isVertical)
+    }
+
+    func testLayoutAttribute_isLeft() {
+        XCTAssertTrue(NSLayoutAttribute.left.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.right.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.top.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.bottom.isLeftAttribute)
+        XCTAssertTrue(NSLayoutAttribute.leading.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.trailing.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.width.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.height.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.centerX.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.centerY.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.lastBaseline.isLeftAttribute)
+        XCTAssertFalse(NSLayoutAttribute.firstBaseline.isLeftAttribute)
+        #if os(iOS) || os(tvOS)
+            XCTAssertTrue(NSLayoutAttribute.leftMargin.isLeftAttribute)
+            XCTAssertFalse(NSLayoutAttribute.rightMargin.isLeftAttribute)
+            XCTAssertFalse(NSLayoutAttribute.topMargin.isLeftAttribute)
+            XCTAssertFalse(NSLayoutAttribute.bottomMargin.isLeftAttribute)
+            XCTAssertTrue(NSLayoutAttribute.leadingMargin.isLeftAttribute)
+            XCTAssertFalse(NSLayoutAttribute.trailingMargin.isLeftAttribute)
+            XCTAssertFalse(NSLayoutAttribute.centerXWithinMargins.isLeftAttribute)
+            XCTAssertFalse(NSLayoutAttribute.centerYWithinMargins.isLeftAttribute)
+        #endif
+        XCTAssertFalse(NSLayoutAttribute.notAnAttribute.isLeftAttribute)
+    }
+
+    func testLayoutAttribute_isRight() {
+        XCTAssertFalse(NSLayoutAttribute.left.isRightAttribute)
+        XCTAssertTrue(NSLayoutAttribute.right.isRightAttribute)
+        XCTAssertFalse(NSLayoutAttribute.top.isRightAttribute)
+        XCTAssertFalse(NSLayoutAttribute.bottom.isRightAttribute)
+        XCTAssertFalse(NSLayoutAttribute.leading.isRightAttribute)
+        XCTAssertTrue(NSLayoutAttribute.trailing.isRightAttribute)
+        XCTAssertFalse(NSLayoutAttribute.width.isRightAttribute)
+        XCTAssertFalse(NSLayoutAttribute.height.isRightAttribute)
+        XCTAssertFalse(NSLayoutAttribute.centerX.isRightAttribute)
+        XCTAssertFalse(NSLayoutAttribute.centerY.isRightAttribute)
+        XCTAssertFalse(NSLayoutAttribute.lastBaseline.isRightAttribute)
+        XCTAssertFalse(NSLayoutAttribute.firstBaseline.isRightAttribute)
+        #if os(iOS) || os(tvOS)
+            XCTAssertFalse(NSLayoutAttribute.leftMargin.isRightAttribute)
+            XCTAssertTrue(NSLayoutAttribute.rightMargin.isRightAttribute)
+            XCTAssertFalse(NSLayoutAttribute.topMargin.isRightAttribute)
+            XCTAssertFalse(NSLayoutAttribute.bottomMargin.isRightAttribute)
+            XCTAssertFalse(NSLayoutAttribute.leadingMargin.isRightAttribute)
+            XCTAssertTrue(NSLayoutAttribute.trailingMargin.isRightAttribute)
+            XCTAssertFalse(NSLayoutAttribute.centerXWithinMargins.isRightAttribute)
+            XCTAssertFalse(NSLayoutAttribute.centerYWithinMargins.isRightAttribute)
+        #endif
+        XCTAssertFalse(NSLayoutAttribute.notAnAttribute.isRightAttribute)
+    }
+
+    func testLayoutAttribute_isTop() {
+        XCTAssertFalse(NSLayoutAttribute.left.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.right.isTopAttribute)
+        XCTAssertTrue(NSLayoutAttribute.top.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.bottom.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.leading.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.trailing.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.width.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.height.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.centerX.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.centerY.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.lastBaseline.isTopAttribute)
+        XCTAssertFalse(NSLayoutAttribute.firstBaseline.isTopAttribute)
+        #if os(iOS) || os(tvOS)
+            XCTAssertFalse(NSLayoutAttribute.leftMargin.isTopAttribute)
+            XCTAssertFalse(NSLayoutAttribute.rightMargin.isTopAttribute)
+            XCTAssertTrue(NSLayoutAttribute.topMargin.isTopAttribute)
+            XCTAssertFalse(NSLayoutAttribute.bottomMargin.isTopAttribute)
+            XCTAssertFalse(NSLayoutAttribute.leadingMargin.isTopAttribute)
+            XCTAssertFalse(NSLayoutAttribute.trailingMargin.isTopAttribute)
+            XCTAssertFalse(NSLayoutAttribute.centerXWithinMargins.isTopAttribute)
+            XCTAssertFalse(NSLayoutAttribute.centerYWithinMargins.isTopAttribute)
+        #endif
+        XCTAssertFalse(NSLayoutAttribute.notAnAttribute.isTopAttribute)
+    }
+
+    func testLayoutAttribute_isBottom() {
+        XCTAssertFalse(NSLayoutAttribute.left.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.right.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.top.isBottomAttribute)
+        XCTAssertTrue(NSLayoutAttribute.bottom.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.leading.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.trailing.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.width.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.height.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.centerX.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.centerY.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.lastBaseline.isBottomAttribute)
+        XCTAssertFalse(NSLayoutAttribute.firstBaseline.isBottomAttribute)
+        #if os(iOS) || os(tvOS)
+            XCTAssertFalse(NSLayoutAttribute.leftMargin.isBottomAttribute)
+            XCTAssertFalse(NSLayoutAttribute.rightMargin.isBottomAttribute)
+            XCTAssertFalse(NSLayoutAttribute.topMargin.isBottomAttribute)
+            XCTAssertTrue(NSLayoutAttribute.bottomMargin.isBottomAttribute)
+            XCTAssertFalse(NSLayoutAttribute.leadingMargin.isBottomAttribute)
+            XCTAssertFalse(NSLayoutAttribute.trailingMargin.isBottomAttribute)
+            XCTAssertFalse(NSLayoutAttribute.centerXWithinMargins.isBottomAttribute)
+            XCTAssertFalse(NSLayoutAttribute.centerYWithinMargins.isBottomAttribute)
+        #endif
+        XCTAssertFalse(NSLayoutAttribute.notAnAttribute.isBottomAttribute)
     }
 
 }
