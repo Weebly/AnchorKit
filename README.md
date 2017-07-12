@@ -275,6 +275,12 @@ As you may have noticed in the second example, `offset(_:)` and `inset(_:)` work
 
 When updating constraints, for the sake of proper Swift naming conventions, **AnchorKit** also provides the methods `updateOffset(_:)` and `updateInset(_:)`.
 
+You can also use `UIEdgeInsets` (or `EdgeInsets` on macOS) to set the insets. The insets will be applied to the corresponding constraints.
+
+````swift
+innerView.constrainEdges(to: outerView).inset(UIEdgeInsets(top: 10, left: 12, bottom: 14, right: 16))
+````
+
 For multiple constraints, it's also possible to only set the *horizontal* and *vertical* insets, like so:
 
 ````swift
