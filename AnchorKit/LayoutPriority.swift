@@ -99,19 +99,19 @@ extension View {
     /**
      Sets the priority with which a view resists being made smaller than its intrinsic size.
      - parameter    priority:       The new priority.
-     - parameter    axis:           The axis for which the compression resistance priority should be set.
+     - parameter    axes:           The axes for which the compression resistance priority should be set.
      */
-    public func resistCompression(with priority: LayoutPriority, for axis: Axis) {
-        setContentCompressionResistancePriority(priority.rawValue, for: axis)
+    public func resistCompression(with priority: LayoutPriority, for axes: Axis...) {
+        axes.forEach { setContentCompressionResistancePriority(priority.rawValue, for: $0) }
     }
 
     /**
      Sets the priority with which a view resists being made larger than its intrinsic size.
      - parameter    priority:       The new priority.
-     - parameter    axis:           The axis for which the content hugging priority should be set.
+     - parameter    axes:           The axes for which the content hugging priority should be set.
      */
-    public func hug(with priority: LayoutPriority, for axis: Axis) {
-        setContentHuggingPriority(priority.rawValue, for: axis)
+    public func hug(with priority: LayoutPriority, for axes: Axis...) {
+        axes.forEach { setContentHuggingPriority(priority.rawValue, for: $0) }
     }
 
     /**
