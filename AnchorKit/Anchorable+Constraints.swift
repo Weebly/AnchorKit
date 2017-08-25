@@ -208,6 +208,60 @@ extension Anchorable {
         return anchors.map { constrain($0, relation: relation, to: item, multiplier: multiplier, priority: priority) }
     }
 
+    // MARK: - System Spacing Constraints
+
+    /**
+     Creates and activates a constraint from one anchor to another using system spacing. This is useful for constraining to safe area layout guides.
+     - parameter    anchor:         The first anchor in the constraint.
+     - parameter    relation:       The relation between the two anchors. Default is `equal`.
+     - parameter    position:       The positioning between the two anchors. For horizontal anchors, use `.after`. For vertical anchors, use `.below`.
+     - parameter    otherAnchor:    The second anchor in the constraint. Must be of the same type as the first anchor (e.g. cannot pair up `.leading` and `.bottom` because the first is an x-axis constraint while the second is a y-axis constraint).
+     - parameter    item:           The item to which the second anchor belongs.
+     - parameter    multiplier:     The multiple of the system spacing to use as the distance between the two anchors. Default is 1.
+     - parameter    priority:       The layout priority to set for the constraint. Default is `.required`.
+     - returns:                     The newly created and activated constraint.
+     */
+    @discardableResult
+    @available(iOS 11, tvOS 11, *)
+    public func constrainUsingSystemSpacing<AnchorableType: Anchorable>(_ anchor: Anchor, relation: Relation = .equal, _ position: SystemSpacingPosition, _ otherAnchor: Anchor, of item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
+        prepareForConstraints()
+
+        let firstAnchor = anchor.layoutAnchor(for: self)
+        let secondAnchor = otherAnchor.layoutAnchor(for: item)
+
+        let constraint: NSLayoutConstraint
+
+        switch position {
+        case .after:
+            guard let firstXAnchor = firstAnchor as? NSLayoutAnchor<NSLayoutXAxisAnchor> as? NSLayoutXAxisAnchor,
+                let secondXAnchor = secondAnchor as? NSLayoutAnchor<NSLayoutXAxisAnchor> as? NSLayoutXAxisAnchor else {
+                    fatalError("Only horizontal anchors can be used with system spacing constraints using SystemSpacingPosition.after.")
+            }
+            let makeConstraint: (NSLayoutXAxisAnchor) -> (NSLayoutXAxisAnchor, CGFloat) -> NSLayoutConstraint
+            switch relation {
+            case .equal: makeConstraint = NSLayoutXAxisAnchor.constraintEqualToSystemSpacingAfter
+            case .greaterThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraintGreaterThanOrEqualToSystemSpacingAfter
+            case .lessThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraintLessThanOrEqualToSystemSpacingAfter
+            }
+            constraint = makeConstraint(firstXAnchor)(secondXAnchor, multiplier.cgFloatValue)
+        case .below:
+            guard let firstYAnchor = firstAnchor as? NSLayoutAnchor<NSLayoutYAxisAnchor> as? NSLayoutYAxisAnchor,
+                let secondYAnchor = secondAnchor as? NSLayoutAnchor<NSLayoutYAxisAnchor> as? NSLayoutYAxisAnchor else {
+                    fatalError("Only vertical anchors can be used with system spacing constraints using SystemSpacingPosition.below.")
+            }
+            let makeConstraint: (NSLayoutYAxisAnchor) -> (NSLayoutYAxisAnchor, CGFloat) -> NSLayoutConstraint
+            switch relation {
+            case .equal: makeConstraint = NSLayoutYAxisAnchor.constraintEqualToSystemSpacingBelow
+            case .greaterThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraintGreaterThanOrEqualToSystemSpacingBelow
+            case .lessThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraintLessThanOrEqualToSystemSpacingBelow
+            }
+            constraint = makeConstraint(firstYAnchor)(secondYAnchor, multiplier.cgFloatValue)
+        }
+
+        constraint.layoutPriority = priority
+        return constraint.activate()
+    }
+
     #endif
 
     // MARK: - Internal Helpers

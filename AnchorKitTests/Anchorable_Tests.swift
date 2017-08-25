@@ -372,6 +372,66 @@ class Anchorable_Tests: XCTestCase {
         testDefaults(for: constraint)
     }
 
+    // MARK: - System Spacing Constraints
+
+    @available(iOS 11, tvOS 11, *)
+    func testConstrainUsingSystemSpacing_defaults() {
+        let constraint = view1.constrainUsingSystemSpacing(.top, .below, .bottom, of: view2)
+        XCTAssertEqual(constraint.priority.rawValue, 1000)
+        XCTAssertEqual(constraint.relation, .equal)
+        XCTAssertEqual(constraint.multiplier, 1)
+        XCTAssert(constraint.isActive)
+        XCTAssertGreaterThan(constraint.constant, 0)
+    }
+
+    @available(iOS 11, tvOS 11, *)
+    func testConstrainUsingSystemSpacing_after_greaterThanOrEqual() {
+        let constraint = view1.constrainUsingSystemSpacing(.leading, relation: .greaterThanOrEqual, .after, .trailing, of: view2.safeAreaLayoutGuide)
+        XCTAssertGreaterThan(constraint.constant, 0)
+        XCTAssertEqual(constraint.relation, .greaterThanOrEqual)
+    }
+
+    @available(iOS 11, tvOS 11, *)
+    func testConstrainUsingSystemSpacing_after_lessThanOrEqual() {
+        let constraint = view1.constrainUsingSystemSpacing(.leading, relation: .lessThanOrEqual, .after, .leading, of: view2.safeAreaLayoutGuide)
+        XCTAssertGreaterThan(constraint.constant, 0)
+        XCTAssertEqual(constraint.relation, .lessThanOrEqual)
+    }
+
+    @available(iOS 11, tvOS 11, *)
+    func testConstrainUsingSystemSpacing_below_greaterThanOrEqual() {
+        let constraint = view1.constrainUsingSystemSpacing(.top, relation: .greaterThanOrEqual, .below, .bottom, of: view2.safeAreaLayoutGuide)
+        XCTAssertGreaterThan(constraint.constant, 0)
+        XCTAssertEqual(constraint.relation, .greaterThanOrEqual)
+    }
+
+    @available(iOS 11, tvOS 11, *)
+    func testConstrainUsingSystemSpacing_below_lessThanOrEqual() {
+        let constraint = view1.constrainUsingSystemSpacing(.top, relation: .lessThanOrEqual, .below, .bottom, of: view2.safeAreaLayoutGuide)
+        XCTAssertGreaterThan(constraint.constant, 0)
+        XCTAssertEqual(constraint.relation, .lessThanOrEqual)
+    }
+
+    @available(iOS 11, tvOS 11, *)
+    func testConstrainUsingSystemSpacing_multiplier() {
+        let constraint = view1.constrainUsingSystemSpacing(.leading, .after, .trailing, of: view2.safeAreaLayoutGuide, multiplier: 2.3)
+        // FIXME: for some reason the multiplier always changes back to 1, could be a bug in iOS 11
+         XCTAssertEqual(constraint.multiplier, 2.3)
+    }
+
+    @available(iOS 11, tvOS 11, *)
+    func testConstrainUsingSystemSpacing_priority() {
+        let constraint = view1.constrainUsingSystemSpacing(.top, .below, .bottom, of: view2.safeAreaLayoutGuide, priority: .low)
+        XCTAssertEqual(constraint.layoutPriority, .low)
+    }
+
+    @available(iOS 11, tvOS 11, *)
+    func testConstrainUsingSystemSpacing() {
+        let constraint = view1.constrainUsingSystemSpacing(.top, .below, .bottom, of: view2.safeAreaLayoutGuide)
+        XCTAssertEqual(constraint.firstAnchor, view1.topAnchor)
+        XCTAssertEqual(constraint.secondAnchor, view2.safeAreaLayoutGuide.bottomAnchor)
+    }
+
     #endif
 
     // MARK: - Helpers

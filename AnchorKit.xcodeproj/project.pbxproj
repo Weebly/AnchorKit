@@ -24,6 +24,7 @@
 		C04E70051ECFBF1100749438 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FFF1ECFBF1100749438 /* ViewController.swift */; };
 		C04E700A1ECFBF2200749438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E70061ECFBF2200749438 /* LaunchScreen.storyboard */; };
 		C04E700B1ECFBF2200749438 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E70081ECFBF2200749438 /* Main.storyboard */; };
+		C0783AA81F1042860063E356 /* SystemSpacingPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0783AA71F1042860063E356 /* SystemSpacingPosition.swift */; };
 		C0E1C9541DD319D50068E85C /* AnchorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* AnchorKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		C04E6FFF1ECFBF1100749438 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "AnchorKit-iOS/ViewController.swift"; sourceTree = SOURCE_ROOT; };
 		C04E70071ECFBF2200749438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AnchorKit-iOS/Base.lproj/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		C04E70091ECFBF2200749438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AnchorKit-iOS/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
+		C0783AA71F1042860063E356 /* SystemSpacingPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SystemSpacingPosition.swift; path = AnchorKit/SystemSpacingPosition.swift; sourceTree = SOURCE_ROOT; };
 		C0E1C94B1DD319D50068E85C /* AnchorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnchorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E1C9531DD319D50068E85C /* AnchorKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnchorKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				C04E6FD71ECFBE5F00749438 /* CGFloatRepresentable.swift */,
 				C04E6FD91ECFBE5F00749438 /* LayoutPriority.swift */,
 				C04E6FDA1ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift */,
+				C0783AA71F1042860063E356 /* SystemSpacingPosition.swift */,
 				C04E6FD81ECFBE5F00749438 /* Info.plist */,
 			);
 			name = AnchorKit;
@@ -314,6 +317,7 @@
 				C04E6FDD1ECFBE5F00749438 /* Anchorable.swift in Sources */,
 				C04E6FDE1ECFBE5F00749438 /* Anchorable+Constraints.swift in Sources */,
 				C04E6FE21ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift in Sources */,
+				C0783AA81F1042860063E356 /* SystemSpacingPosition.swift in Sources */,
 				C04E6FDF1ECFBE5F00749438 /* CGFloatRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
