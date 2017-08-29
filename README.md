@@ -303,6 +303,24 @@ centerYConstraint.activate()
 ````
 These methods also work on sequences of constraints.
 
+### iOS 11 System Spacing Constraints
+
+In iOS 11 and tvOS 11, UIKit gave us a new way to define constraints using system-defined spacing with methods such as `constraintEqualToSystemSpacingAfter(_:multiplier:)`. These are useful when constraining items to the new `safeAreaLayoutGuide` found on `UIView`, which is now the recommended API to use instead of `topLayoutGuide` and `bottomLayoutGuide` on `UIViewController` (those are now deprecated). 
+
+AnchorKit provides a higher level method for system spacing constraints:
+
+````swift
+myView.constrainUsingSystemSpacing(.top, .below, .bottom, of: anotherView.safeAreaLayoutGuide)
+myView.constrainUsingSystemSpacing(.leading, .after, .trailing, of: anotherView.safeAreaLayoutGuide)
+````
+
+The full signature for this method is below:
+
+````swift
+@discardableResult
+public func constrainUsingSystemSpacing<AnchorableType: Anchorable>(_ anchor: Anchor, relation: Relation = .equal, _ position: SystemSpacingPosition, _ otherAnchor: Anchor, of item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint
+````
+
 
 # Support
 For questions, support, and suggestions, please open up an issue.
