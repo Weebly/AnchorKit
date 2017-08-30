@@ -1,8 +1,10 @@
 
 <img src="Images/AnchorKit.png" alt="AnchorKit" />
 
-![Swift Version](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat)
+![Swift Version](https://img.shields.io/badge/swift-3.1-orange.svg?style=flat)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/AnchorKit.svg)](https://img.shields.io/cocoapods/v/AnchorKit.svg)
+[![Platform](https://img.shields.io/cocoapods/p/AnchorKit.svg?style=flat)](http://cocoapods.org/pods/AnchorKit)
 
 ### ***AnchorKit** provides a simple, intuitive way to create layouts using anchors.*
 
