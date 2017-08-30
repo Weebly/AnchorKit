@@ -13,6 +13,10 @@ Here's some example code:
 // Multiple constraints on one line
 myView.constrain(.leading, .top, .trailing, to: anotherView)
 
+// One-line edge constraints with insets
+myView.constrainEdges(to: anotherView).inset(10)
+myView.constrainEdges(to: anotherView).insetVertical(20).insetHorizontal(30)
+
 // Set height/width equal to a constant
 myView.constrain(.height, .width, toConstant: 200)
 
@@ -30,9 +34,6 @@ myView.constrain(.height, relation: .lessThanOrEqual, to: anotherView, multiplie
 
 // Set the priority
 myView.constrain(.centerY, to: anotherView, priority: .high).offset(-15)
-
-// One-line edge constraints with insets
-myView.constrainEdges(to: anotherView).inset(10)
 
 // Easily center items
 myView.constrainCenter(to: anotherView)
