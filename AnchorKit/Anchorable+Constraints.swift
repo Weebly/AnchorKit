@@ -121,7 +121,7 @@ extension Anchorable {
     }
 
     /**
-     Constrains the edges of the current item to another item by creating and activating the leading, trailing, top, and bottom constraints. If you want to use this with a relation, use `constrainEdges(_:to:inset)`.
+     Constrains the edges of the current item to another item by creating and activating the leading, trailing, top, and bottom constraints. If you want to use this with a relation, use `constrainEdges(_:to:priority:)`.
      - parameter    item:       The item to which to constrain.
      - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
      - returns:                 The newly created and activated constraints for the leading, trailing, top, and bottom anchors.
@@ -129,6 +129,31 @@ extension Anchorable {
     @discardableResult
     public func constrainEdges<AnchorableType: Anchorable>(to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
         return constrainEdges(.equal, to: item, priority: priority)
+    }
+
+    // MARK: - Center Constraints
+
+    /**
+     Convenience method for centering the current item in another item by creating the centerX and centerY constraints. If you want to use this with a relation, use `constrainCenter(_:to:priority:)`.
+     - parameter    item:       The item in which to center the current item.
+     - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
+     - returns:                 The newly created and activated constraints for the centerX and centerY anchors.
+     */
+    @discardableResult
+    public func constrainCenter<AnchorableType: Anchorable>(to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+        return constrainCenter(.equal, to: item, priority: priority)
+    }
+
+    /**
+     Convenience method for centering the current item in another item by creating the centerX and centerY constraints.
+     - parameter    relation:   The relation for both constraints. If you want to use `.equal`, you can also just use `constrainCenter(to:priority:)` instead.
+     - parameter    item:       The item in which to center the current item.
+     - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
+     - returns:                 The newly created and activated constraints for the centerX and centerY anchors.
+     */
+    @discardableResult
+    public func constrainCenter<AnchorableType: Anchorable>(_ relation: Relation, to item: AnchorableType, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+        return constrain(.centerX, .centerY, relation: relation, to: item, priority: priority)
     }
 
     // MARK: - Size Constraints
@@ -174,7 +199,7 @@ extension Anchorable {
      - returns:                     The newly created and activated constraint.
      */
     @discardableResult
-    public func constrain(_ anchor: Anchor, relation: NSLayoutRelation = .equal, to otherAnchor: Anchor, of item: UILayoutSupport, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
+    public func constrain(_ anchor: Anchor, relation: Relation = .equal, to otherAnchor: Anchor, of item: UILayoutSupport, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
         let firstAnchor = anchor.layoutAnchor(for: self)
         let secondAnchor = otherAnchor.layoutAnchor(for: item)
         return makeConstraint(firstAnchor, relation: relation, to: secondAnchor, multiplier: multiplier, priority: priority)
@@ -190,7 +215,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraint.
      */
     @discardableResult
-    public func constrain(_ anchor: Anchor, relation: NSLayoutRelation = .equal, to item: UILayoutSupport, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
+    public func constrain(_ anchor: Anchor, relation: Relation = .equal, to item: UILayoutSupport, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint {
         return constrain(anchor, relation: relation, to: anchor, of: item, multiplier: multiplier, priority: priority)
     }
 
@@ -204,7 +229,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraints.
      */
     @discardableResult
-    public func constrain(_ anchors: Anchor..., relation: NSLayoutRelation = .equal, to item: UILayoutSupport, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
+    public func constrain(_ anchors: Anchor..., relation: Relation = .equal, to item: UILayoutSupport, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> [NSLayoutConstraint] {
         return anchors.map { constrain($0, relation: relation, to: item, multiplier: multiplier, priority: priority) }
     }
 
@@ -263,8 +288,38 @@ extension Anchorable {
     }
 
     #endif
+}
 
-    // MARK: - Internal Helpers
+extension ViewAnchorable {
+
+    /**
+     Updates the view's width and height constraints to the corresponding width and height of the provided size.
+     - parameter    size:   The size to which to update the width and height constraints.
+     */
+    public func updateSize(_ size: CGSize) {
+        constraints.updateSize(size)
+    }
+
+    /**
+     Updates the view's width constraint to the new provided width.
+     - parameter    width:  The width constant to which to update the width constraint of the view.
+     */
+    public func updateWidth(_ width: CGFloatRepresentable) {
+        constraints.filter { $0.firstAttribute == .width && $0.secondAttribute == .notAnAttribute }.updateOffsets(width)
+    }
+
+    /**
+     Updates the view's height constraint to the new provided height.
+     - parameter    height: The height constant to which to update the height constraint of the view.
+     */
+    public func updateHeight(_ height: CGFloatRepresentable) {
+        constraints.filter { $0.firstAttribute == .height && $0.secondAttribute == .notAnAttribute }.updateOffsets(height)
+    }
+
+}
+
+// MARK: - Internal Helpers
+extension Anchorable {
 
     func constrainAnchor<ObjectType>(_ anchor: NSLayoutAnchor<ObjectType>, relation: Relation, to otherAnchor: NSLayoutAnchor<ObjectType>, priority: LayoutPriority) -> NSLayoutConstraint {
         prepareForConstraints()
