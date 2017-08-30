@@ -69,10 +69,14 @@ let topAndSideConstraints = myView.constrain(.leading, .trailing, .top, to: anot
 pod 'AnchorKit'
 ````
 
+For Swift 4, use `pod 'AnchorKit', :git => 'https://github.com/Weebly/AnchorKit.git', :branch => 'swift-4'`
+
 ### Carthage:
 ````
 github "Weebly/AnchorKit"
 ````
+
+For Swift 4, use `github "Weebly/AnchorKit" "swift-4"`
 
 # Usage
 
