@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		C01EC5721E8F006900BEBB0F /* AnchorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* AnchorKit.framework */; };
 		C04E6FDB1ECFBE5F00749438 /* AnchorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C04E6FD31ECFBE5F00749438 /* AnchorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C04E6FDC1ECFBE5F00749438 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD41ECFBE5F00749438 /* Anchor.swift */; };
-		C04E6FDD1ECFBE5F00749438 /* Anchorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD51ECFBE5F00749438 /* Anchorable.swift */; };
-		C04E6FDE1ECFBE5F00749438 /* Anchorable+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD61ECFBE5F00749438 /* Anchorable+Constraints.swift */; };
-		C04E6FDF1ECFBE5F00749438 /* CGFloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD71ECFBE5F00749438 /* CGFloatRepresentable.swift */; };
-		C04E6FE11ECFBE5F00749438 /* LayoutPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FD91ECFBE5F00749438 /* LayoutPriority.swift */; };
-		C04E6FE21ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FDA1ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift */; };
 		C04E6FF21ECFBE7D00749438 /* Anchor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FED1ECFBE7D00749438 /* Anchor_Tests.swift */; };
 		C04E6FF31ECFBE7D00749438 /* Anchorable_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FEE1ECFBE7D00749438 /* Anchorable_Tests.swift */; };
 		C04E6FF51ECFBE7D00749438 /* LayoutPriority_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FF01ECFBE7D00749438 /* LayoutPriority_Tests.swift */; };
@@ -24,7 +18,13 @@
 		C04E70051ECFBF1100749438 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FFF1ECFBF1100749438 /* ViewController.swift */; };
 		C04E700A1ECFBF2200749438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E70061ECFBF2200749438 /* LaunchScreen.storyboard */; };
 		C04E700B1ECFBF2200749438 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04E70081ECFBF2200749438 /* Main.storyboard */; };
-		C0783AA81F1042860063E356 /* SystemSpacingPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0783AA71F1042860063E356 /* SystemSpacingPosition.swift */; };
+		C05749D91F571B5900E54255 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05749D21F571B4D00E54255 /* Anchor.swift */; };
+		C05749DA1F571B5900E54255 /* Anchorable+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05749D31F571B4D00E54255 /* Anchorable+Constraints.swift */; };
+		C05749DB1F571B5900E54255 /* Anchorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05749D41F571B4D00E54255 /* Anchorable.swift */; };
+		C05749DC1F571B5900E54255 /* CGFloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05749D51F571B4D00E54255 /* CGFloatRepresentable.swift */; };
+		C05749DD1F571B5900E54255 /* LayoutPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05749D61F571B4D00E54255 /* LayoutPriority.swift */; };
+		C05749DE1F571B5900E54255 /* NSLayoutConstraint+AnchorKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05749D71F571B4D00E54255 /* NSLayoutConstraint+AnchorKit.swift */; };
+		C05749DF1F571B5900E54255 /* SystemSpacingPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05749D81F571B4D00E54255 /* SystemSpacingPosition.swift */; };
 		C0E1C9541DD319D50068E85C /* AnchorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* AnchorKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,13 +41,7 @@
 /* Begin PBXFileReference section */
 		C01EC5601E8F002500BEBB0F /* AnchorKit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnchorKit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04E6FD31ECFBE5F00749438 /* AnchorKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnchorKit.h; path = AnchorKit/AnchorKit.h; sourceTree = SOURCE_ROOT; };
-		C04E6FD41ECFBE5F00749438 /* Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Anchor.swift; path = AnchorKit/Anchor.swift; sourceTree = SOURCE_ROOT; };
-		C04E6FD51ECFBE5F00749438 /* Anchorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Anchorable.swift; path = AnchorKit/Anchorable.swift; sourceTree = SOURCE_ROOT; };
-		C04E6FD61ECFBE5F00749438 /* Anchorable+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Anchorable+Constraints.swift"; path = "AnchorKit/Anchorable+Constraints.swift"; sourceTree = SOURCE_ROOT; };
-		C04E6FD71ECFBE5F00749438 /* CGFloatRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGFloatRepresentable.swift; path = AnchorKit/CGFloatRepresentable.swift; sourceTree = SOURCE_ROOT; };
 		C04E6FD81ECFBE5F00749438 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AnchorKit/Info.plist; sourceTree = SOURCE_ROOT; };
-		C04E6FD91ECFBE5F00749438 /* LayoutPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPriority.swift; path = AnchorKit/LayoutPriority.swift; sourceTree = SOURCE_ROOT; };
-		C04E6FDA1ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+AnchorKit.swift"; path = "AnchorKit/NSLayoutConstraint+AnchorKit.swift"; sourceTree = SOURCE_ROOT; };
 		C04E6FED1ECFBE7D00749438 /* Anchor_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Anchor_Tests.swift; path = AnchorKitTests/Anchor_Tests.swift; sourceTree = SOURCE_ROOT; };
 		C04E6FEE1ECFBE7D00749438 /* Anchorable_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Anchorable_Tests.swift; path = AnchorKitTests/Anchorable_Tests.swift; sourceTree = SOURCE_ROOT; };
 		C04E6FEF1ECFBE7D00749438 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AnchorKitTests/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -59,7 +53,13 @@
 		C04E6FFF1ECFBF1100749438 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "AnchorKit-iOS/ViewController.swift"; sourceTree = SOURCE_ROOT; };
 		C04E70071ECFBF2200749438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AnchorKit-iOS/Base.lproj/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		C04E70091ECFBF2200749438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AnchorKit-iOS/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
-		C0783AA71F1042860063E356 /* SystemSpacingPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SystemSpacingPosition.swift; path = AnchorKit/SystemSpacingPosition.swift; sourceTree = SOURCE_ROOT; };
+		C05749D21F571B4D00E54255 /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
+		C05749D31F571B4D00E54255 /* Anchorable+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Anchorable+Constraints.swift"; sourceTree = "<group>"; };
+		C05749D41F571B4D00E54255 /* Anchorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchorable.swift; sourceTree = "<group>"; };
+		C05749D51F571B4D00E54255 /* CGFloatRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatRepresentable.swift; sourceTree = "<group>"; };
+		C05749D61F571B4D00E54255 /* LayoutPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutPriority.swift; sourceTree = "<group>"; };
+		C05749D71F571B4D00E54255 /* NSLayoutConstraint+AnchorKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+AnchorKit.swift"; sourceTree = "<group>"; };
+		C05749D81F571B4D00E54255 /* SystemSpacingPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSpacingPosition.swift; sourceTree = "<group>"; };
 		C0E1C94B1DD319D50068E85C /* AnchorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnchorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E1C9531DD319D50068E85C /* AnchorKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnchorKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,17 +105,26 @@
 			path = "Anchor-iOS";
 			sourceTree = "<group>";
 		};
+		C05749D11F571B4D00E54255 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C05749D21F571B4D00E54255 /* Anchor.swift */,
+				C05749D31F571B4D00E54255 /* Anchorable+Constraints.swift */,
+				C05749D41F571B4D00E54255 /* Anchorable.swift */,
+				C05749D51F571B4D00E54255 /* CGFloatRepresentable.swift */,
+				C05749D61F571B4D00E54255 /* LayoutPriority.swift */,
+				C05749D71F571B4D00E54255 /* NSLayoutConstraint+AnchorKit.swift */,
+				C05749D81F571B4D00E54255 /* SystemSpacingPosition.swift */,
+			);
+			name = Source;
+			path = AnchorKit/Source;
+			sourceTree = SOURCE_ROOT;
+		};
 		C07218141E722070000A0F0B /* AnchorKit */ = {
 			isa = PBXGroup;
 			children = (
+				C05749D11F571B4D00E54255 /* Source */,
 				C04E6FD31ECFBE5F00749438 /* AnchorKit.h */,
-				C04E6FD41ECFBE5F00749438 /* Anchor.swift */,
-				C04E6FD51ECFBE5F00749438 /* Anchorable.swift */,
-				C04E6FD61ECFBE5F00749438 /* Anchorable+Constraints.swift */,
-				C04E6FD71ECFBE5F00749438 /* CGFloatRepresentable.swift */,
-				C04E6FD91ECFBE5F00749438 /* LayoutPriority.swift */,
-				C04E6FDA1ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift */,
-				C0783AA71F1042860063E356 /* SystemSpacingPosition.swift */,
 				C04E6FD81ECFBE5F00749438 /* Info.plist */,
 			);
 			name = AnchorKit;
@@ -312,13 +321,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C04E6FE11ECFBE5F00749438 /* LayoutPriority.swift in Sources */,
-				C04E6FDC1ECFBE5F00749438 /* Anchor.swift in Sources */,
-				C04E6FDD1ECFBE5F00749438 /* Anchorable.swift in Sources */,
-				C04E6FDE1ECFBE5F00749438 /* Anchorable+Constraints.swift in Sources */,
-				C04E6FE21ECFBE5F00749438 /* NSLayoutConstraint+AnchorKit.swift in Sources */,
-				C0783AA81F1042860063E356 /* SystemSpacingPosition.swift in Sources */,
-				C04E6FDF1ECFBE5F00749438 /* CGFloatRepresentable.swift in Sources */,
+				C05749DB1F571B5900E54255 /* Anchorable.swift in Sources */,
+				C05749DE1F571B5900E54255 /* NSLayoutConstraint+AnchorKit.swift in Sources */,
+				C05749DC1F571B5900E54255 /* CGFloatRepresentable.swift in Sources */,
+				C05749D91F571B5900E54255 /* Anchor.swift in Sources */,
+				C05749DD1F571B5900E54255 /* LayoutPriority.swift in Sources */,
+				C05749DA1F571B5900E54255 /* Anchorable+Constraints.swift in Sources */,
+				C05749DF1F571B5900E54255 /* SystemSpacingPosition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
