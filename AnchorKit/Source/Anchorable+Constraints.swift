@@ -265,7 +265,7 @@ extension ViewAnchorable {
 // MARK: - Internal Helpers
 extension Anchorable {
 
-    func constrainAnchor<ObjectType: AnyObject>(_ anchor: NSLayoutAnchor<ObjectType>, relation: NSLayoutRelation, to otherAnchor: NSLayoutAnchor<ObjectType>, priority: LayoutPriority) -> NSLayoutConstraint {
+    func constrainAnchor<ObjectType>(_ anchor: NSLayoutAnchor<ObjectType>, relation: NSLayoutRelation, to otherAnchor: NSLayoutAnchor<ObjectType>, priority: LayoutPriority) -> NSLayoutConstraint {
         prepareForConstraints()
 
         let constraint: NSLayoutConstraint
