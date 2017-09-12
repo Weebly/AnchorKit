@@ -8,7 +8,11 @@
 
 #if os(macOS)
     import AppKit
-    typealias LayoutAttribute = NSLayoutConstraint.Attribute
+    #if swift(>=3.2)
+        public typealias LayoutAttribute = NSLayoutConstraint.Attribute
+    #else
+        public typealias LayoutAttribute = NSLayoutAttribute
+    #endif
 #else
     import UIKit
     typealias LayoutAttribute = NSLayoutAttribute

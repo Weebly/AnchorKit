@@ -144,20 +144,6 @@
 			path = AnchorTests;
 			sourceTree = "<group>";
 		};
-		C0A26A281F571A1F000E1F7C /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				C0A26A291F571A1F000E1F7C /* Anchor.swift */,
-				C0A26A2A1F571A1F000E1F7C /* Anchorable+Constraints.swift */,
-				C0A26A2B1F571A1F000E1F7C /* Anchorable.swift */,
-				C0A26A2C1F571A1F000E1F7C /* CGFloatRepresentable.swift */,
-				C0A26A2D1F571A1F000E1F7C /* LayoutPriority.swift */,
-				C0A26A2E1F571A1F000E1F7C /* NSLayoutConstraint+AnchorKit.swift */,
-			);
-			name = Source;
-			path = AnchorKit/Source;
-			sourceTree = SOURCE_ROOT;
-		};
 		C0E211401D9EC5C000623F02 = {
 			isa = PBXGroup;
 			children = (

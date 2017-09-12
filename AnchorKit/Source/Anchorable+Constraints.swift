@@ -8,7 +8,11 @@
 
 #if os(macOS)
     import AppKit
-    public typealias Relation = NSLayoutConstraint.Relation
+    #if swift(>=3.2)
+        public typealias Relation = NSLayoutConstraint.Relation
+    #else
+        public typealias Relation = NSLayoutRelation
+    #endif
 #else
     import UIKit
     public typealias Relation = NSLayoutRelation
@@ -233,6 +237,8 @@ extension Anchorable {
         return anchors.map { constrain($0, relation: relation, to: item, multiplier: multiplier, priority: priority) }
     }
 
+    #if swift(>=3.2)
+
     // MARK: - System Spacing Constraints
 
     /**
@@ -286,6 +292,8 @@ extension Anchorable {
         constraint.layoutPriority = priority
         return constraint.activate()
     }
+
+    #endif
 
     #endif
 }

@@ -8,8 +8,13 @@
 
 #if os(macOS)
     import AppKit
-    public typealias EdgeInsets = NSEdgeInsets
-    public typealias LayoutAttribute = NSLayoutConstraint.Attribute
+    #if swift(>=3.2)
+        public typealias EdgeInsets = NSEdgeInsets
+        public typealias LayoutAttribute = NSLayoutConstraint.Attribute
+    #else
+        public typealias EdgeInsets = Foundation.EdgeInsets
+        public typealias LayoutAttribute = NSLayoutAttribute
+    #endif
 #else
     import UIKit
     public typealias EdgeInsets = UIEdgeInsets

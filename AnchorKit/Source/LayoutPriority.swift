@@ -8,8 +8,13 @@
 
 #if os(macOS)
     import AppKit
-    public typealias Axis = NSLayoutConstraint.Orientation
-    typealias Priority = NSLayoutConstraint.Priority
+    #if swift(>=3.2)
+        public typealias Axis = NSLayoutConstraint.Orientation
+        typealias Priority = NSLayoutConstraint.Priority
+    #else
+        public typealias Axis = NSLayoutConstraintOrientation
+        typealias Priority = NSLayoutPriority
+    #endif
 #else
     import UIKit
     public typealias Axis = UILayoutConstraintAxis
@@ -50,7 +55,11 @@ public enum LayoutPriority: RawRepresentable {
     }
 
     fileprivate init(_ priority: Priority) {
-        self.init(rawValue: priority.rawValue)
+        #if swift(>=4.0)
+            self.init(rawValue: priority.rawValue)
+        #else
+            self.init(rawValue: priority)
+        #endif
     }
 
     /// The value of the layout priority.
@@ -91,7 +100,11 @@ extension NSLayoutConstraint {
     /// The layout priority of the constraint.
     public var layoutPriority: LayoutPriority {
         set {
-            priority = Priority(rawValue: newValue.rawValue)
+            #if swift(>=4.0)
+                priority = Priority(rawValue: newValue.rawValue)
+            #else
+                priority = newValue.rawValue
+            #endif
         }
         get {
             return LayoutPriority(priority)
@@ -108,7 +121,12 @@ extension View {
      - parameter    axes:           The axes for which the compression resistance priority should be set.
      */
     public func resistCompression(with priority: LayoutPriority, for axes: Axis...) {
-        axes.forEach { setContentCompressionResistancePriority(Priority(rawValue: priority.rawValue), for: $0) }
+        #if swift(>=4.0)
+            let p = Priority(rawValue: priority.rawValue)
+        #else
+            let p = priority.rawValue
+        #endif
+        axes.forEach { setContentCompressionResistancePriority(p, for: $0) }
     }
 
     /**
@@ -117,7 +135,12 @@ extension View {
      - parameter    axes:           The axes for which the content hugging priority should be set.
      */
     public func hug(with priority: LayoutPriority, for axes: Axis...) {
-        axes.forEach { setContentHuggingPriority(Priority(rawValue: priority.rawValue), for: $0) }
+        #if swift(>=4.0)
+            let p = Priority(rawValue: priority.rawValue)
+        #else
+            let p = priority.rawValue
+        #endif
+        axes.forEach { setContentHuggingPriority(p, for: $0) }
     }
 
     /**

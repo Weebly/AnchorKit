@@ -8,9 +8,16 @@
 
 #if os(macOS)
     import AppKit
+    #if swift(>=3.2)
+        typealias Priority = NSLayoutConstraint.Priority
+    #else
+        typealias Priority = NSLayoutPriority
+    #endif
 #else
     import UIKit
+    typealias Priority = UILayoutPriority
 #endif
+
 
 import XCTest
 @testable import AnchorKit
@@ -37,8 +44,13 @@ class LayoutPriority_Tests: XCTestCase {
     func testConstraint_layoutPriority() {
         let constraint = NSLayoutConstraint()
         constraint.layoutPriority = .high
-        XCTAssertEqual(constraint.priority.rawValue, 750)
-        constraint.priority = Priority(rawValue: 56)
+        #if swift(>=4.0)
+            XCTAssertEqual(constraint.priority.rawValue, 750)
+            constraint.priority = Priority(rawValue: 56)
+        #else
+            XCTAssertEqual(constraint.priority, 750)
+            constraint.priority = 56
+        #endif
         XCTAssertEqual(constraint.layoutPriority, .custom(56))
     }
 
