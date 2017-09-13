@@ -1,7 +1,8 @@
 
 <img src="Images/AnchorKit.png" alt="AnchorKit" />
 
-![Swift Version](https://img.shields.io/badge/swift-3.1-orange.svg?style=flat)
+![Swift Version](https://img.shields.io/badge/swift-4-orange.svg?style=flat)
+![Swift Version](https://img.shields.io/badge/swift-3-orange.svg?style=flat)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/AnchorKit.svg)](https://img.shields.io/cocoapods/v/AnchorKit.svg)
 [![Platform](https://img.shields.io/cocoapods/p/AnchorKit.svg?style=flat)](http://cocoapods.org/pods/AnchorKit)
@@ -62,7 +63,8 @@ let topAndSideConstraints = myView.constrain(.leading, .trailing, .top, to: anot
 # Requirements
 
 - iOS 9.0+, macOS 10.11+, tvOS 9.0+
-- Swift 3
+- Swift 4+, 3.2 or 3.1
+- Xcode 8 or 9+
 
 
 # Installation
@@ -72,14 +74,10 @@ let topAndSideConstraints = myView.constrain(.leading, .trailing, .top, to: anot
 pod 'AnchorKit'
 ````
 
-For Swift 4, use `pod 'AnchorKit', :git => 'https://github.com/Weebly/AnchorKit.git', :branch => 'swift-4'`
-
 ### Carthage:
 ````
 github "Weebly/AnchorKit"
 ````
-
-For Swift 4, use `github "Weebly/AnchorKit" "swift-4"`
 
 # Usage
 
@@ -357,6 +355,24 @@ let centerYConstraint = myView.constraint(.centerY, to: anotherView).deactivate(
 centerYConstraint.activate()
 ````
 These methods also work on sequences of constraints.
+
+### iOS 11 System Spacing Constraints
+
+In iOS 11 and tvOS 11, UIKit gave us a new way to define constraints using system-defined spacing with methods such as `constraintEqualToSystemSpacingAfter(_:multiplier:)`. These are useful when constraining items to the new `safeAreaLayoutGuide` found on `UIView`, which is now the recommended API to use instead of `topLayoutGuide` and `bottomLayoutGuide` on `UIViewController` (those are now deprecated). 
+
+AnchorKit provides a higher level method for system spacing constraints:
+
+````swift
+myView.constrainUsingSystemSpacing(.top, .below, .bottom, of: anotherView.safeAreaLayoutGuide)
+myView.constrainUsingSystemSpacing(.leading, .after, .trailing, of: anotherView.safeAreaLayoutGuide)
+````
+
+The full signature for this method is below:
+
+````swift
+@discardableResult
+public func constrainUsingSystemSpacing<AnchorableType: Anchorable>(_ anchor: Anchor, relation: Relation = .equal, _ position: SystemSpacingPosition, _ otherAnchor: Anchor, of item: AnchorableType, multiplier: CGFloatRepresentable = 1, priority: LayoutPriority = .required) -> NSLayoutConstraint
+````
 
 
 # Support
