@@ -1,7 +1,8 @@
 
 <img src="Images/AnchorKit.png" alt="AnchorKit" />
 
-![Swift Version](https://img.shields.io/badge/swift-4.0-orange.svg?style=flat)
+![Swift Version](https://img.shields.io/badge/swift-4-orange.svg?style=flat)
+![Swift Version](https://img.shields.io/badge/swift-3-orange.svg?style=flat)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/AnchorKit.svg)](https://img.shields.io/cocoapods/v/AnchorKit.svg)
 [![Platform](https://img.shields.io/cocoapods/p/AnchorKit.svg?style=flat)](http://cocoapods.org/pods/AnchorKit)
@@ -62,7 +63,8 @@ let topAndSideConstraints = myView.constrain(.leading, .trailing, .top, to: anot
 # Requirements
 
 - iOS 9.0+, macOS 10.11+, tvOS 9.0+
-- Swift 4
+- Swift 4+, 3.2 or 3.1
+- Xcode 8 or 9+
 
 
 # Installation
@@ -72,14 +74,10 @@ let topAndSideConstraints = myView.constrain(.leading, .trailing, .top, to: anot
 pod 'AnchorKit'
 ````
 
-For Swift 4, use `pod 'AnchorKit', :git => 'https://github.com/Weebly/AnchorKit.git', :branch => 'swift-4'`
-
 ### Carthage:
 ````
 github "Weebly/AnchorKit"
 ````
-
-For Swift 4, use `github "Weebly/AnchorKit" "swift-4"`
 
 # Usage
 
