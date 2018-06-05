@@ -271,9 +271,9 @@ class Anchorable_Tests: XCTestCase {
         XCTAssertEqual(constraints.map { $0.constant }, [7, -7, 7, -7])
         XCTAssertEqual(constraints.count, 4)
         let expectedFirstAnchors = [view1.leadingAnchor, view1.trailingAnchor, view1.topAnchor, view1.bottomAnchor]
-        XCTAssertEqual(constraints.flatMap { $0.firstAnchor }, expectedFirstAnchors)
+        XCTAssertEqual(constraints.compactMap { $0.firstAnchor }, expectedFirstAnchors)
         let expectedSecondAnchors = [view2.leadingAnchor, view2.trailingAnchor, view2.topAnchor, view2.bottomAnchor]
-        XCTAssertEqual(constraints.flatMap { $0.secondAnchor }, expectedSecondAnchors)
+        XCTAssertEqual(constraints.compactMap { $0.secondAnchor }, expectedSecondAnchors)
         XCTAssertEqual(Set(constraints.map { $0.relation }), [.equal])
     }
 
@@ -298,8 +298,8 @@ class Anchorable_Tests: XCTestCase {
         let constraints = view1.constrainCenter(to: view2, priority: .high).offset(10)
         XCTAssertEqual(constraints.map { $0.constant }, [10, 10])
         XCTAssertEqual(constraints.count, 2)
-        XCTAssertEqual(constraints.flatMap { $0.firstAnchor }, [view1.centerXAnchor, view1.centerYAnchor])
-        XCTAssertEqual(constraints.flatMap { $0.secondAnchor }, [view2.centerXAnchor, view2.centerYAnchor])
+        XCTAssertEqual(constraints.compactMap { $0.firstAnchor }, [view1.centerXAnchor, view1.centerYAnchor])
+        XCTAssertEqual(constraints.compactMap { $0.secondAnchor }, [view2.centerXAnchor, view2.centerYAnchor])
         XCTAssertEqual(constraints.map { $0.layoutPriority }, [.high, .high])
         XCTAssertEqual(Set(constraints.map { $0.relation }), [.equal])
     }

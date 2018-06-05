@@ -17,7 +17,11 @@
     #endif
 #else
     import UIKit
-    public typealias Axis = UILayoutConstraintAxis
+    #if swift(>=4.2)
+        public typealias Axis = NSLayoutConstraint.Axis
+    #else
+        public typealias Axis = UILayoutConstraintAxis
+    #endif
     typealias Priority = UILayoutPriority
 #endif
 
