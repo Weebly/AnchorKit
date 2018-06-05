@@ -15,7 +15,11 @@
     #endif
 #else
     import UIKit
-    public typealias Relation = NSLayoutRelation
+    #if swift(>=4.2)
+        public typealias Relation = NSLayoutConstraint.Relation
+    #else
+        public typealias Relation = NSLayoutRelation
+    #endif
 #endif
 
 extension Anchorable {
@@ -269,11 +273,20 @@ extension Anchorable {
                     fatalError("Only horizontal anchors can be used with system spacing constraints using SystemSpacingPosition.after.")
             }
             let makeConstraint: (NSLayoutXAxisAnchor) -> (NSLayoutXAxisAnchor, CGFloat) -> NSLayoutConstraint
-            switch relation {
-            case .equal: makeConstraint = NSLayoutXAxisAnchor.constraintEqualToSystemSpacingAfter
-            case .greaterThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraintGreaterThanOrEqualToSystemSpacingAfter
-            case .lessThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraintLessThanOrEqualToSystemSpacingAfter
-            }
+
+            #if swift(>=4.2)
+                switch relation {
+                case .equal: makeConstraint = NSLayoutXAxisAnchor.constraint(equalToSystemSpacingAfter:multiplier:)
+                case .greaterThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter:multiplier:)
+                case .lessThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraint(lessThanOrEqualToSystemSpacingAfter:multiplier:)
+                }
+            #else
+                switch relation {
+                case .equal: makeConstraint = NSLayoutXAxisAnchor.constraintEqualToSystemSpacingAfter(_:multiplier:)
+                case .greaterThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraintGreaterThanOrEqualToSystemSpacingAfter(_:multiplier:)
+                case .lessThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraintLessThanOrEqualToSystemSpacingAfter(_:multiplier:)
+                }
+            #endif
             constraint = makeConstraint(firstXAnchor)(secondXAnchor, multiplier.cgFloatValue)
         case .below:
             guard let firstYAnchor = firstAnchor as? NSLayoutAnchor<NSLayoutYAxisAnchor> as? NSLayoutYAxisAnchor,
@@ -281,11 +294,19 @@ extension Anchorable {
                     fatalError("Only vertical anchors can be used with system spacing constraints using SystemSpacingPosition.below.")
             }
             let makeConstraint: (NSLayoutYAxisAnchor) -> (NSLayoutYAxisAnchor, CGFloat) -> NSLayoutConstraint
-            switch relation {
-            case .equal: makeConstraint = NSLayoutYAxisAnchor.constraintEqualToSystemSpacingBelow
-            case .greaterThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraintGreaterThanOrEqualToSystemSpacingBelow
-            case .lessThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraintLessThanOrEqualToSystemSpacingBelow
-            }
+            #if swift(>=4.2)
+                switch relation {
+                case .equal: makeConstraint = NSLayoutYAxisAnchor.constraint(equalToSystemSpacingBelow:multiplier:)
+                case .greaterThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow:multiplier:)
+                case .lessThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraint(lessThanOrEqualToSystemSpacingBelow:multiplier:)
+                }
+            #else
+                switch relation {
+                case .equal: makeConstraint = NSLayoutYAxisAnchor.constraintEqualToSystemSpacingBelow(_:multiplier:)
+                case .greaterThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraintGreaterThanOrEqualToSystemSpacingBelow(_:multiplier:)
+                case .lessThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraintLessThanOrEqualToSystemSpacingBelow(_:multiplier:)
+                }
+            #endif
             constraint = makeConstraint(firstYAnchor)(secondYAnchor, multiplier.cgFloatValue)
         }
 
@@ -379,5 +400,5 @@ extension Anchorable {
             return constrainAnchor(anchor, relation: relation, to: otherAnchor, priority: priority)
         }
     }
-    
+
 }

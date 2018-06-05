@@ -8,14 +8,8 @@
 
 #if os(macOS)
     import AppKit
-    #if swift(>=3.2)
-        public typealias LayoutAttribute = NSLayoutConstraint.Attribute
-    #else
-        public typealias LayoutAttribute = NSLayoutAttribute
-    #endif
 #else
     import UIKit
-    typealias LayoutAttribute = NSLayoutAttribute
 #endif
 
 import XCTest
@@ -82,13 +76,13 @@ class NSLayoutConstraint_AnchorKit_Tests: XCTestCase {
 
     func testArrayOfConstraints_offset() {
         let constraint = view1.constrainEdges(to: view2).offset(16.1)
-        XCTAssertEqual(Set(constraint.map({ $0.constant })), Set([16.1]))
+        XCTAssertEqual(Set(constraint.map({ $0.constant })), Set<CGFloat>([16.1]))
     }
 
     func testArrayOfConstraints_updateOffsets() {
         let constraint = view1.constrainEdges(to: view2)
         constraint.updateOffsets(16.1)
-        XCTAssertEqual(Set(constraint.map({ $0.constant })), Set([16.1]))
+        XCTAssertEqual(Set(constraint.map({ $0.constant })), Set<CGFloat>([16.1]))
     }
 
     func testSingleConstraint_inset() {

@@ -18,7 +18,11 @@
 #else
     import UIKit
     public typealias EdgeInsets = UIEdgeInsets
-    public typealias LayoutAttribute = NSLayoutAttribute
+    #if swift(>=4.2)
+        public typealias LayoutAttribute = NSLayoutConstraint.Attribute
+    #else
+        public typealias LayoutAttribute = NSLayoutAttribute
+    #endif
 #endif
 
 extension NSLayoutConstraint {
