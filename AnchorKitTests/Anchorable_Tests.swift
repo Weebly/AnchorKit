@@ -348,8 +348,10 @@ class Anchorable_Tests: XCTestCase {
     func testConstrainToSize() {
         let constraints = view1.constrain(to: CGSize(width: 20, height: 30), priority: .medium)
         XCTAssertEqual(constraints[0].firstAnchor, view1.widthAnchor)
+        XCTAssertNil(constraints[0].secondAnchor)
         XCTAssertEqual(constraints[0].constant, 20)
         XCTAssertEqual(constraints[1].firstAnchor, view1.heightAnchor)
+        XCTAssertNil(constraints[1].secondAnchor)
         XCTAssertEqual(constraints[1].constant, 30)
     }
 
@@ -375,6 +377,42 @@ class Anchorable_Tests: XCTestCase {
     }
 
     // MARK: - Width and Height
+
+    func testConstrainHeight() {
+        let constraint = view1.constrainHeight(to: 20)
+        XCTAssertEqual(constraint.firstAnchor, view1.heightAnchor)
+        XCTAssertNil(constraint.secondAnchor)
+        XCTAssertEqual(constraint.constant, 20)
+    }
+
+    func testConstrainHeight_withOptions() {
+        let constraint = view1.constrainHeight(.greaterThanOrEqual, to: 12, priority: .low)
+        XCTAssertEqual(constraint.relation, .greaterThanOrEqual)
+        XCTAssertEqual(constraint.layoutPriority, .low)
+    }
+
+    func testConstrainToHeight_defaults() {
+        let constraint = view1.constrainHeight(to: 20)
+        testDefaults(for: constraint, constant: 20)
+    }
+
+    func testConstrainWidth() {
+        let constraint = view1.constrainWidth(to: 20)
+        XCTAssertEqual(constraint.firstAnchor, view1.widthAnchor)
+        XCTAssertNil(constraint.secondAnchor)
+        XCTAssertEqual(constraint.constant, 20)
+    }
+
+    func testConstrainWidth_withOptions() {
+        let constraint = view1.constrainWidth(.greaterThanOrEqual, to: 12, priority: .medium)
+        XCTAssertEqual(constraint.relation, .greaterThanOrEqual)
+        XCTAssertEqual(constraint.layoutPriority, .medium)
+    }
+
+    func testConstrainToWidth_defaults() {
+        let constraint = view1.constrainWidth(to: 20)
+        testDefaults(for: constraint, constant: 20)
+    }
 
     func testUpdateWidth() {
         let constraints = view1.constrain(.width, .height, toConstant: 100)
