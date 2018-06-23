@@ -174,7 +174,7 @@ extension Anchorable {
     /**
      Constrains the width of the current item to a specific value.
      - parameter    relation:   The relation for the constraint. Default is `.equal`.
-     - parameter    width:      The height to which to constrain.
+     - parameter    width:      The width to which to constrain.
      - parameter    priority:   The layout priority to set for the constraints. Default is `.required`.
      - returns:                 The newly created and activated constraint for width anchor.
      */
