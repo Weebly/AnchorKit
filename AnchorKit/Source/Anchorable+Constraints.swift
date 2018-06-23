@@ -167,7 +167,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraint for height anchor.
      */
     @discardableResult
-    public func constrainHeight(_ relation: Relation = .equal, to height: CGFloat, priority: LayoutPriority = .required) -> NSLayoutConstraint {
+    public func constrainHeight(_ relation: Relation = .equal, to height: CGFloatRepresentable, priority: LayoutPriority = .required) -> NSLayoutConstraint {
         return constrain(.height, relation: relation, toConstant: height, priority: priority)
     }
 
@@ -179,7 +179,7 @@ extension Anchorable {
      - returns:                 The newly created and activated constraint for width anchor.
      */
     @discardableResult
-    public func constrainWidth(_ relation: Relation = .equal, to width: CGFloat, priority: LayoutPriority = .required) -> NSLayoutConstraint {
+    public func constrainWidth(_ relation: Relation = .equal, to width: CGFloatRepresentable, priority: LayoutPriority = .required) -> NSLayoutConstraint {
         return constrain(.width, relation: relation, toConstant: width, priority: priority)
     }
 
