@@ -23,6 +23,7 @@ myView.constrainEdges(to: anotherView).insetVertical(20).insetHorizontal(30)
 
 // Set height/width equal to a constant
 myView.constrain(.height, .width, toConstant: 200)
+myView.constrainWidth(to: 42)
 
 // Set the height/width equal to a CGSize
 myView.constrain(to: CGSize(width: 100, height: 200))
@@ -159,6 +160,10 @@ Constrain an anchor of an item to a constant. This is is especially useful (and 
 ````swift
 myView.constrain(.height, toConstant: 200)
 myBoxView.constrain(.width, .height, toConstant: 50) // Creates a box
+
+// Even easier:
+myView.constrainHeight(to: 42)
+myView.constrainWidth(to: 60)
 ````
 
 Calling this method with a single anchor will implicitly return `NSLayoutConstraint`. Otherwise, the return type is `[NSLayoutConstraint]`. The full signatures of these methods are shown below.
