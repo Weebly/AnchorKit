@@ -270,7 +270,9 @@ extension Anchorable {
                 case .equal: makeConstraint = NSLayoutXAxisAnchor.constraint(equalToSystemSpacingAfter:multiplier:)
                 case .greaterThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter:multiplier:)
                 case .lessThanOrEqual: makeConstraint = NSLayoutXAxisAnchor.constraint(lessThanOrEqualToSystemSpacingAfter:multiplier:)
-                }
+                @unknown default:
+                    fatalError("The relation \(relation) is not supported yet. Please create a Github issue on this repo.")
+            }
             #else
                 switch relation {
                 case .equal: makeConstraint = NSLayoutXAxisAnchor.constraintEqualToSystemSpacingAfter(_:multiplier:)
@@ -290,7 +292,9 @@ extension Anchorable {
                 case .equal: makeConstraint = NSLayoutYAxisAnchor.constraint(equalToSystemSpacingBelow:multiplier:)
                 case .greaterThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow:multiplier:)
                 case .lessThanOrEqual: makeConstraint = NSLayoutYAxisAnchor.constraint(lessThanOrEqualToSystemSpacingBelow:multiplier:)
-                }
+                @unknown default:
+                    fatalError("The relation \(relation) is not supported yet. Please create a Github issue on this repo.")
+            }
             #else
                 switch relation {
                 case .equal: makeConstraint = NSLayoutYAxisAnchor.constraintEqualToSystemSpacingBelow(_:multiplier:)
@@ -349,6 +353,8 @@ extension Anchorable {
         case .equal: constraint = anchor.constraint(equalTo: otherAnchor)
         case .greaterThanOrEqual: constraint = anchor.constraint(greaterThanOrEqualTo: otherAnchor)
         case .lessThanOrEqual: constraint = anchor.constraint(lessThanOrEqualTo: otherAnchor)
+        @unknown default:
+            fatalError("The relation \(relation) is not supported yet. Please create a Github issue on this repo.")
         }
 
         constraint.layoutPriority = priority
@@ -363,6 +369,8 @@ extension Anchorable {
         case .equal: constraint = dimension.constraint(equalTo: otherDimension, multiplier: multiplier.cgFloatValue)
         case .greaterThanOrEqual: constraint = dimension.constraint(greaterThanOrEqualTo: otherDimension, multiplier: multiplier.cgFloatValue)
         case .lessThanOrEqual: constraint = dimension.constraint(lessThanOrEqualTo: otherDimension, multiplier: multiplier.cgFloatValue)
+        @unknown default:
+            fatalError("The relation \(relation) is not supported yet. Please create a Github issue on this repo.")
         }
 
         constraint.layoutPriority = priority
@@ -377,6 +385,8 @@ extension Anchorable {
         case .equal: constraint = dimension.constraint(equalToConstant: constant.cgFloatValue)
         case .greaterThanOrEqual: constraint = dimension.constraint(greaterThanOrEqualToConstant: constant.cgFloatValue)
         case .lessThanOrEqual: constraint = dimension.constraint(lessThanOrEqualToConstant: constant.cgFloatValue)
+        @unknown default:
+            fatalError("The relation \(relation) is not supported yet. Please create a Github issue on this repo.")
         }
 
         constraint.layoutPriority = priority
