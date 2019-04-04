@@ -1,6 +1,8 @@
 
 <img src="Images/AnchorKit.png" alt="AnchorKit" />
 
+![Swift Version](https://img.shields.io/badge/swift-5-orange.svg?style=flat)
+![Swift Version](https://img.shields.io/badge/swift-4.2-orange.svg?style=flat)
 ![Swift Version](https://img.shields.io/badge/swift-4-orange.svg?style=flat)
 ![Swift Version](https://img.shields.io/badge/swift-3-orange.svg?style=flat)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -64,8 +66,8 @@ let topAndSideConstraints = myView.constrain(.leading, .trailing, .top, to: anot
 # Requirements
 
 - iOS 9.0+, macOS 10.11+, tvOS 9.0+
-- Swift 4+, 3.2 or 3.1
-- Xcode 8 or 9+
+- Swift 3.1+
+- Xcode 8+
 
 
 # Installation
