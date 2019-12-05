@@ -8,6 +8,10 @@
 
 import CoreGraphics
 
+#if SWIFT_PACKAGE
+import Foundation
+#endif
+
 /**
  A protocol that converts different number types to a `CGFloat` equivalent.
  
