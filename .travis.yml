@@ -1,5 +1,5 @@
 language: objective-c
-os_image: xcode11.2
+osx_image: xcode11.2
 
 env:
   - PLATFORM=iOS  DESTINATION='platform=iOS Simulator,name=iPhone 11'
