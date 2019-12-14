@@ -2,9 +2,6 @@
 <img src="Images/AnchorKit.png" alt="AnchorKit" />
 
 ![Swift Version](https://img.shields.io/badge/swift-5-orange.svg?style=flat)
-![Swift Version](https://img.shields.io/badge/swift-4.2-orange.svg?style=flat)
-![Swift Version](https://img.shields.io/badge/swift-4-orange.svg?style=flat)
-![Swift Version](https://img.shields.io/badge/swift-3-orange.svg?style=flat)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/AnchorKit.svg)](https://img.shields.io/cocoapods/v/AnchorKit.svg)
 [![Platform](https://img.shields.io/cocoapods/p/AnchorKit.svg?style=flat)](http://cocoapods.org/pods/AnchorKit)
@@ -84,7 +81,7 @@ github "Weebly/AnchorKit"
 
 ### Swift Package Manager:
 ````
-package(url: "https://github.com/Weebly/AnchorKit.git", .branch("master"))
+package(url: "https://github.com/Weebly/AnchorKit.git", .from("2.3.0"))
 ````
 
 # Usage
