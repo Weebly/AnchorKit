@@ -81,7 +81,7 @@ github "Weebly/AnchorKit"
 
 ### Swift Package Manager:
 ````
-package(url: "https://github.com/Weebly/AnchorKit.git", .from("2.3.0"))
+package(url: "https://github.com/Weebly/AnchorKit.git", .from("2.4.0"))
 ````
 
 # Usage
