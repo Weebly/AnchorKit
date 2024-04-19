@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0319D6522BD2B66F009E47CE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0319D6512BD2B66F009E47CE /* PrivacyInfo.xcprivacy */; };
+		0319D65E2BD2CA35009E47CE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0319D6512BD2B66F009E47CE /* PrivacyInfo.xcprivacy */; };
 		C01EC5721E8F006900BEBB0F /* AnchorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E1C94B1DD319D50068E85C /* AnchorKit.framework */; };
 		C04E6FDB1ECFBE5F00749438 /* AnchorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C04E6FD31ECFBE5F00749438 /* AnchorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C04E6FF21ECFBE7D00749438 /* Anchor_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E6FED1ECFBE7D00749438 /* Anchor_Tests.swift */; };
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0319D6512BD2B66F009E47CE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		C01EC5601E8F002500BEBB0F /* AnchorKit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnchorKit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04E6FD31ECFBE5F00749438 /* AnchorKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnchorKit.h; path = AnchorKit/AnchorKit.h; sourceTree = SOURCE_ROOT; };
 		C04E6FD81ECFBE5F00749438 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AnchorKit/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -147,6 +150,7 @@
 		C0E211401D9EC5C000623F02 = {
 			isa = PBXGroup;
 			children = (
+				0319D6512BD2B66F009E47CE /* PrivacyInfo.xcprivacy */,
 				C07218141E722070000A0F0B /* AnchorKit */,
 				C07218231E72207B000A0F0B /* AnchorKitTests */,
 				C01EC5611E8F002500BEBB0F /* AnchorKit-iOS */,
@@ -288,6 +292,7 @@
 			files = (
 				C04E700A1ECFBF2200749438 /* LaunchScreen.storyboard in Resources */,
 				C04E70011ECFBF1100749438 /* Assets.xcassets in Resources */,
+				0319D65E2BD2CA35009E47CE /* PrivacyInfo.xcprivacy in Resources */,
 				C04E700B1ECFBF2200749438 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0319D6522BD2B66F009E47CE /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

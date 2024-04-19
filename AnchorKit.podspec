@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "9.0"
 
   s.source       = { :git => "https://github.com/Weebly/AnchorKit.git", :tag => "v2.4.0" }
+  s.resource_bundles = {'AnchorKit_privacy' => ['PrivacyInfo.xcprivacy']}
   s.requires_arc = true
   s.source_files = "AnchorKit/Source/*.swift"
 
