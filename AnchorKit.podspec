@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.license   = { :type => "MIT", :file => "LICENSE" }
   s.homepage  = "https://github.com/Weebly/AnchorKit.git"
-  s.author    = { "Eddie Kaiger" => "eddiekaiger@gmail.com" }
+  s.author    = { "Jace Conflenti" => "jace@squaruep.com" }
 
   s.ios.deployment_target = "12.0"
   s.osx.deployment_target = "10.13"
@@ -24,5 +24,6 @@ Pod::Spec.new do |s|
   s.resource_bundles = {'AnchorKit_privacy' => ['PrivacyInfo.xcprivacy']}
   s.requires_arc = true
   s.source_files = "AnchorKit/Source/*.swift"
+  s.swift_version = "5.0"
 
 end
