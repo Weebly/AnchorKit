@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AnchorKit"
-  s.version      = "2.4.0"
+  s.version      = "3.0.2"
   s.summary      = "A Swifty anchor-based API for AutoLayout."
 
   s.description  = <<-DESC
@@ -16,11 +16,11 @@ Pod::Spec.new do |s|
   s.homepage  = "https://github.com/Weebly/AnchorKit.git"
   s.author    = { "Eddie Kaiger" => "eddiekaiger@gmail.com" }
 
-  s.ios.deployment_target = "9.0"
+  s.ios.deployment_target = "12.0"
   s.osx.deployment_target = "10.12"
   s.tvos.deployment_target = "9.0"
 
-  s.source       = { :git => "https://github.com/Weebly/AnchorKit.git", :tag => "v2.4.0" }
+  s.source       = { :git => "https://github.com/Weebly/AnchorKit.git", :tag => "v3.0.2" }
   s.resource_bundles = {'AnchorKit_privacy' => ['PrivacyInfo.xcprivacy']}
   s.requires_arc = true
   s.source_files = "AnchorKit/Source/*.swift"
